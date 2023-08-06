@@ -1,14 +1,7 @@
-//
-//  DatePlusApp.swift
-//  DatePlus Watch App
-//
-//  Created by √lump on 2023/08/07.
-//
-
 import SwiftUI
 
 @main
-struct DatePlus_Watch_AppApp: App {
+struct DatePlus_Watch_App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
