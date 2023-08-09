@@ -13,4 +13,4 @@ jobs:
         with:
           mode: exactly
           count: 1
-          labels: "enhancement, update, bug, refactor, dependencies, other, release, ignore-changelog"
+          labels: "enhancement, update, bug, refactor, dependencies, document, other, release, ignore-changelog"
