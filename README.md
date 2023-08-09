@@ -1,7 +1,7 @@
 <br>
 <p align="center">
 <a href="https://date-plus.root-lump.net" target="_blank">
-<img src="https://date-plus.root-lump.net/wp-content/uploads/2023/08/cropped-DatePlus-preview.png" alt="DatePlus" height="250" width="250"/>
+<img src="resources/images/icons/DatePlus_cropped.png" alt="DatePlus" width="40%"/>
 </a>
 </p>
 
@@ -20,7 +20,7 @@ You can add any number of days from a specific date and view the resulting date.
 
 <p align="center">
   <a href="https://apps.apple.com/jp/app/dateplus-%E6%97%A5%E4%BB%98%E8%A8%88%E7%AE%97%E3%82%A2%E3%83%97%E3%83%AA/id6458592460" target="_blank">
-  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Demo of the Nextcloud iOS files app" height="50">
+  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download DatePlus from AppStore" height="50">
   <br>
   <br>
   <a href="https://date-plus.root-lump.net/update-history/">Update history [Simplified version]</a> | <a href="https://github.com/root-lump/DatePlus/releases">Change log</a> | <a href="https://date-plus.root-lump.net/privacy-policy/">Privacy policy</a>
@@ -35,7 +35,11 @@ You can add any number of days from a specific date and view the resulting date.
 - 📅 [**Calculate from Today**](https://date-plus.root-lump.net) - Automatically use today's date as the starting point for calculations. This feature can be turned on or off.
 
 ## Screenshots
-(Add screenshots of the app here)
+<p align="center">
+<img src="resources/images/screenshots/main_screen.png" alt="Main Screen" width="30%">
+<img src="resources/images/screenshots/pinned_screen.png" alt="Main Screen" width="30%">
+<img src="resources/images/screenshots/widget.png" alt="Main Screen" width="30%">
+</p>
 
 ## Getting Started
 
