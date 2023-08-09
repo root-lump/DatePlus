@@ -3,6 +3,8 @@ changelog:
     labels:
       - release
       - ignore-changelog
+    authors:
+      - root-lump
   categories:
     - title: New Features 🎉
       labels:
@@ -16,6 +18,9 @@ changelog:
     - title: Refactorings ♻️
       labels:
         - refactor
+    - title: Documentation 📚
+      labels:
+        - document
     - title: Dependency Updates 📦
       labels:
         - dependencies
