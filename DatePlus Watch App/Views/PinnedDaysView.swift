@@ -16,6 +16,21 @@ struct PinnedDaysView: View {
     var body: some View {
         // A list view that displays each pinned day.
         List {
+            if pinnedDays.isEmpty {
+                // プレースホルダーを表示
+                Text("ピン留めされた日数がありません")
+                    .foregroundColor(.secondary)
+                    .font(.headline)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(2)
+                    .padding()
+                Text("💡ヒント\nメイン画面でピン留めボタンを押すと、この画面で複数の日付をまとめて表示できます。")
+                    .foregroundColor(.secondary)
+                    .font(.caption2)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(5)
+                    .padding()
+            }
             // For each pinned day...
             ForEach(pinnedDays, id: \.self) { dayInfo in
                 HStack {
@@ -96,6 +111,7 @@ struct PinnedDaysView: View {
                 )
             }
         }
+        
     }
     
     // Function to reset the alert item.

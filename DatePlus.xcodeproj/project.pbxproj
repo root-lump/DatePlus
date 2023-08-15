@@ -66,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E2EE3F72A8C0FE600587F6C /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = SOURCE_ROOT; };
 		3E9A06952A80102200618D65 /* DatePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A069B2A80102200618D65 /* DatePlus Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DatePlus Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A06A02A80102200618D65 /* DatePlusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePlusApp.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		3E9A069F2A80102200618D65 /* DatePlus Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				3E2EE3F72A8C0FE600587F6C /* info.plist */,
 				3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */,
 				3E9A06B82A80113500618D65 /* Views */,
 				3E9A06B52A80110400618D65 /* Utils */,
@@ -484,7 +486,8 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_FILE = info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -516,7 +519,8 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_FILE = info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
