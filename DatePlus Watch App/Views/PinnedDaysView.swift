@@ -17,7 +17,7 @@ struct PinnedDaysView: View {
         // A list view that displays each pinned day.
         List {
             if pinnedDays.isEmpty {
-                // プレースホルダーを表示
+                // message when not pinned
                 Text("ピン留めされた日数がありません")
                     .foregroundColor(.secondary)
                     .font(.headline)
