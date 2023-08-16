@@ -85,6 +85,7 @@
 		3E9A06CC2A80122D00618D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus Watch App.entitlements"; sourceTree = "<group>"; };
 		3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +111,7 @@
 		3E9A068E2A80102100618D65 = {
 			isa = PBXGroup;
 			children = (
+				3EC80CA32A8C9EE200FA09A0 /* ci_scripts */,
 				3EC80CA22A8C200D00FA09A0 /* DatePlus */,
 				3E9A069F2A80102200618D65 /* DatePlus Watch App */,
 				3E9A06C72A80122D00618D65 /* DatePlus Widget */,
@@ -202,6 +204,14 @@
 				3E2EE3F72A8C0FE600587F6C /* info.plist */,
 			);
 			path = DatePlus;
+			sourceTree = "<group>";
+		};
+		3EC80CA32A8C9EE200FA09A0 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,7 +505,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -528,7 +538,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
