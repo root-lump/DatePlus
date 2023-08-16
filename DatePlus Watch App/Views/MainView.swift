@@ -61,7 +61,7 @@ struct MainView: View {
                     futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
                 }) {
                     Text("本日起算")
-                        .font(.title)
+                        .font(.caption)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                         .padding(5) // Adjust padding
