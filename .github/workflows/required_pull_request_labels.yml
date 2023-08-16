@@ -1,0 +1,16 @@
+name: Required Pull Request Labels
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled, review_requested, ready_for_review]
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: exactly
+          count: 1
+          labels: "enhancement, update, bug, refactor, dependencies, document, other, release, ignore-changelog"

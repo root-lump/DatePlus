@@ -39,7 +39,7 @@ struct MainView: View {
                 Picker("", selection: daysBinding) {
                     ForEach(1 ..< 151, id: \.self) { num in     // Repeat by id
                         Text("\(num)").font(.largeTitle)                                    }
-
+                    
                 }
                 .labelsHidden()
                 .pickerStyle(WheelPickerStyle())
@@ -48,7 +48,11 @@ struct MainView: View {
             }
             .padding(.vertical, 5) // Add vertical padding
             
-            Text(" \(formatDate(futureDate))").font(.title3).padding(.vertical, 5)
+            Text(" \(formatDate(futureDate))")
+                .font(.title3)
+                .padding(.vertical, 5)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             
             HStack {
                 Spacer()
@@ -57,7 +61,9 @@ struct MainView: View {
                     futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
                 }) {
                     Text("本日起算")
-                        .font(.caption)
+                        .font(.headline)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
                         .padding(5) // Adjust padding
                         .foregroundColor(includeFirstDay ? .black : .white) // Set text color
                 }
@@ -79,7 +85,7 @@ struct MainView: View {
                     }.fixedSize()
                 
                 Spacer()
-            }
+            }.padding(.horizontal, 5)
         }.onAppear {
             futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         }
