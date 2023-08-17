@@ -66,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E2EE3F72A8C0FE600587F6C /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = info.plist; path = DatePlus/info.plist; sourceTree = SOURCE_ROOT; };
 		3E9A06952A80102200618D65 /* DatePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A069B2A80102200618D65 /* DatePlus Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DatePlus Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A06A02A80102200618D65 /* DatePlusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePlusApp.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		3E9A06CC2A80122D00618D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus Watch App.entitlements"; sourceTree = "<group>"; };
 		3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,8 @@
 		3E9A068E2A80102100618D65 = {
 			isa = PBXGroup;
 			children = (
+				3EC80CA32A8C9EE200FA09A0 /* ci_scripts */,
+				3EC80CA22A8C200D00FA09A0 /* DatePlus */,
 				3E9A069F2A80102200618D65 /* DatePlus Watch App */,
 				3E9A06C72A80122D00618D65 /* DatePlus Widget */,
 				3E9A06C22A80122D00618D65 /* Frameworks */,
@@ -194,6 +198,22 @@
 			path = "DatePlus Widget";
 			sourceTree = "<group>";
 		};
+		3EC80CA22A8C200D00FA09A0 /* DatePlus */ = {
+			isa = PBXGroup;
+			children = (
+				3E2EE3F72A8C0FE600587F6C /* info.plist */,
+			);
+			path = DatePlus;
+			sourceTree = "<group>";
+		};
+		3EC80CA32A8C9EE200FA09A0 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,11 +293,11 @@
 			};
 			buildConfigurationList = 3E9A06922A80102100618D65 /* Build configuration list for PBXProject "DatePlus" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ja,
 			);
 			mainGroup = 3E9A068E2A80102100618D65;
 			productRefGroup = 3E9A06962A80102200618D65 /* Products */;
@@ -360,6 +380,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_DISPLAY_NAME_PREFIX = "[DEB] ";
+				BUNDLE_ID_SUFFIX = .debug;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -419,6 +441,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_DISPLAY_NAME_PREFIX = "";
+				BUNDLE_ID_SUFFIX = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -471,7 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Watch App/DatePlus Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -480,15 +504,16 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = DatePlus;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -503,7 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Watch App/DatePlus Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -512,15 +537,16 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = DatePlus;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -539,9 +565,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
-				INFOPLIST_KEY_CFBundleDisplayName = DatePlus;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus";
+				INFOPLIST_FILE = DatePlus/info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -555,9 +582,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
-				INFOPLIST_KEY_CFBundleDisplayName = DatePlus;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus";
+				INFOPLIST_FILE = DatePlus/info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -576,7 +604,7 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DatePlus Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -584,8 +612,8 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp.DatePlus-Widget";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -607,7 +635,7 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DatePlus Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,8 +643,8 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp.DatePlus-Widget";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

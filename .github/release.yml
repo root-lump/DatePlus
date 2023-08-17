@@ -1,0 +1,29 @@
+changelog:
+  exclude:
+    labels:
+      - release
+      - ignore-changelog
+    authors:
+      - root-lump
+  categories:
+    - title: New Features 🎉
+      labels:
+        - enhancement
+    - title: Feature Updates 🛠
+      labels:
+        - update
+    - title: Bug Fixes 🐛
+      labels:
+        - bug
+    - title: Refactorings ♻️
+      labels:
+        - refactor
+    - title: Documentation 📚
+      labels:
+        - document
+    - title: Dependency Updates 📦
+      labels:
+        - dependencies
+    - title: Other Changes 📋
+      labels:
+        - other
