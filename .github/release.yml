@@ -3,8 +3,6 @@ changelog:
     labels:
       - release
       - ignore-changelog
-    authors:
-      - root-lump
   categories:
     - title: New Features 🎉
       labels:
