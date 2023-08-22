@@ -3,7 +3,6 @@ import SwiftUI
 
 func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
-    print(String(localized: "Locale Code"))
     switch String(localized: "Locale Code") {
     case "ja":
         formatter.locale = Locale(identifier: "ja_JP")

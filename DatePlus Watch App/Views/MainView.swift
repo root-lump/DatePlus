@@ -12,6 +12,28 @@ enum AlertType {
     case addToComplication(DayInfo)
 }
 
+extension Int {
+    var ordinal: String {
+        switch self {
+        case 1: return "1st"
+        case 2: return "2nd"
+        case 3: return "3rd"
+        default:
+            return "\(self)th"
+        }
+    }
+}
+
+extension Int {
+    var localizedString: String {
+        if (String(localized: "Locale Code") == "en") {
+            return self.ordinal
+        } else {
+            return "\(self)"
+        }
+    }
+}
+
 // The main view of the app
 struct MainView: View {
     // App storage properties to store user preferences
@@ -32,27 +54,61 @@ struct MainView: View {
             }
         )
         
+        let screenHeight = WKInterfaceDevice.current().screenBounds.height
+        let screenWidth = WKInterfaceDevice.current().screenBounds.width
+        
         // The main view layout
         VStack {
+            Spacer()
             HStack {
                 Spacer()
                 Picker("", selection: daysBinding) {
                     ForEach(1 ..< 151, id: \.self) { num in     // Repeat by id
-                        Text("\(num)").font(.largeTitle)                                    }
-                    
+                        if (includeFirstDay) {
+                            Text("\(num.localizedString)")
+                                .font(.largeTitle)
+                                .minimumScaleFactor(0.7)
+                                .lineLimit(1)
+                        } else {
+                            Text("\(num)")
+                                .font(.largeTitle)
+                                .minimumScaleFactor(0.7)
+                                .lineLimit(1)
+                        }
+                    }
                 }
+                .frame(width: screenWidth/1.8)
                 .labelsHidden()
                 .pickerStyle(WheelPickerStyle())
-                Text(includeFirstDay ? "day" : "days later").font(.title)
-                    .minimumScaleFactor(0.4)
-                    .lineLimit(2)
+                
+                Spacer()
+                
+                if (includeFirstDay){
+                    Text("day")
+                        .font(.title)
+                        .minimumScaleFactor(0.4)
+                        .lineLimit(2)
+                }else{
+                    if (String(localized: "Locale Code") == "en" && daysToAdd == 1) {
+                        Text("day\nlater")
+                            .font(.title)
+                            .minimumScaleFactor(0.4)
+                            .lineLimit(2)
+                    } else {
+                        Text("days later")
+                            .font(.title)
+                            .minimumScaleFactor(0.4)
+                            .lineLimit(2)
+                    }
+                }
                 Spacer()
             }
+            .frame(height: screenHeight/4)
             .padding(.vertical, 5) // Add vertical padding
             
             Text(" \(formatDate(futureDate))")
+                .frame(width: .infinity, height: screenHeight/5)
                 .font(.title3)
-                .padding(.vertical, 5)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
             
@@ -79,7 +135,7 @@ struct MainView: View {
                     pinDays()
                 }) {
                     Image(systemName: "pin.fill")
-                        .font(.title3)
+                        .font(.headline)
                         .padding(5)
                 }.clipShape(Circle()) // Clip to circle shape
                     .alert(isPresented: $showAlert) {
@@ -87,7 +143,8 @@ struct MainView: View {
                     }.fixedSize()
                 
                 Spacer()
-            }.padding(.horizontal, 5)
+            }
+            .frame(height: screenHeight/3.5)
         }.onAppear {
             futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         }
