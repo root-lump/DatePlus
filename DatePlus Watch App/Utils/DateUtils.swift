@@ -1,9 +1,24 @@
 import Foundation
+import SwiftUI
 
 func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
-    formatter.locale = Locale(identifier: "ja_JP")
-    formatter.dateFormat = "yyyy年M月d日 (E)"
+    print(String(localized: "Locale Code"))
+    switch String(localized: "Locale Code") {
+    case "ja":
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "yyyy年M月d日 (E)"
+        break;
+    case "en":
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "E, MMMM d, yyyy"
+        break;
+    default:
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "E, MMMM d, yyyy"
+        break;
+    }
+
     return formatter.string(from: date)
 }
 

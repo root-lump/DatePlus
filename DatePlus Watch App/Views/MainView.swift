@@ -20,7 +20,7 @@ struct MainView: View {
     @AppStorage("pinnedDays") private var pinnedDaysData: Data = Data()
     @AppStorage("includeFirstDay") private var includeFirstDay = false
     @State private var showAlert = false
-    @State private var alertMessage = ""
+    @State private var alertMessage = Text("")
     
     var body: some View {
         // Binding to update the future date whenever the number of days to add changes
@@ -43,7 +43,9 @@ struct MainView: View {
                 }
                 .labelsHidden()
                 .pickerStyle(WheelPickerStyle())
-                Text(includeFirstDay ? "日目" : "日後").font(.title)
+                Text(includeFirstDay ? "day" : "days later").font(.title)
+                    .minimumScaleFactor(0.4)
+                    .lineLimit(2)
                 Spacer()
             }
             .padding(.vertical, 5) // Add vertical padding
@@ -60,7 +62,7 @@ struct MainView: View {
                     includeFirstDay.toggle()
                     futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
                 }) {
-                    Text("本日起算")
+                    Text("From Today")
                         .font(.headline)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
@@ -81,7 +83,7 @@ struct MainView: View {
                         .padding(5)
                 }.clipShape(Circle()) // Clip to circle shape
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text(alertMessage))
+                        Alert(title: alertMessage)
                     }.fixedSize()
                 
                 Spacer()
@@ -96,13 +98,13 @@ struct MainView: View {
         var days = (try? JSONDecoder().decode([DayInfo].self, from: pinnedDaysData)) ?? []
         let newDayInfo = DayInfo(days: daysToAdd, includeFirstDay: includeFirstDay)
         if days.contains(newDayInfo) {
-            alertMessage = "既に登録されています。"
+            alertMessage = Text("Already registered.")
         } else {
             days.append(newDayInfo)
             if let encodedData = try? JSONEncoder().encode(days) {
                 pinnedDaysData = encodedData
             }
-            alertMessage = "ピン留めしました。"
+            alertMessage = Text("Pinned.")
         }
         showAlert = true
     }
@@ -110,6 +112,12 @@ struct MainView: View {
 
 struct MainViewPreview: PreviewProvider {
     static var previews: some View {
-        MainView()
+        let localizationIds = ["en", "ja"]
+        
+        ForEach(localizationIds, id: \.self) { id in
+            MainView()
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }

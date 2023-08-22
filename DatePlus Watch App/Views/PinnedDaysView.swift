@@ -18,17 +18,17 @@ struct PinnedDaysView: View {
         List {
             if pinnedDays.isEmpty {
                 // message when not pinned
-                Text("ピン留めされた日数がありません")
+                Text("There are no days pinned.")
                     .foregroundColor(.secondary)
                     .font(.headline)
                     .minimumScaleFactor(0.5)
                     .lineLimit(2)
                     .padding()
-                Text("💡ヒント\nメイン画面でピン留めボタンを押すと、この画面で複数の日付をまとめて表示できます。")
+                Text("Pinned Day Tip")
                     .foregroundColor(.secondary)
                     .font(.caption2)
                     .minimumScaleFactor(0.5)
-                    .lineLimit(5)
+                    .lineLimit(6)
                     .padding()
             }
             // For each pinned day...
@@ -37,7 +37,7 @@ struct PinnedDaysView: View {
                     // With a vertical stack view on the left...
                     VStack(alignment: .leading) {
                         // Change the display by includeFirstDay.
-                        Text("\(dayInfo.days) \(dayInfo.includeFirstDay ? "日目" : "日後")")
+                        Text("\(dayInfo.days) \(Text(dayInfo.includeFirstDay ? "day" : "days later"))")
                             .foregroundColor(.secondary)
                         Spacer()
                         // Display the formatted date.
@@ -64,14 +64,14 @@ struct PinnedDaysView: View {
                     Button(action: {
                         alertItem = AlertItem(type: .delete(dayInfo))
                     }) {
-                        Label("削除", systemImage: "trash.fill")
+                        Label("Delete", systemImage: "trash.fill")
                     }
                     .tint(.red)
                     // The add to complication button.
                     Button(action: {
                         alertItem = AlertItem(type: .addToComplication(dayInfo))
                     }) {
-                        Label("コンプリケーションに追加", systemImage: "watchface.applewatch.case")
+                        Label("Add to Complications", systemImage: "watchface.applewatch.case")
                     }
                     .tint(.orange)
                     
@@ -87,24 +87,24 @@ struct PinnedDaysView: View {
             switch alertItem.type {
             case .delete(let dayInfo):
                 return Alert(
-                    title: Text("削除してもよろしいですか？"),
+                    title: Text("Are you sure you want to delete?"),
                     message: nil,
-                    primaryButton: .destructive(Text("削除"), action: {
+                    primaryButton: .destructive(Text("Delete"), action: {
                         removePinnedDay(dayInfo: dayInfo)
                         resetAlertItem()
                     }),
-                    secondaryButton: .cancel(Text("キャンセル"), action:{
+                    secondaryButton: .cancel(Text("Cancel"), action:{
                         resetAlertItem()
                     })
                 )
             case .addToComplication(let dayInfo):
                 return Alert(
-                    title: Text("コンプリケーションを更新しますか？"),
+                    title: Text("Do you want to update the Complication?"),
                     message: nil,
-                    primaryButton: .default(Text("キャンセル"), action: {
+                    primaryButton: .default(Text("Cancel"), action: {
                         resetAlertItem()
                     }),
-                    secondaryButton: .default(Text("更新"), action: {
+                    secondaryButton: .default(Text("Update"), action: {
                         registerComplication(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)
                         resetAlertItem()
                     })
@@ -154,6 +154,12 @@ struct PinnedDaysView: View {
 
 struct PinnedDaysPreview: PreviewProvider {
     static var previews: some View {
-        PinnedDaysView()
+        let localizationIds = ["en", "ja"]
+        
+        ForEach(localizationIds, id: \.self) { id in
+            PinnedDaysView()
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }

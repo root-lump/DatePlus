@@ -21,6 +21,9 @@
 		3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */; };
 		3E9A06CB2A80122D00618D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06CA2A80122D00618D65 /* Assets.xcassets */; };
 		3E9A06CF2A80122D00618D65 /* DatePlus WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E9A06C12A80122D00618D65 /* DatePlus WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3E9A367E2A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
+		3E9A367F2A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
+		3E9A36802A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,8 @@
 		3E9A06CC2A80122D00618D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus Watch App.entitlements"; sourceTree = "<group>"; };
 		3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		3E9A36812A94DC0100F2B630 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3E9A36832A94DC0500F2B630 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +116,7 @@
 		3E9A068E2A80102100618D65 = {
 			isa = PBXGroup;
 			children = (
+				3E9A36822A94DC0100F2B630 /* Localizable.strings */,
 				3EC80CA32A8C9EE200FA09A0 /* ci_scripts */,
 				3EC80CA22A8C200D00FA09A0 /* DatePlus */,
 				3E9A069F2A80102200618D65 /* DatePlus Watch App */,
@@ -293,11 +299,12 @@
 			};
 			buildConfigurationList = 3E9A06922A80102100618D65 /* Build configuration list for PBXProject "DatePlus" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = ja;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
 				ja,
+				en,
+				Base,
 			);
 			mainGroup = 3E9A068E2A80102100618D65;
 			productRefGroup = 3E9A06962A80102200618D65 /* Products */;
@@ -316,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9A367E2A94DC0100F2B630 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E9A06A82A80102300618D65 /* Preview Assets.xcassets in Resources */,
+				3E9A367F2A94DC0100F2B630 /* Localizable.strings in Resources */,
 				3E9A06A52A80102300618D65 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E9A06CB2A80122D00618D65 /* Assets.xcassets in Resources */,
+				3E9A36802A94DC0100F2B630 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +384,18 @@
 			targetProxy = 3E9A06CD2A80122D00618D65 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3E9A36822A94DC0100F2B630 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E9A36812A94DC0100F2B630 /* en */,
+				3E9A36832A94DC0500F2B630 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3E9A06A92A80102300618D65 /* Debug */ = {
@@ -505,7 +527,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -538,7 +560,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -566,7 +588,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				INFOPLIST_FILE = DatePlus/info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -583,7 +605,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				INFOPLIST_FILE = DatePlus/info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus";
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -604,7 +626,7 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -635,7 +657,7 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = "[DEB] DatePlus Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
