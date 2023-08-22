@@ -67,12 +67,12 @@ struct MainView: View {
                         if (includeFirstDay) {
                             Text("\(num.localizedString)")
                                 .font(.largeTitle)
-                                .minimumScaleFactor(0.7)
+                                .minimumScaleFactor(0.6)
                                 .lineLimit(1)
                         } else {
                             Text("\(num)")
                                 .font(.largeTitle)
-                                .minimumScaleFactor(0.7)
+                                .minimumScaleFactor(0.8)
                                 .lineLimit(1)
                         }
                     }
@@ -103,13 +103,13 @@ struct MainView: View {
                 }
                 Spacer()
             }
-            .frame(height: screenHeight/4)
+            .frame(height: screenHeight*0.225)
             .padding(.vertical, 5) // Add vertical padding
             
             Text(" \(formatDate(futureDate))")
-                .frame(width: .infinity, height: screenHeight/5)
+                .frame(width: .infinity, height: screenHeight*0.175)
                 .font(.title3)
-                .minimumScaleFactor(0.5)
+                .minimumScaleFactor(0.6)
                 .lineLimit(1)
             
             HStack {
@@ -120,14 +120,14 @@ struct MainView: View {
                 }) {
                     Text("From Today")
                         .font(.headline)
-                        .minimumScaleFactor(0.5)
+                        .minimumScaleFactor(0.4)
                         .lineLimit(1)
-                        .padding(5) // Adjust padding
+                        .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.5, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
                         .foregroundColor(includeFirstDay ? .black : .white) // Set text color
                 }
                 .background(includeFirstDay ? Color.white : Color.clear)
                 .cornerRadius(50)
-                .frame(minWidth: 0, maxWidth: 150)
+                .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.65, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
                 
                 Spacer(minLength: 10)
                 
@@ -136,14 +136,18 @@ struct MainView: View {
                 }) {
                     Image(systemName: "pin.fill")
                         .font(.headline)
-                        .padding(5)
-                }.clipShape(Circle()) // Clip to circle shape
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: alertMessage)
-                    }.fixedSize()
+                        .frame(minWidth: screenWidth*0.25, maxWidth: screenWidth*0.25, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
+                        .minimumScaleFactor(0.4)
+                }
+                .cornerRadius(50)
+                .frame(minWidth: screenWidth*0.25, maxWidth: screenWidth*0.25, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: alertMessage)
+                }.fixedSize()
                 
                 Spacer()
             }
+            .padding(.horizontal)
             .frame(height: screenHeight/3.5)
         }.onAppear {
             futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)

@@ -37,8 +37,19 @@ struct PinnedDaysView: View {
                     // With a vertical stack view on the left...
                     VStack(alignment: .leading) {
                         // Change the display by includeFirstDay.
-                        Text("\(dayInfo.days) \(Text(dayInfo.includeFirstDay ? "day" : "days later"))")
-                            .foregroundColor(.secondary)
+                        if (dayInfo.includeFirstDay) {
+                            Text("\(dayInfo.days) \(Text("day"))")
+                                .foregroundColor(.secondary)
+                        } else {
+                            if (String(localized: "Locale Code") == "en" && dayInfo.days == 1) {
+                                Text("\(dayInfo.days) day later")
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text("\(dayInfo.days) \(Text("days later"))")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
                         Spacer()
                         // Display the formatted date.
                         Text(formatDate(calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)))
