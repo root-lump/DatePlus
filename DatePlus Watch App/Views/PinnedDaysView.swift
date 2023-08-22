@@ -38,7 +38,7 @@ struct PinnedDaysView: View {
                     VStack(alignment: .leading) {
                         // Change the display by includeFirstDay.
                         if (dayInfo.includeFirstDay) {
-                            Text("\(dayInfo.days) \(Text("day"))")
+                            Text("\(dayInfo.days.localizedString) \(Text("day"))")
                                 .foregroundColor(.secondary)
                         } else {
                             if (String(localized: "Locale Code") == "en" && dayInfo.days == 1) {

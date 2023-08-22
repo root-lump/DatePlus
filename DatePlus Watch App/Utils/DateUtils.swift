@@ -21,6 +21,28 @@ func formatDate(_ date: Date) -> String {
     return formatter.string(from: date)
 }
 
+extension Int {
+    var ordinal: String {
+        switch self {
+        case 1: return "1st"
+        case 2: return "2nd"
+        case 3: return "3rd"
+        default:
+            return "\(self)th"
+        }
+    }
+}
+
+extension Int {
+    var localizedString: String {
+        if (String(localized: "Locale Code") == "en") {
+            return self.ordinal
+        } else {
+            return "\(self)"
+        }
+    }
+}
+
 /**
  Calculate the date by adding the number of days to a specific date
  */
