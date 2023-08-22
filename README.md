@@ -44,8 +44,11 @@ You can add any number of days from a specific date and view the resulting date.
 ## Getting Started
 
 ### Download From AppStore 📲
-
-[![](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/jp/app/dateplus-%E6%97%A5%E4%BB%98%E8%A8%88%E7%AE%97%E3%82%A2%E3%83%97%E3%83%AA/id6458592460)
+<p>
+  <a href="https://apps.apple.com/jp/app/dateplus-%E6%97%A5%E4%BB%98%E8%A8%88%E7%AE%97%E3%82%A2%E3%83%97%E3%83%AA/id6458592460" target="_blank">
+  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download DatePlus from AppStore" height="50">
+  </a>
+</p>
 
 ### Init Project Locally 💻
 
