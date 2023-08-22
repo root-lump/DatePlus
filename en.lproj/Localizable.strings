@@ -11,3 +11,5 @@
 "Cancel" = "Cancel";
 "Do you want to update the Complication?" = "Do you want to update the Complication?";
 "Update" = "Update";
+"widget_day" = "D";
+"widget_days later" = "D L";

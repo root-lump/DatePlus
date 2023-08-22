@@ -11,3 +11,5 @@
 "Cancel" = "キャンセル";
 "Do you want to update the Complication?" = "コンプリケーションを更新しますか？";
 "Update" = "更新";
+"widget_day" = "日目";
+"widget_days later" = "日後";
