@@ -20,7 +20,7 @@ struct MainView: View {
     @AppStorage("pinnedDays") private var pinnedDaysData: Data = Data()
     @AppStorage("includeFirstDay") private var includeFirstDay = false
     @State private var showAlert = false
-    @State private var alertMessage = ""
+    @State private var alertMessage = Text("")
     
     var body: some View {
         // Binding to update the future date whenever the number of days to add changes
@@ -32,26 +32,62 @@ struct MainView: View {
             }
         )
         
+        let screenHeight = WKInterfaceDevice.current().screenBounds.height
+        let screenWidth = WKInterfaceDevice.current().screenBounds.width
+        
         // The main view layout
         VStack {
+            Spacer()
             HStack {
                 Spacer()
                 Picker("", selection: daysBinding) {
                     ForEach(1 ..< 151, id: \.self) { num in     // Repeat by id
-                        Text("\(num)").font(.largeTitle)                                    }
-                    
+                        if (includeFirstDay) {
+                            Text("\(num.localizedString)")
+                                .font(.largeTitle)
+                                .minimumScaleFactor(0.6)
+                                .lineLimit(1)
+                        } else {
+                            Text("\(num)")
+                                .font(.largeTitle)
+                                .minimumScaleFactor(0.8)
+                                .lineLimit(1)
+                        }
+                    }
                 }
+                .frame(width: screenWidth/1.8)
                 .labelsHidden()
                 .pickerStyle(WheelPickerStyle())
-                Text(includeFirstDay ? "日目" : "日後").font(.title)
+                
+                Spacer()
+                
+                if (includeFirstDay){
+                    Text("day")
+                        .font(.title)
+                        .minimumScaleFactor(0.4)
+                        .lineLimit(2)
+                }else{
+                    if (String(localized: "Locale Code") == "en" && daysToAdd == 1) {
+                        Text("day\nlater")
+                            .font(.title)
+                            .minimumScaleFactor(0.4)
+                            .lineLimit(2)
+                    } else {
+                        Text("days later")
+                            .font(.title)
+                            .minimumScaleFactor(0.4)
+                            .lineLimit(2)
+                    }
+                }
                 Spacer()
             }
+            .frame(height: screenHeight*0.225)
             .padding(.vertical, 5) // Add vertical padding
             
             Text(" \(formatDate(futureDate))")
+                .frame(width: .infinity, height: screenHeight*0.175)
                 .font(.title3)
-                .padding(.vertical, 5)
-                .minimumScaleFactor(0.5)
+                .minimumScaleFactor(0.6)
                 .lineLimit(1)
             
             HStack {
@@ -60,16 +96,16 @@ struct MainView: View {
                     includeFirstDay.toggle()
                     futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
                 }) {
-                    Text("本日起算")
+                    Text("From Today")
                         .font(.headline)
-                        .minimumScaleFactor(0.5)
+                        .minimumScaleFactor(0.4)
                         .lineLimit(1)
-                        .padding(5) // Adjust padding
+                        .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.5, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
                         .foregroundColor(includeFirstDay ? .black : .white) // Set text color
                 }
                 .background(includeFirstDay ? Color.white : Color.clear)
                 .cornerRadius(50)
-                .frame(minWidth: 0, maxWidth: 150)
+                .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.65, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
                 
                 Spacer(minLength: 10)
                 
@@ -77,15 +113,20 @@ struct MainView: View {
                     pinDays()
                 }) {
                     Image(systemName: "pin.fill")
-                        .font(.title3)
-                        .padding(5)
-                }.clipShape(Circle()) // Clip to circle shape
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text(alertMessage))
-                    }.fixedSize()
+                        .font(.headline)
+                        .frame(minWidth: screenWidth*0.25, maxWidth: screenWidth*0.25, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
+                        .minimumScaleFactor(0.4)
+                }
+                .cornerRadius(50)
+                .frame(minWidth: screenWidth*0.25, maxWidth: screenWidth*0.25, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: alertMessage)
+                }.fixedSize()
                 
                 Spacer()
-            }.padding(.horizontal, 5)
+            }
+            .padding(.horizontal)
+            .frame(height: screenHeight/3.5)
         }.onAppear {
             futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         }
@@ -96,13 +137,13 @@ struct MainView: View {
         var days = (try? JSONDecoder().decode([DayInfo].self, from: pinnedDaysData)) ?? []
         let newDayInfo = DayInfo(days: daysToAdd, includeFirstDay: includeFirstDay)
         if days.contains(newDayInfo) {
-            alertMessage = "既に登録されています。"
+            alertMessage = Text("Already registered.")
         } else {
             days.append(newDayInfo)
             if let encodedData = try? JSONEncoder().encode(days) {
                 pinnedDaysData = encodedData
             }
-            alertMessage = "ピン留めしました。"
+            alertMessage = Text("Pinned.")
         }
         showAlert = true
     }
@@ -110,6 +151,12 @@ struct MainView: View {
 
 struct MainViewPreview: PreviewProvider {
     static var previews: some View {
-        MainView()
+        let localizationIds = ["en", "ja"]
+        
+        ForEach(localizationIds, id: \.self) { id in
+            MainView()
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }

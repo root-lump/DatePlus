@@ -10,9 +10,22 @@ func calculateDate(daysToAdd: Int, includeFirstDay: Bool) -> Date {
 
 func formatCountData(date: Date, daysToAdd: Int, includeFirstDay: Bool) -> String {
     let formatter = DateFormatter()
-    formatter.locale = Locale(identifier: "ja_JP")
-    formatter.dateFormat = "M月d日"
-    return formatter.string(from: date) + " (\(daysToAdd)" + (includeFirstDay ? "日目" : "日後") + ")"
+    switch String(localized: "Locale Code") {
+    case "ja":
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "M月d日"
+        break;
+    case "en":
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "MMM d"
+        break;
+    default:
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "E, MMMM d, yyyy"
+        break;
+    }
+    
+    return formatter.string(from: date) + " (\(daysToAdd)" + (includeFirstDay ? String(localized: "widget_day") : String(localized: "widget_days later")) + ")"
 }
 
 struct DateCounterEntry: TimelineEntry {
@@ -82,6 +95,7 @@ struct AccessoryCornerView: View {
             .padding(5)
             .widgetLabel {
                 Text(formatCountData(date: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay))
+                    .minimumScaleFactor(0.4)
             }
     }
 }
