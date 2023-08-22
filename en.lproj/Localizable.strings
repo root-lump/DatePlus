@@ -1,0 +1,15 @@
+"Locale Code" = "en";
+"day" = "day";
+"days later" = "days later";
+"From Today" = "From Today";
+"Pinned." = "Pinned.";
+"Already registered." = "Already registered.";
+"There are no days pinned." = "There are no days pinned.";
+"Pinned Day Tip" = "💡Tip\nBy pressing the pin button on the main screen, you can display multiple dates together on this screen.";
+"Are you sure you want to delete?" = "Are you sure you want to delete?";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Do you want to update the Complication?" = "Do you want to update the Complication?";
+"Update" = "Update";
+"widget_day" = "D";
+"widget_days later" = "D L";

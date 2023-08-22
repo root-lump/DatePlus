@@ -8,13 +8,13 @@ struct ContentView: View {
         TabView(selection: $selection) {
             MainView()
                 .tabItem {
-                    Text("計算")
+                    Text("Calculate")
                 }
                 .tag(0)
             
             PinnedDaysView()
                 .tabItem {
-                    Text("ピン留め")
+                    Text("Pinned Item")
                 }
                 .tag(1)
         }.onOpenURL { url in
@@ -38,7 +38,12 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        let localizationIds = ["en", "ja"]
+        
+        ForEach(localizationIds, id: \.self) { id in
             ContentView()
-
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }
