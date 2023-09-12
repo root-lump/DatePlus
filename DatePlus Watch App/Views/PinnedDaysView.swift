@@ -3,6 +3,7 @@ import WidgetKit
 
 // This is a SwiftUI View that displays a list of "pinned" days.
 struct PinnedDaysView: View {
+    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     @Environment(\.scenePhase) private var scenePhase
     
     @AppStorage("pinnedDays") private var pinnedDaysData: Data = Data() // pinnedDay data store
@@ -18,13 +19,13 @@ struct PinnedDaysView: View {
         List {
             if pinnedDays.isEmpty {
                 // message when not pinned
-                Text("There are no days pinned.")
+                Text(localizationManager.localize(.pinnedNothing))
                     .foregroundColor(.secondary)
                     .font(.headline)
                     .minimumScaleFactor(0.5)
                     .lineLimit(2)
                     .padding()
-                Text("Pinned Day Tip")
+                Text(localizationManager.localize(.pinnedTip))
                     .foregroundColor(.secondary)
                     .font(.caption2)
                     .minimumScaleFactor(0.5)
@@ -38,21 +39,21 @@ struct PinnedDaysView: View {
                     VStack(alignment: .leading) {
                         // Change the display by includeFirstDay.
                         if (dayInfo.includeFirstDay) {
-                            Text("\(dayInfo.days.localizedString) \(Text("day"))")
+                            Text("\(getLocalizedDay(days: dayInfo.days, localizationManager: localizationManager)) \(Text(localizationManager.localize(.day)))")
                                 .foregroundColor(.secondary)
                         } else {
-                            if (String(localized: "Locale Code") == "en" && dayInfo.days == 1) {
+                            if (localizationManager.localize(.localeCode) == "en" && dayInfo.days == 1) {
                                 Text("\(dayInfo.days) day later")
                                     .foregroundColor(.secondary)
                             } else {
-                                Text("\(dayInfo.days) \(Text("days later"))")
+                                Text("\(dayInfo.days) \(localizationManager.localize(.daysLater))")
                                     .foregroundColor(.secondary)
                             }
                         }
                         
                         Spacer()
                         // Display the formatted date.
-                        Text(formatDate(calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)))
+                        Text(formatDate(date: calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay), localizationManager: localizationManager))
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                         // When the view appears, load the pinned days.
@@ -98,24 +99,24 @@ struct PinnedDaysView: View {
             switch alertItem.type {
             case .delete(let dayInfo):
                 return Alert(
-                    title: Text("Are you sure you want to delete?"),
+                    title: Text(localizationManager.localize(.confirmDelete)),
                     message: nil,
-                    primaryButton: .destructive(Text("Delete"), action: {
+                    primaryButton: .destructive(Text(localizationManager.localize(.delete)), action: {
                         removePinnedDay(dayInfo: dayInfo)
                         resetAlertItem()
                     }),
-                    secondaryButton: .cancel(Text("Cancel"), action:{
+                    secondaryButton: .cancel(Text(localizationManager.localize(.cancel)), action:{
                         resetAlertItem()
                     })
                 )
             case .addToComplication(let dayInfo):
                 return Alert(
-                    title: Text("Do you want to update the Complication?"),
+                    title: Text(localizationManager.localize(.confirmComplication)),
                     message: nil,
-                    primaryButton: .default(Text("Cancel"), action: {
+                    primaryButton: .default(Text(localizationManager.localize(.cancel)), action: {
                         resetAlertItem()
                     }),
-                    secondaryButton: .default(Text("Update"), action: {
+                    secondaryButton: .default(Text(localizationManager.localize(.update)), action: {
                         registerComplication(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)
                         resetAlertItem()
                     })
@@ -168,7 +169,7 @@ struct PinnedDaysPreview: PreviewProvider {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            PinnedDaysView()
+            PinnedDaysView(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }
