@@ -31,6 +31,9 @@
 		3EAA9F0E2AB01AD900382447 /* Localization_ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */; };
 		3EAA9F112AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
 		3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
+		3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */; };
+		3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */; };
+		3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,9 @@
 		3EAA9F092AB01AAC00382447 /* Localization_en.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization_en.swift; sourceTree = "<group>"; };
 		3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization_ja.swift; sourceTree = "<group>"; };
 		3EAA9F102AB030A300382447 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCornerView.swift; sourceTree = "<group>"; };
+		3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDateUtils.swift; sourceTree = "<group>"; };
+		3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularView.swift; sourceTree = "<group>"; };
 		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +206,8 @@
 		3E9A06C72A80122D00618D65 /* DatePlus Widget */ = {
 			isa = PBXGroup;
 			children = (
+				3EAA9F172AB086F900382447 /* Utils */,
+				3EAA9F132AB0841E00382447 /* Views */,
 				3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */,
 				3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */,
 				3E9A06CA2A80122D00618D65 /* Assets.xcassets */,
@@ -223,6 +231,23 @@
 				3EAA9F102AB030A300382447 /* DateUtils.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		3EAA9F132AB0841E00382447 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */,
+				3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3EAA9F172AB086F900382447 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		3EC80CA22A8C200D00FA09A0 /* DatePlus */ = {
@@ -390,6 +415,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */,
+				3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */,
+				3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */,
 				3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */,
 				3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */,
 				3EAA9F0B2AB01AAC00382447 /* Localization_en.swift in Sources */,
@@ -661,6 +689,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
@@ -692,6 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
