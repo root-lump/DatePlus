@@ -55,7 +55,7 @@ You can add any number of days from a specific date and view the resulting date.
 check [Release](https://github.com/root-lump/DatePlus/releases)
 
 #### Environment
-- Xcode - Xcode 14.3.1
+- Xcode - Xcode 15 beta 8 (15A5229m)
 - macOS - macOS Ventura 13.5
 
 ## Contributing
