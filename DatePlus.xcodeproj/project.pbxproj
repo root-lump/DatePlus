@@ -33,6 +33,7 @@
 		3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
 		3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */; };
 		3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */; };
+		3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		3EAA9F102AB030A300382447 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCornerView.swift; sourceTree = "<group>"; };
 		3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDateUtils.swift; sourceTree = "<group>"; };
+		3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularView.swift; sourceTree = "<group>"; };
 		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */,
+				3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */,
+				3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */,
 				3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */,
 				3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */,
 				3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */,
@@ -685,6 +689,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
@@ -716,6 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";

@@ -72,6 +72,8 @@ struct DatePlusComplicationView: View {
             //        case .accessoryCircular:
         case .accessoryCorner:
             AccessoryCornerView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+        case .accessoryRectangular:
+            AccessoryRectangularView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
             //        case .accessoryInline:
         default:
             Image("AppIcon")
@@ -90,7 +92,7 @@ struct DatePlusComplication: Widget {
             
         }
         .configurationDisplayName("DatePlus Widget")
-        .supportedFamilies([.accessoryCorner])
+        .supportedFamilies([.accessoryCorner, .accessoryRectangular])
     }
 }
 

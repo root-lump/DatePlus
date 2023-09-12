@@ -1,27 +1,26 @@
 import Foundation
 
 func getDaysToAddStrings(daysToAdd: Int, includeFirstDay: Bool, localizationManager: LocalizationManager) -> String {
-    if #available(watchOSApplicationExtension 10.0, *) {
-        var daysToAddString = ""
-        if (includeFirstDay) {
-            daysToAddString = "\(getLocalizedDay(days: daysToAdd, localizationManager: localizationManager))"
-        } else {
-            daysToAddString = "\(daysToAdd)"
-        }
-        
-        if (includeFirstDay){
-            return daysToAddString + localizationManager.localize(.day)
-        }else{
-            if (localizationManager.localize(.localeCode) == "en" && daysToAdd == 1) {
-                return daysToAddString + "day later"
-            } else {
-                return daysToAddString + localizationManager.localize(.daysLater)
-            }
-        }
-    }else{
-        return " (\(daysToAdd)" + (includeFirstDay ? localizationManager.localize(.widgetDay) : localizationManager.localize(.widgetDaysLater)) + ")"
+    var daysToAddString = ""
+    if (includeFirstDay) {
+        daysToAddString = "\(getLocalizedDay(days: daysToAdd, localizationManager: localizationManager))"
+    } else {
+        daysToAddString = "\(daysToAdd)"
     }
     
+    if (includeFirstDay){
+        return daysToAddString + localizationManager.localize(.day)
+    }else{
+        if (localizationManager.localize(.localeCode) == "en" && daysToAdd == 1) {
+            return daysToAddString + "day later"
+        } else {
+            return daysToAddString + localizationManager.localize(.daysLater)
+        }
+    }
+}
+
+func getCornerDaysAddStrings(daysToAdd: Int, includeFirstDay: Bool, localizationManager: LocalizationManager) -> String {
+    return " (\(daysToAdd)" + (includeFirstDay ? localizationManager.localize(.widgetDay) : localizationManager.localize(.widgetDaysLater)) + ")"
 }
 
 func formatWidgetDate(date: Date, localizationManager: LocalizationManager) -> String {

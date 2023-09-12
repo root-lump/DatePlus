@@ -20,7 +20,7 @@ struct AccessoryCornerView: View {
                 .scaledToFit()
                 .padding(5)
                 .widgetLabel {
-                    Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager) + getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
+                    Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager) + getCornerDaysAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
                         .minimumScaleFactor(0.4)
                 }
         }
