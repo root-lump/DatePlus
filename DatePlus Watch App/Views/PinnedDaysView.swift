@@ -3,6 +3,7 @@ import WidgetKit
 
 // This is a SwiftUI View that displays a list of "pinned" days.
 struct PinnedDaysView: View {
+    public var localeCode = String(localized: "Locale Code")
     @Environment(\.scenePhase) private var scenePhase
     
     @AppStorage("pinnedDays") private var pinnedDaysData: Data = Data() // pinnedDay data store
@@ -52,7 +53,7 @@ struct PinnedDaysView: View {
                         
                         Spacer()
                         // Display the formatted date.
-                        Text(formatDate(calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)))
+                        Text(formatDate(date: calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay), localeCode: localeCode))
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                         // When the view appears, load the pinned days.

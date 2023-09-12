@@ -1,9 +1,9 @@
 import Foundation
 import SwiftUI
 
-func formatDate(_ date: Date) -> String {
+func formatDate(date: Date, localeCode: String) -> String {
     let formatter = DateFormatter()
-    switch String(localized: "Locale Code") {
+    switch localeCode {
     case "ja":
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.dateFormat = "yyyy年M月d日 (E)"
