@@ -1,50 +1,5 @@
-
 import WidgetKit
 import SwiftUI
-
-func getDaysToAddStrings(daysToAdd: Int, includeFirstDay: Bool, localizationManager: LocalizationManager) -> String {
-    if #available(watchOSApplicationExtension 10.0, *) {
-        var daysToAddString = ""
-        if (includeFirstDay) {
-            daysToAddString = "\(getLocalizedDay(days: daysToAdd, localizationManager: localizationManager))"
-        } else {
-            daysToAddString = "\(daysToAdd)"
-        }
-        
-        if (includeFirstDay){
-            return daysToAddString + localizationManager.localize(.day)
-        }else{
-            if (localizationManager.localize(.localeCode) == "en" && daysToAdd == 1) {
-                return daysToAddString + "day later"
-            } else {
-                return daysToAddString + localizationManager.localize(.daysLater)
-            }
-        }
-    }else{
-        return " (\(daysToAdd)" + (includeFirstDay ? localizationManager.localize(.widgetDay) : localizationManager.localize(.widgetDaysLater)) + ")"
-    }
-    
-}
-
-func formatWidgetDate(date: Date, localizationManager: LocalizationManager) -> String {
-    let formatter = DateFormatter()
-    switch localizationManager.localize(.localeCode) {
-    case "ja":
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "M月d日"
-        break;
-    case "en":
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.dateFormat = "MMM d"
-        break;
-    default:
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.dateFormat = "MMM d"
-        break;
-    }
-    
-    return formatter.string(from: date);
-}
 
 struct DateCounterEntry: TimelineEntry {
     let date: Date
@@ -98,32 +53,6 @@ struct DateCounterProvider: TimelineProvider {
         
         // Call the completion to pass the timeline to WidgetKit.
         completion(timeline)
-    }
-}
-
-struct AccessoryCornerView: View {
-    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
-    var futureDate: Date
-    var daysToAdd: Int
-    var includeFirstDay: Bool
-    
-    var body: some View {
-        if #available(watchOSApplicationExtension 10.0, *) {
-            Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager))
-                .scaledToFit()
-                .widgetCurvesContent()
-                .widgetLabel(getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
-                .containerBackground(for: .widget, alignment: .bottom){}
-        } else {
-            Image(systemName: "calendar.badge.clock")
-                .resizable()
-                .scaledToFit()
-                .padding(5)
-                .widgetLabel {
-                    Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager) + getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
-                        .minimumScaleFactor(0.4)
-                }
-        }
     }
 }
 
