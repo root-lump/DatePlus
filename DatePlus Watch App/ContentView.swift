@@ -2,18 +2,18 @@ import SwiftUI
 import WatchKit
 
 struct ContentView: View {
-    private var localeCode = String(localized: "Locale Code")
+    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     @State private var selection: Int = 0
-
+    
     var body: some View {
         TabView(selection: $selection) {
-            MainView(localeCode: localeCode)
+            MainView(localizationManager: localizationManager)
                 .tabItem {
                     Text("Calculate")
                 }
                 .tag(0)
             
-            PinnedDaysView(localeCode: localeCode)
+            PinnedDaysView(localizationManager: localizationManager)
                 .tabItem {
                     Text("Pinned Item")
                 }
@@ -24,17 +24,17 @@ struct ContentView: View {
     }
     
     private func handleDeepLink(_ url: URL) {
-            guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                  components.scheme == "dateplus",
-                  components.host == "deeplink",
-                  let from = components.queryItems?.first(where: { $0.name == "from" })?.value,
-                  from == "widget" else {
-                return
-            }
-            
-            // Transition to PinnedDaysView by handling deep links from widgets
-            selection = 1
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+              components.scheme == "dateplus",
+              components.host == "deeplink",
+              let from = components.queryItems?.first(where: { $0.name == "from" })?.value,
+              from == "widget" else {
+            return
         }
+        
+        // Transition to PinnedDaysView by handling deep links from widgets
+        selection = 1
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -42,7 +42,7 @@ struct ContentView_Previews: PreviewProvider {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            ContentView()
+            ContentView(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

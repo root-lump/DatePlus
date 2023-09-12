@@ -2,61 +2,33 @@
 import WidgetKit
 import SwiftUI
 
-func calculateDate(daysToAdd: Int, includeFirstDay: Bool) -> Date {
-    let currentDate = Date()
-    let addNum = daysToAdd - (includeFirstDay ? 1 : 0)
-    return Calendar.current.date(byAdding: .day, value: addNum, to: currentDate) ?? currentDate
-}
-
-extension Int {
-    var ordinal: String {
-        switch self {
-        case 1: return "1st "
-        case 2: return "2nd "
-        case 3: return "3rd "
-        default:
-            return "\(self)th "
-        }
-    }
-}
-
-extension Int {
-    var localizedString: String {
-        if (String(localized: "Locale Code") == "en") {
-            return self.ordinal
-        } else {
-            return "\(self)"
-        }
-    }
-}
-
-func getDaysToAddStrings(daysToAdd: Int, includeFirstDay: Bool, localeCode: String) -> String {
+func getDaysToAddStrings(daysToAdd: Int, includeFirstDay: Bool, localizationManager: LocalizationManager) -> String {
     if #available(watchOSApplicationExtension 10.0, *) {
         var daysToAddString = ""
         if (includeFirstDay) {
-            daysToAddString = "\(daysToAdd.localizedString)"
+            daysToAddString = "\(getLocalizedDay(days: daysToAdd, localizationManager: localizationManager))"
         } else {
             daysToAddString = "\(daysToAdd)"
         }
         
         if (includeFirstDay){
-            return daysToAddString + String(localized: "day")
+            return daysToAddString + localizationManager.localize(.day)
         }else{
-            if (localeCode == "en" && daysToAdd == 1) {
-                return daysToAddString + String(localized: "day later")
+            if (localizationManager.localize(.localeCode) == "en" && daysToAdd == 1) {
+                return daysToAddString + "day later"
             } else {
-                return daysToAddString + String(localized: "days later")
+                return daysToAddString + localizationManager.localize(.daysLater)
             }
         }
     }else{
-        return " (\(daysToAdd)" + (includeFirstDay ? String(localized: "widget_day") : String(localized: "widget_days later")) + ")"
+        return " (\(daysToAdd)" + (includeFirstDay ? localizationManager.localize(.widgetDay) : localizationManager.localize(.widgetDaysLater)) + ")"
     }
-
+    
 }
 
-func formatWidgetDate(date: Date, localeCode: String) -> String {
+func formatWidgetDate(date: Date, localizationManager: LocalizationManager) -> String {
     let formatter = DateFormatter()
-    switch localeCode {
+    switch localizationManager.localize(.localeCode) {
     case "ja":
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.dateFormat = "M月d日"
@@ -67,7 +39,7 @@ func formatWidgetDate(date: Date, localeCode: String) -> String {
         break;
     default:
         formatter.locale = Locale(identifier: "en_US")
-        formatter.dateFormat = "E, MMMM d, yyyy"
+        formatter.dateFormat = "MMM d"
         break;
     }
     
@@ -130,25 +102,25 @@ struct DateCounterProvider: TimelineProvider {
 }
 
 struct AccessoryCornerView: View {
-    var localeCode = String(localized: "Locale Code")
+    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     var futureDate: Date
     var daysToAdd: Int
     var includeFirstDay: Bool
     
     var body: some View {
         if #available(watchOSApplicationExtension 10.0, *) {
-            Text(formatWidgetDate(date: futureDate, localeCode: localeCode))
+            Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager))
                 .scaledToFit()
                 .widgetCurvesContent()
-                .widgetLabel(getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localeCode: localeCode))
-            .containerBackground(for: .widget, alignment: .bottom){}
+                .widgetLabel(getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
+                .containerBackground(for: .widget, alignment: .bottom){}
         } else {
             Image(systemName: "calendar.badge.clock")
                 .resizable()
                 .scaledToFit()
                 .padding(5)
                 .widgetLabel {
-                    Text(formatWidgetDate(date: futureDate, localeCode: localeCode) + getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localeCode: localeCode))
+                    Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager) + getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
                         .minimumScaleFactor(0.4)
                 }
         }
@@ -156,7 +128,7 @@ struct AccessoryCornerView: View {
 }
 
 struct DatePlusComplicationView: View {
-    var localeCode = String(localized: "Locale Code")
+    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     // Get the widget's family.
     @Environment(\.widgetFamily) private var family
     
@@ -170,7 +142,7 @@ struct DatePlusComplicationView: View {
         switch family {
             //        case .accessoryCircular:
         case .accessoryCorner:
-            AccessoryCornerView(localeCode: localeCode, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+            AccessoryCornerView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
             //        case .accessoryInline:
         default:
             Image("AppIcon")
@@ -204,7 +176,7 @@ struct DatePlusComplicationPreviews: PreviewProvider {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            DatePlusComplicationView(localeCode: id, entry: DateCounterEntry(date: Date(), daysToAdd: 1, includeFirstDay: false))
+            DatePlusComplicationView(localizationManager: LocalizationManager(id), entry: DateCounterEntry(date: Date(), daysToAdd: 1, includeFirstDay: false))
                 .previewContext(WidgetPreviewContext(family: .accessoryCorner))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
