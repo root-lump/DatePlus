@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if [[ -d "$CI_APP_STORE_SIGNED_APP_PATH" ]]; then
   TESTFLIGHT_DIR_PATH=../TestFlight
