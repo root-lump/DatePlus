@@ -8,9 +8,55 @@ func calculateDate(daysToAdd: Int, includeFirstDay: Bool) -> Date {
     return Calendar.current.date(byAdding: .day, value: addNum, to: currentDate) ?? currentDate
 }
 
-func formatCountData(date: Date, daysToAdd: Int, includeFirstDay: Bool) -> String {
+extension Int {
+    var ordinal: String {
+        switch self {
+        case 1: return "1st "
+        case 2: return "2nd "
+        case 3: return "3rd "
+        default:
+            return "\(self)th "
+        }
+    }
+}
+
+extension Int {
+    var localizedString: String {
+        if (String(localized: "Locale Code") == "en") {
+            return self.ordinal
+        } else {
+            return "\(self)"
+        }
+    }
+}
+
+func getDaysToAddStrings(daysToAdd: Int, includeFirstDay: Bool, localeCode: String) -> String {
+    if #available(watchOSApplicationExtension 10.0, *) {
+        var daysToAddString = ""
+        if (includeFirstDay) {
+            daysToAddString = "\(daysToAdd.localizedString)"
+        } else {
+            daysToAddString = "\(daysToAdd)"
+        }
+        
+        if (includeFirstDay){
+            return daysToAddString + String(localized: "day")
+        }else{
+            if (localeCode == "en" && daysToAdd == 1) {
+                return daysToAddString + String(localized: "day later")
+            } else {
+                return daysToAddString + String(localized: "days later")
+            }
+        }
+    }else{
+        return " (\(daysToAdd)" + (includeFirstDay ? String(localized: "widget_day") : String(localized: "widget_days later")) + ")"
+    }
+
+}
+
+func formatWidgetDate(date: Date, localeCode: String) -> String {
     let formatter = DateFormatter()
-    switch String(localized: "Locale Code") {
+    switch localeCode {
     case "ja":
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.dateFormat = "M月d日"
@@ -25,7 +71,7 @@ func formatCountData(date: Date, daysToAdd: Int, includeFirstDay: Bool) -> Strin
         break;
     }
     
-    return formatter.string(from: date) + " (\(daysToAdd)" + (includeFirstDay ? String(localized: "widget_day") : String(localized: "widget_days later")) + ")"
+    return formatter.string(from: date);
 }
 
 struct DateCounterEntry: TimelineEntry {
@@ -84,23 +130,33 @@ struct DateCounterProvider: TimelineProvider {
 }
 
 struct AccessoryCornerView: View {
+    var localeCode = String(localized: "Locale Code")
     var futureDate: Date
     var daysToAdd: Int
     var includeFirstDay: Bool
     
     var body: some View {
-        Image(systemName: "calendar.badge.clock")
-            .resizable()
-            .scaledToFit()
-            .padding(5)
-            .widgetLabel {
-                Text(formatCountData(date: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay))
-                    .minimumScaleFactor(0.4)
-            }
+        if #available(watchOSApplicationExtension 10.0, *) {
+            Text(formatWidgetDate(date: futureDate, localeCode: localeCode))
+                .scaledToFit()
+                .widgetCurvesContent()
+                .widgetLabel(getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localeCode: localeCode))
+            .containerBackground(for: .widget, alignment: .bottom){}
+        } else {
+            Image(systemName: "calendar.badge.clock")
+                .resizable()
+                .scaledToFit()
+                .padding(5)
+                .widgetLabel {
+                    Text(formatWidgetDate(date: futureDate, localeCode: localeCode) + getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localeCode: localeCode))
+                        .minimumScaleFactor(0.4)
+                }
+        }
     }
 }
 
 struct DatePlusComplicationView: View {
+    var localeCode = String(localized: "Locale Code")
     // Get the widget's family.
     @Environment(\.widgetFamily) private var family
     
@@ -114,7 +170,7 @@ struct DatePlusComplicationView: View {
         switch family {
             //        case .accessoryCircular:
         case .accessoryCorner:
-            AccessoryCornerView(futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+            AccessoryCornerView(localeCode: localeCode, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
             //        case .accessoryInline:
         default:
             Image("AppIcon")
@@ -130,7 +186,7 @@ struct DatePlusComplication: Widget {
         StaticConfiguration(kind: kind, provider: DateCounterProvider()) { entry in
             DatePlusComplicationView(entry: entry)
                 .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
-                
+            
         }
         .configurationDisplayName("DatePlus Widget")
         .supportedFamilies([.accessoryCorner])
@@ -140,14 +196,19 @@ struct DatePlusComplication: Widget {
 struct DatePlusWidgets: WidgetBundle {
     var body: some Widget {
         DatePlusComplication()
-        
     }
 }
 
 struct DatePlusComplicationPreviews: PreviewProvider {
     static var previews: some View {
-        DatePlusComplicationView(entry: DateCounterEntry(date: Date(), daysToAdd: 1, includeFirstDay: false))
-            .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+        let localizationIds = ["en", "ja"]
+        
+        ForEach(localizationIds, id: \.self) { id in
+            DatePlusComplicationView(localeCode: id, entry: DateCounterEntry(date: Date(), daysToAdd: 1, includeFirstDay: false))
+                .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }
 

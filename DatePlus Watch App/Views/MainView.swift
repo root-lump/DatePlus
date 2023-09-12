@@ -14,6 +14,7 @@ enum AlertType {
 
 // The main view of the app
 struct MainView: View {
+    public var localeCode = String(localized: "Locale Code")
     // App storage properties to store user preferences
     @AppStorage("daysToAdd") private var daysToAdd = 1
     @State private var futureDate = Date()
@@ -67,7 +68,7 @@ struct MainView: View {
                         .minimumScaleFactor(0.4)
                         .lineLimit(2)
                 }else{
-                    if (String(localized: "Locale Code") == "en" && daysToAdd == 1) {
+                    if (localeCode == "en" && daysToAdd == 1) {
                         Text("day\nlater")
                             .font(.title)
                             .minimumScaleFactor(0.4)
@@ -84,7 +85,7 @@ struct MainView: View {
             .frame(height: screenHeight*0.225)
             .padding(.vertical, 5) // Add vertical padding
             
-            Text(" \(formatDate(futureDate))")
+            Text(" \(formatDate(date: futureDate, localeCode: localeCode))")
                 .frame(width: .infinity, height: screenHeight*0.175)
                 .font(.title3)
                 .minimumScaleFactor(0.6)

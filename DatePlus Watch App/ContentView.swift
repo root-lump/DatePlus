@@ -2,17 +2,18 @@ import SwiftUI
 import WatchKit
 
 struct ContentView: View {
+    private var localeCode = String(localized: "Locale Code")
     @State private var selection: Int = 0
 
     var body: some View {
         TabView(selection: $selection) {
-            MainView()
+            MainView(localeCode: localeCode)
                 .tabItem {
                     Text("Calculate")
                 }
                 .tag(0)
             
-            PinnedDaysView()
+            PinnedDaysView(localeCode: localeCode)
                 .tabItem {
                     Text("Pinned Item")
                 }
