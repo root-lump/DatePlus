@@ -14,6 +14,7 @@ enum AlertType {
 
 // The main view of the app
 struct MainView: View {
+    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     // App storage properties to store user preferences
     @AppStorage("daysToAdd") private var daysToAdd = 1
     @State private var futureDate = Date()
@@ -43,7 +44,7 @@ struct MainView: View {
                 Picker("", selection: daysBinding) {
                     ForEach(1 ..< 151, id: \.self) { num in     // Repeat by id
                         if (includeFirstDay) {
-                            Text("\(num.localizedString)")
+                            Text("\(getLocalizedDay(days: num, localizationManager: localizationManager))")
                                 .font(.largeTitle)
                                 .minimumScaleFactor(0.6)
                                 .lineLimit(1)
@@ -62,18 +63,18 @@ struct MainView: View {
                 Spacer()
                 
                 if (includeFirstDay){
-                    Text("day")
+                    Text(localizationManager.localize(.day))
                         .font(.title)
                         .minimumScaleFactor(0.4)
                         .lineLimit(2)
                 }else{
-                    if (String(localized: "Locale Code") == "en" && daysToAdd == 1) {
+                    if (localizationManager.localize(.localeCode) == "en" && daysToAdd == 1) {
                         Text("day\nlater")
                             .font(.title)
                             .minimumScaleFactor(0.4)
                             .lineLimit(2)
                     } else {
-                        Text("days later")
+                        Text(localizationManager.localize(.daysLater))
                             .font(.title)
                             .minimumScaleFactor(0.4)
                             .lineLimit(2)
@@ -84,7 +85,7 @@ struct MainView: View {
             .frame(height: screenHeight*0.225)
             .padding(.vertical, 5) // Add vertical padding
             
-            Text(" \(formatDate(futureDate))")
+            Text(" \(formatDate(date: futureDate, localizationManager: localizationManager))")
                 .frame(width: .infinity, height: screenHeight*0.175)
                 .font(.title3)
                 .minimumScaleFactor(0.6)
@@ -96,7 +97,7 @@ struct MainView: View {
                     includeFirstDay.toggle()
                     futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
                 }) {
-                    Text("From Today")
+                    Text(localizationManager.localize(.fromToday))
                         .font(.headline)
                         .minimumScaleFactor(0.4)
                         .lineLimit(1)
@@ -137,13 +138,13 @@ struct MainView: View {
         var days = (try? JSONDecoder().decode([DayInfo].self, from: pinnedDaysData)) ?? []
         let newDayInfo = DayInfo(days: daysToAdd, includeFirstDay: includeFirstDay)
         if days.contains(newDayInfo) {
-            alertMessage = Text("Already registered.")
+            alertMessage = Text(localizationManager.localize(.alreadyRegistered))
         } else {
             days.append(newDayInfo)
             if let encodedData = try? JSONEncoder().encode(days) {
                 pinnedDaysData = encodedData
             }
-            alertMessage = Text("Pinned.")
+            alertMessage = Text(localizationManager.localize(.pinned))
         }
         showAlert = true
     }
@@ -154,7 +155,7 @@ struct MainViewPreview: PreviewProvider {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            MainView()
+            MainView(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

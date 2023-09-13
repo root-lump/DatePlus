@@ -1,32 +1,5 @@
-
 import WidgetKit
 import SwiftUI
-
-func calculateDate(daysToAdd: Int, includeFirstDay: Bool) -> Date {
-    let currentDate = Date()
-    let addNum = daysToAdd - (includeFirstDay ? 1 : 0)
-    return Calendar.current.date(byAdding: .day, value: addNum, to: currentDate) ?? currentDate
-}
-
-func formatCountData(date: Date, daysToAdd: Int, includeFirstDay: Bool) -> String {
-    let formatter = DateFormatter()
-    switch String(localized: "Locale Code") {
-    case "ja":
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "M月d日"
-        break;
-    case "en":
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.dateFormat = "MMM d"
-        break;
-    default:
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.dateFormat = "E, MMMM d, yyyy"
-        break;
-    }
-    
-    return formatter.string(from: date) + " (\(daysToAdd)" + (includeFirstDay ? String(localized: "widget_day") : String(localized: "widget_days later")) + ")"
-}
 
 struct DateCounterEntry: TimelineEntry {
     let date: Date
@@ -83,24 +56,8 @@ struct DateCounterProvider: TimelineProvider {
     }
 }
 
-struct AccessoryCornerView: View {
-    var futureDate: Date
-    var daysToAdd: Int
-    var includeFirstDay: Bool
-    
-    var body: some View {
-        Image(systemName: "calendar.badge.clock")
-            .resizable()
-            .scaledToFit()
-            .padding(5)
-            .widgetLabel {
-                Text(formatCountData(date: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay))
-                    .minimumScaleFactor(0.4)
-            }
-    }
-}
-
 struct DatePlusComplicationView: View {
+    var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     // Get the widget's family.
     @Environment(\.widgetFamily) private var family
     
@@ -114,7 +71,9 @@ struct DatePlusComplicationView: View {
         switch family {
             //        case .accessoryCircular:
         case .accessoryCorner:
-            AccessoryCornerView(futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+            AccessoryCornerView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+        case .accessoryRectangular:
+            AccessoryRectangularView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
             //        case .accessoryInline:
         default:
             Image("AppIcon")
@@ -130,24 +89,29 @@ struct DatePlusComplication: Widget {
         StaticConfiguration(kind: kind, provider: DateCounterProvider()) { entry in
             DatePlusComplicationView(entry: entry)
                 .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
-                
+            
         }
         .configurationDisplayName("DatePlus Widget")
-        .supportedFamilies([.accessoryCorner])
+        .supportedFamilies([.accessoryCorner, .accessoryRectangular])
     }
 }
 
 struct DatePlusWidgets: WidgetBundle {
     var body: some Widget {
         DatePlusComplication()
-        
     }
 }
 
 struct DatePlusComplicationPreviews: PreviewProvider {
     static var previews: some View {
-        DatePlusComplicationView(entry: DateCounterEntry(date: Date(), daysToAdd: 1, includeFirstDay: false))
-            .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+        let localizationIds = ["en", "ja"]
+        
+        ForEach(localizationIds, id: \.self) { id in
+            DatePlusComplicationView(localizationManager: LocalizationManager(id), entry: DateCounterEntry(date: Date(), daysToAdd: 1, includeFirstDay: false))
+                .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }
 

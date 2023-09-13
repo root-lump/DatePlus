@@ -13,7 +13,6 @@
 		3E9A06A52A80102300618D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A42A80102300618D65 /* Assets.xcassets */; };
 		3E9A06A82A80102300618D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A72A80102300618D65 /* Preview Assets.xcassets */; };
 		3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B32A8010D000618D65 /* DayInfo.swift */; };
-		3E9A06B72A80111A00618D65 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B62A80111A00618D65 /* DateUtils.swift */; };
 		3E9A06BA2A80114D00618D65 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B92A80114D00618D65 /* MainView.swift */; };
 		3E9A06BC2A80117D00618D65 /* PinnedDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06BB2A80117D00618D65 /* PinnedDaysView.swift */; };
 		3E9A06C42A80122D00618D65 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9A06C32A80122D00618D65 /* WidgetKit.framework */; };
@@ -24,6 +23,17 @@
 		3E9A367E2A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
 		3E9A367F2A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
 		3E9A36802A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
+		3EAA9F072AB0195700382447 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F062AB0195700382447 /* LocalizationManager.swift */; };
+		3EAA9F082AB0195700382447 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F062AB0195700382447 /* LocalizationManager.swift */; };
+		3EAA9F0A2AB01AAC00382447 /* Localization_en.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F092AB01AAC00382447 /* Localization_en.swift */; };
+		3EAA9F0B2AB01AAC00382447 /* Localization_en.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F092AB01AAC00382447 /* Localization_en.swift */; };
+		3EAA9F0D2AB01AD900382447 /* Localization_ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */; };
+		3EAA9F0E2AB01AD900382447 /* Localization_ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */; };
+		3EAA9F112AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
+		3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
+		3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */; };
+		3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */; };
+		3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +88,6 @@
 		3E9A06A42A80102300618D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E9A06A72A80102300618D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3E9A06B32A8010D000618D65 /* DayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInfo.swift; sourceTree = "<group>"; };
-		3E9A06B62A80111A00618D65 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		3E9A06B92A80114D00618D65 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3E9A06BB2A80117D00618D65 /* PinnedDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedDaysView.swift; sourceTree = "<group>"; };
 		3E9A06C12A80122D00618D65 /* DatePlus WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DatePlus WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +99,13 @@
 		3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus Watch App.entitlements"; sourceTree = "<group>"; };
 		3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		3E9A36812A94DC0100F2B630 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3EAA9F062AB0195700382447 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		3EAA9F092AB01AAC00382447 /* Localization_en.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization_en.swift; sourceTree = "<group>"; };
+		3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization_ja.swift; sourceTree = "<group>"; };
+		3EAA9F102AB030A300382447 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCornerView.swift; sourceTree = "<group>"; };
+		3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDateUtils.swift; sourceTree = "<group>"; };
+		3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularView.swift; sourceTree = "<group>"; };
 		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +132,9 @@
 		3E9A068E2A80102100618D65 = {
 			isa = PBXGroup;
 			children = (
+				3EAA9F0F2AB0308700382447 /* Common */,
+				3EAA9F062AB0195700382447 /* LocalizationManager.swift */,
+				3EAA9F012AB0170C00382447 /* Localization */,
 				3E9A36822A94DC0100F2B630 /* Localizable.strings */,
 				3EC80CA32A8C9EE200FA09A0 /* ci_scripts */,
 				3EC80CA22A8C200D00FA09A0 /* DatePlus */,
@@ -141,7 +160,6 @@
 			children = (
 				3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */,
 				3E9A06B82A80113500618D65 /* Views */,
-				3E9A06B52A80110400618D65 /* Utils */,
 				3E9A06B22A80108A00618D65 /* Models */,
 				3E9A06A02A80102200618D65 /* DatePlusApp.swift */,
 				3E9A06A22A80102200618D65 /* ContentView.swift */,
@@ -167,14 +185,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3E9A06B52A80110400618D65 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3E9A06B62A80111A00618D65 /* DateUtils.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		3E9A06B82A80113500618D65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,12 +206,48 @@
 		3E9A06C72A80122D00618D65 /* DatePlus Widget */ = {
 			isa = PBXGroup;
 			children = (
+				3EAA9F172AB086F900382447 /* Utils */,
+				3EAA9F132AB0841E00382447 /* Views */,
 				3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */,
 				3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */,
 				3E9A06CA2A80122D00618D65 /* Assets.xcassets */,
 				3E9A06CC2A80122D00618D65 /* Info.plist */,
 			);
 			path = "DatePlus Widget";
+			sourceTree = "<group>";
+		};
+		3EAA9F012AB0170C00382447 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA9F092AB01AAC00382447 /* Localization_en.swift */,
+				3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		3EAA9F0F2AB0308700382447 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA9F102AB030A300382447 /* DateUtils.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3EAA9F132AB0841E00382447 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */,
+				3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3EAA9F172AB086F900382447 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		3EC80CA22A8C200D00FA09A0 /* DatePlus */ = {
@@ -284,7 +330,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					3E9A06942A80102200618D65 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -354,10 +400,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */,
-				3E9A06B72A80111A00618D65 /* DateUtils.swift in Sources */,
+				3EAA9F072AB0195700382447 /* LocalizationManager.swift in Sources */,
+				3EAA9F0A2AB01AAC00382447 /* Localization_en.swift in Sources */,
 				3E9A06A32A80102200618D65 /* ContentView.swift in Sources */,
+				3EAA9F112AB030A300382447 /* DateUtils.swift in Sources */,
 				3E9A06BC2A80117D00618D65 /* PinnedDaysView.swift in Sources */,
 				3E9A06BA2A80114D00618D65 /* MainView.swift in Sources */,
+				3EAA9F0D2AB01AD900382447 /* Localization_ja.swift in Sources */,
 				3E9A06A12A80102200618D65 /* DatePlusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +415,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */,
+				3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */,
+				3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */,
+				3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */,
 				3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */,
+				3EAA9F0B2AB01AAC00382447 /* Localization_en.swift in Sources */,
+				3EAA9F082AB0195700382447 /* LocalizationManager.swift in Sources */,
+				3EAA9F0E2AB01AD900382447 /* Localization_ja.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,9 +490,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -497,9 +555,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -532,16 +592,17 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = watchos10.0;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -565,16 +626,17 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = watchos10.0;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -593,7 +655,7 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				INFOPLIST_FILE = DatePlus/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -610,7 +672,7 @@
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				INFOPLIST_FILE = DatePlus/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -627,6 +689,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
@@ -638,10 +701,10 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = watchos10.0;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -658,6 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
@@ -669,10 +733,10 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = watchos10.0;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
