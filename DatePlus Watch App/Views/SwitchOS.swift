@@ -4,8 +4,8 @@ struct SwitchOS: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     
     var body: some View {
-        if #available(watchOSApplicationExtension 10.0, *) {
-            WatchOS9_TabView(localizationManager: localizationManager)
+        if #available(watchOS 10, *) {
+            WatchOS10_NavigationStackView(localizationManager: localizationManager)
         } else {
             WatchOS9_TabView(localizationManager: localizationManager)
         }

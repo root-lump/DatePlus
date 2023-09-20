@@ -2,7 +2,7 @@ import SwiftUI
 import WidgetKit
 
 // This is a SwiftUI View that displays a list of "pinned" days.
-struct WatchOS9_PinnedView: View {
+struct WatchOS10_PinnedView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     @Environment(\.scenePhase) private var scenePhase
     
@@ -11,7 +11,7 @@ struct WatchOS9_PinnedView: View {
     @State private var nowDate: Date = Date()   // current date
     @State private var pinnedDays: [DayInfo] = []   // pinnedDay store
     // This is a state property wrapper that will store the alert item.
-    @State private var alertItem: W9_AlertItem?
+    @State private var alertItem: W10_AlertItem?
     
     // The body of the SwiftUI view.
     var body: some View {
@@ -31,48 +31,49 @@ struct WatchOS9_PinnedView: View {
                     .minimumScaleFactor(0.5)
                     .lineLimit(6)
                     .padding()
-            }
-            // For each pinned day...
-            ForEach(pinnedDays, id: \.self) { dayInfo in
-                // With a vertical stack view on the left...
-                VStack(alignment: .leading) {
-                    getDaysToAddText(localizationManager: localizationManager, dayInfo: dayInfo)
-                        .foregroundColor(.secondary)
-                    
-                    Spacer()
-                    // Display the formatted date.
-                    Text(formatDate(date: calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay), localizationManager: localizationManager))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                    // When the view appears, load the pinned days.
-                        .onAppear {
-                            nowDate = Date()
-                        }
-                    // When App goes foreground
-                        .onChange(of: scenePhase) { phase in
-                            if phase == .active {
+            } else {
+                // For each pinned day...
+                ForEach(pinnedDays, id: \.self) { dayInfo in
+                    // With a vertical stack view on the left...
+                    VStack(alignment: .leading) {
+                        getDaysToAddText(localizationManager: localizationManager, dayInfo: dayInfo)
+                            .foregroundColor(.secondary)
+                        
+                        Spacer()
+                        // Display the formatted date.
+                        Text(formatDate(date: calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay), localizationManager: localizationManager))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                        // When the view appears, load the pinned days.
+                            .onAppear {
                                 nowDate = Date()
                             }
+                        // When App goes foreground
+                            .onChange(of: scenePhase) { phase in
+                                if phase == .active {
+                                    nowDate = Date()
+                                }
+                            }
+                    }
+                    .padding(8)
+                    // Add swipe actions.
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        // The delete button.
+                        Button(action: {
+                            alertItem = W10_AlertItem(type: .delete(dayInfo))
+                        }) {
+                            Label("Delete", systemImage: "trash.fill")
                         }
-                }
-                .padding(8)
-                // Add swipe actions to the horizontal stack view.
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    // The delete button.
-                    Button(action: {
-                        alertItem = W9_AlertItem(type: .delete(dayInfo))
-                    }) {
-                        Label("Delete", systemImage: "trash.fill")
+                        .tint(.red)
+                        // The add to complication button.
+                        Button(action: {
+                            alertItem = W10_AlertItem(type: .addToComplication(dayInfo))
+                        }) {
+                            Label("Add to Complications", systemImage: "watchface.applewatch.case")
+                        }
+                        .tint(.orange)
+                        
                     }
-                    .tint(.red)
-                    // The add to complication button.
-                    Button(action: {
-                        alertItem = W9_AlertItem(type: .addToComplication(dayInfo))
-                    }) {
-                        Label("Add to Complications", systemImage: "watchface.applewatch.case")
-                    }
-                    .tint(.orange)
-                    
                 }
             }
         }
@@ -150,12 +151,12 @@ struct WatchOS9_PinnedView: View {
     }
 }
 
-struct WatchOS9_PinnedViewPreview: PreviewProvider {
+struct WatchOS10_PinnedViewPreview: PreviewProvider {
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            WatchOS9_PinnedView(localizationManager: LocalizationManager(id))
+            WatchOS10_PinnedView(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

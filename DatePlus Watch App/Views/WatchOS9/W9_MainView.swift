@@ -86,7 +86,7 @@ struct WatchOS9_MainView: View {
             .padding(.vertical, 5) // Add vertical padding
             
             Text(" \(formatDate(date: futureDate, localizationManager: localizationManager))")
-                .frame(width: .infinity, height: screenHeight*0.175)
+                .frame(height: screenHeight*0.175)
                 .font(.title3)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
