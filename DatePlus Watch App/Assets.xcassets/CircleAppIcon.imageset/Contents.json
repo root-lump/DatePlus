@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "CircleAppIcon.png",
       "idiom" : "universal"
     }
   ],
