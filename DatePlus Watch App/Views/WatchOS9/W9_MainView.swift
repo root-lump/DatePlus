@@ -1,19 +1,19 @@
 import SwiftUI
 
 // A struct to represent an alert item, which has a unique ID and a type
-struct AlertItem: Identifiable {
+struct W9_AlertItem: Identifiable {
     let id = UUID()
-    let type: AlertType
+    let type: W9_AlertType
 }
 
 // An enum to represent the type of alert, which can be either 'delete' or 'addToComplication'
-enum AlertType {
+enum W9_AlertType {
     case delete(DayInfo)
     case addToComplication(DayInfo)
 }
 
 // The main view of the app
-struct MainView: View {
+struct WatchOS9_MainView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     // App storage properties to store user preferences
     @AppStorage("daysToAdd") private var daysToAdd = 1
@@ -150,12 +150,12 @@ struct MainView: View {
     }
 }
 
-struct MainViewPreview: PreviewProvider {
+struct WatchOS9_MainViewPreview: PreviewProvider {
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            MainView(localizationManager: LocalizationManager(id))
+            WatchOS9_MainView(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

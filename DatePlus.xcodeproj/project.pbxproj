@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3E546D102ABB3822002AFD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A42A80102300618D65 /* Assets.xcassets */; };
+		3E546D182ABB475A002AFD85 /* W9_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D172ABB475A002AFD85 /* W9_MainView.swift */; };
+		3E546D1A2ABB47A0002AFD85 /* W9_PinnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */; };
+		3E546D1D2ABB4B89002AFD85 /* W9_TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D1C2ABB4B89002AFD85 /* W9_TabView.swift */; };
+		3E546D1F2ABB4C0B002AFD85 /* SwitchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D1E2ABB4C0B002AFD85 /* SwitchOS.swift */; };
 		3E9A069C2A80102200618D65 /* DatePlus Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3E9A069B2A80102200618D65 /* DatePlus Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3E9A06A12A80102200618D65 /* DatePlusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06A02A80102200618D65 /* DatePlusApp.swift */; };
 		3E9A06A32A80102200618D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06A22A80102200618D65 /* ContentView.swift */; };
 		3E9A06A52A80102300618D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A42A80102300618D65 /* Assets.xcassets */; };
 		3E9A06A82A80102300618D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A72A80102300618D65 /* Preview Assets.xcassets */; };
 		3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B32A8010D000618D65 /* DayInfo.swift */; };
-		3E9A06BA2A80114D00618D65 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B92A80114D00618D65 /* MainView.swift */; };
-		3E9A06BC2A80117D00618D65 /* PinnedDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06BB2A80117D00618D65 /* PinnedDaysView.swift */; };
 		3E9A06C42A80122D00618D65 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9A06C32A80122D00618D65 /* WidgetKit.framework */; };
 		3E9A06C62A80122D00618D65 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9A06C52A80122D00618D65 /* SwiftUI.framework */; };
 		3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */; };
@@ -81,6 +83,10 @@
 
 /* Begin PBXFileReference section */
 		3E2EE3F72A8C0FE600587F6C /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = info.plist; path = DatePlus/info.plist; sourceTree = SOURCE_ROOT; };
+		3E546D172ABB475A002AFD85 /* W9_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_MainView.swift; sourceTree = "<group>"; };
+		3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_PinnedView.swift; sourceTree = "<group>"; };
+		3E546D1C2ABB4B89002AFD85 /* W9_TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_TabView.swift; sourceTree = "<group>"; };
+		3E546D1E2ABB4C0B002AFD85 /* SwitchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchOS.swift; sourceTree = "<group>"; };
 		3E7E1FAD2A95143700CD9AB1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E9A06952A80102200618D65 /* DatePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A069B2A80102200618D65 /* DatePlus Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DatePlus Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,8 +95,6 @@
 		3E9A06A42A80102300618D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E9A06A72A80102300618D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3E9A06B32A8010D000618D65 /* DayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInfo.swift; sourceTree = "<group>"; };
-		3E9A06B92A80114D00618D65 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		3E9A06BB2A80117D00618D65 /* PinnedDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedDaysView.swift; sourceTree = "<group>"; };
 		3E9A06C12A80122D00618D65 /* DatePlus WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DatePlus WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A06C32A80122D00618D65 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3E9A06C52A80122D00618D65 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -130,6 +134,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E546D162ABB472A002AFD85 /* WatchOS9 */ = {
+			isa = PBXGroup;
+			children = (
+				3E546D172ABB475A002AFD85 /* W9_MainView.swift */,
+				3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */,
+				3E546D1C2ABB4B89002AFD85 /* W9_TabView.swift */,
+			);
+			path = WatchOS9;
+			sourceTree = "<group>";
+		};
 		3E9A068E2A80102100618D65 = {
 			isa = PBXGroup;
 			children = (
@@ -189,8 +203,8 @@
 		3E9A06B82A80113500618D65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3E9A06B92A80114D00618D65 /* MainView.swift */,
-				3E9A06BB2A80117D00618D65 /* PinnedDaysView.swift */,
+				3E546D162ABB472A002AFD85 /* WatchOS9 */,
+				3E546D1E2ABB4C0B002AFD85 /* SwitchOS.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,11 +418,13 @@
 				3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */,
 				3EAA9F072AB0195700382447 /* LocalizationManager.swift in Sources */,
 				3EAA9F0A2AB01AAC00382447 /* Localization_en.swift in Sources */,
+				3E546D182ABB475A002AFD85 /* W9_MainView.swift in Sources */,
 				3E9A06A32A80102200618D65 /* ContentView.swift in Sources */,
 				3EAA9F112AB030A300382447 /* DateUtils.swift in Sources */,
-				3E9A06BC2A80117D00618D65 /* PinnedDaysView.swift in Sources */,
-				3E9A06BA2A80114D00618D65 /* MainView.swift in Sources */,
+				3E546D1A2ABB47A0002AFD85 /* W9_PinnedView.swift in Sources */,
+				3E546D1D2ABB4B89002AFD85 /* W9_TabView.swift in Sources */,
 				3EAA9F0D2AB01AD900382447 /* Localization_ja.swift in Sources */,
+				3E546D1F2ABB4C0B002AFD85 /* SwitchOS.swift in Sources */,
 				3E9A06A12A80102200618D65 /* DatePlusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
