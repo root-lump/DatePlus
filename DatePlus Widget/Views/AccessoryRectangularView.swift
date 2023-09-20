@@ -24,7 +24,7 @@ struct AccessoryRectangularView: View {
             }
             .padding()
             .containerBackground(for: .widget, alignment: .bottom){
-                Image("AppIconCircle")
+                Image("DatePlusBackground")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .brightness(-0.5)
