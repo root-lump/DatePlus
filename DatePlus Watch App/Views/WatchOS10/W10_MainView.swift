@@ -17,12 +17,14 @@ enum W10_AlertType {
 struct WatchOS10_MainView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     // App storage properties to store user preferences
+    @Environment(\.scenePhase) private var scenePhase
     @AppStorage("daysToAdd") private var daysToAdd = 1
     @State private var futureDate = Date()
-    @AppStorage("pinnedDays") private var pinnedDaysData: Data = Data()
+    @Binding var pinnedDays: [DayInfo]
     @AppStorage("includeFirstDay") private var includeFirstDay = false
     @State private var showAlert = false
     @State private var alertMessage = Text("")
+    @State private var refresh: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -93,20 +95,20 @@ struct WatchOS10_MainView: View {
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
                 
-                    Button(action: {
-                        includeFirstDay.toggle()
-                        futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
-                    }) {
-                        Text(localizationManager.localize(.fromToday))
-                            .font(.headline)
-                            .minimumScaleFactor(0.4)
-                            .lineLimit(1)
-                            .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.5, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
-                            .foregroundColor(includeFirstDay ? .black : .white) // Set text color
-                    }
-                    .background(includeFirstDay ? Color.white : Color.clear)
-                    .cornerRadius(50)
-                    .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.65, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
+                Button(action: {
+                    includeFirstDay.toggle()
+                    futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+                }) {
+                    Text(localizationManager.localize(.fromToday))
+                        .font(.headline)
+                        .minimumScaleFactor(0.4)
+                        .lineLimit(1)
+                        .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.5, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
+                        .foregroundColor(includeFirstDay ? .black : .white) // Set text color
+                }
+                .background(includeFirstDay ? Color.white : Color.clear)
+                .cornerRadius(50)
+                .frame(minWidth: screenWidth*0.4, maxWidth: screenWidth*0.65, minHeight: screenHeight*0.2, maxHeight: screenHeight*0.2)
             }.onAppear {
                 futureDate = calculateDate(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
                 
@@ -116,10 +118,12 @@ struct WatchOS10_MainView: View {
                         pinDays()
                     } label: {
                         Image(systemName: "pin.fill")
-                            .foregroundColor(.white)
-                    }.alert(isPresented: $showAlert) {
-                        Alert(title: alertMessage)
-                    }.fixedSize()
+                            .foregroundColor(existPinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay) ? .red : .white)
+                    }.background(existPinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay) ? .white: .clear, in: Capsule())
+                        .onChange(of: pinnedDays) {
+                            refresh.toggle()
+                        }
+                    
                 }
             }
         }
@@ -127,28 +131,25 @@ struct WatchOS10_MainView: View {
     
     // Function to pin the days
     func pinDays() {
-        var days = (try? JSONDecoder().decode([DayInfo].self, from: pinnedDaysData)) ?? []
-        let newDayInfo = DayInfo(days: daysToAdd, includeFirstDay: includeFirstDay)
-        if days.contains(newDayInfo) {
-            alertMessage = Text(localizationManager.localize(.alreadyRegistered))
-        } else {
-            days.append(newDayInfo)
-            if let encodedData = try? JSONEncoder().encode(days) {
-                pinnedDaysData = encodedData
-            }
-            alertMessage = Text(localizationManager.localize(.pinned))
-        }
         showAlert = true
+        if existPinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay) {
+            pinnedDays = removePinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+            refresh.toggle()
+        } else {
+            pinnedDays = registerPinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+            refresh.toggle()
+        }
     }
 }
 
 @available(watchOS 10, *)
 struct WatchOS10_MainViewPreview: PreviewProvider {
+    @State static var pinnedDays = getAllPinnedDays()
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            WatchOS10_MainView(localizationManager: LocalizationManager(id))
+            WatchOS10_MainView(localizationManager: LocalizationManager(id), pinnedDays: $pinnedDays)
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

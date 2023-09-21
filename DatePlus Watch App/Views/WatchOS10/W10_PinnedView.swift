@@ -2,16 +2,15 @@ import SwiftUI
 import WidgetKit
 
 // This is a SwiftUI View that displays a list of "pinned" days.
+@available(watchOS 10, *)
 struct WatchOS10_PinnedView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     @Environment(\.scenePhase) private var scenePhase
-    
-    @AppStorage("pinnedDays") private var pinnedDaysData: Data = Data() // pinnedDay data store
-    
+    @Binding var pinnedDays: [DayInfo]
     @State private var nowDate: Date = Date()   // current date
-    @State private var pinnedDays: [DayInfo] = []   // pinnedDay store
     // This is a state property wrapper that will store the alert item.
     @State private var alertItem: W10_AlertItem?
+    @State private var refresh: Bool = false
     
     // The body of the SwiftUI view.
     var body: some View {
@@ -79,7 +78,7 @@ struct WatchOS10_PinnedView: View {
         }
         // When the view appears, load the pinned days.
         .onAppear {
-            loadPinnedDays()
+            pinnedDays = getAllPinnedDays()
         }
         // Display an alert when the alertItem state changes.
         .alert(item: $alertItem) { alertItem in
@@ -89,8 +88,8 @@ struct WatchOS10_PinnedView: View {
                     title: Text(localizationManager.localize(.confirmDelete)),
                     message: nil,
                     primaryButton: .destructive(Text(localizationManager.localize(.delete)), action: {
-                        removePinnedDay(dayInfo: dayInfo)
-                        resetAlertItem()
+                        pinnedDays = removePinnedDay(dayInfo: dayInfo)
+                        refresh.toggle()
                     }),
                     secondaryButton: .cancel(Text(localizationManager.localize(.cancel)), action:{
                         resetAlertItem()
@@ -118,29 +117,6 @@ struct WatchOS10_PinnedView: View {
         alertItem = nil
     }
     
-    // Function to remove a pinned day.
-    func removePinnedDay(dayInfo: DayInfo) {
-        pinnedDays.removeAll { $0 == dayInfo }
-        savePinnedDays()
-    }
-    
-    // Function to load the pinned days from AppStorage.
-    func loadPinnedDays() {
-        if let loadedDays = try? JSONDecoder().decode([DayInfo].self, from: pinnedDaysData) {
-            pinnedDays = loadedDays.map { dayInfo in
-                DayInfo(days: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)
-            }
-            savePinnedDays()
-        }
-    }
-    
-    // Function to save the pinned days to AppStorage.
-    func savePinnedDays() {
-        if let encodedData = try? JSONEncoder().encode(pinnedDays) {
-            pinnedDaysData = encodedData
-        }
-    }
-    
     // Function to register a complication.
     func registerComplication(daysToAdd: Int, includeFirstDay: Bool) {
         let userDefaults = UserDefaults(suiteName: "group.net.root-lump.date-plus")
@@ -151,12 +127,14 @@ struct WatchOS10_PinnedView: View {
     }
 }
 
+@available(watchOS 10, *)
 struct WatchOS10_PinnedViewPreview: PreviewProvider {
+    @State static var pinnedDays = getAllPinnedDays()
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            WatchOS10_PinnedView(localizationManager: LocalizationManager(id))
+            WatchOS10_PinnedView(localizationManager: LocalizationManager(id), pinnedDays: $pinnedDays)
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

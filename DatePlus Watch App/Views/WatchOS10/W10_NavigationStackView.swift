@@ -4,10 +4,11 @@ import SwiftUI
 struct WatchOS10_NavigationStackView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     @State private var isPresented = false
+    @State private var pinnedDays = getAllPinnedDays()
     
     var body: some View {
         NavigationStack {
-            WatchOS10_MainView(localizationManager: localizationManager)
+            WatchOS10_MainView(localizationManager: localizationManager, pinnedDays: $pinnedDays)
                 .containerBackground(.blue.gradient,
                                      for: .navigation)
                 .toolbar {
@@ -17,7 +18,7 @@ struct WatchOS10_NavigationStackView: View {
                         } label: {
                             Image(systemName:"list.bullet")
                         }.sheet(isPresented: $isPresented) {
-                            WatchOS10_PinnedView(localizationManager: localizationManager)
+                            WatchOS10_PinnedView(localizationManager: localizationManager, pinnedDays: $pinnedDays)
                         }
                     }
                 }
