@@ -8,7 +8,7 @@ struct AccessoryCornerView: View {
     var includeFirstDay: Bool
     
     var body: some View {
-        if #available(watchOSApplicationExtension 10.0, *) {
+        if #available(watchOSApplicationExtension 10, *) {
             Text(formatWidgetDate(date: futureDate, localizationManager: localizationManager))
                 .scaledToFit()
                 .widgetCurvesContent()

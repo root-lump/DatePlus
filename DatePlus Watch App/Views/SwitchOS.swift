@@ -1,20 +1,23 @@
 import SwiftUI
-import WatchKit
 
-struct ContentView: View {
+struct SwitchOS: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     
     var body: some View {
-        SwitchOS(localizationManager: localizationManager)
+        if #available(watchOS 10, *) {
+            WatchOS10_NavigationStackView(localizationManager: localizationManager)
+        } else {
+            WatchOS9_TabView(localizationManager: localizationManager)
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SwitchOSPreview: PreviewProvider {
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            ContentView(localizationManager: LocalizationManager(id))
+            SwitchOS(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }
