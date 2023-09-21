@@ -80,12 +80,14 @@ struct DatePlusComplicationView: View {
         let includeFirstDay = entry.includeFirstDay
         
         switch family {
-            //        case .accessoryCircular:
+        case .accessoryCircular:
+            AccessoryCircularView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         case .accessoryCorner:
             AccessoryCornerView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         case .accessoryRectangular:
             AccessoryRectangularView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
-            //        case .accessoryInline:
+        case .accessoryInline:
+            AccessoryInlineView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         default:
             Image("AppIcon")
         }
@@ -108,7 +110,7 @@ struct WidgetOne: Widget {
                 .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
         }
         .configurationDisplayName(getDisplayName(kind: kind))
-        .supportedFamilies([.accessoryCorner, .accessoryRectangular])
+        .supportedFamilies([.accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline])
     }
 }
 
@@ -121,7 +123,7 @@ struct WidgetTwo: Widget {
                 .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
         }
         .configurationDisplayName(getDisplayName(kind: kind))
-        .supportedFamilies([.accessoryCorner, .accessoryRectangular])
+        .supportedFamilies([.accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline])
     }
 }
 
@@ -134,7 +136,7 @@ struct WidgetThree: Widget {
                 .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
         }
         .configurationDisplayName(getDisplayName(kind: kind))
-        .supportedFamilies([.accessoryCorner, .accessoryRectangular])
+        .supportedFamilies([.accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline])
     }
 }
 
@@ -144,7 +146,7 @@ struct DatePlusWidgets: WidgetBundle {
     var body: some Widget {
         widgets()
     }
-
+    
     func widgets() -> some Widget {
         if #available(watchOS 10, *) {
             return WidgetBundleBuilder.buildBlock(WidgetOne(), WidgetTwo(), WidgetThree())
