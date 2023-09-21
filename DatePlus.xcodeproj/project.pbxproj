@@ -12,6 +12,8 @@
 		3E19AB642ABBC735004D667D /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B32A8010D000618D65 /* DayInfo.swift */; };
 		3E19AB662ABBE70A004D667D /* W10_RegisterComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB652ABBE70A004D667D /* W10_RegisterComplication.swift */; };
 		3E19AB682ABC7F45004D667D /* W10_DeletePinnedDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB672ABC7F45004D667D /* W10_DeletePinnedDayView.swift */; };
+		3E19AB6A2ABC9839004D667D /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB692ABC9839004D667D /* AppGroup.swift */; };
+		3E19AB6B2ABC9839004D667D /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB692ABC9839004D667D /* AppGroup.swift */; };
 		3E546D102ABB3822002AFD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A42A80102300618D65 /* Assets.xcassets */; };
 		3E546D182ABB475A002AFD85 /* W9_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D172ABB475A002AFD85 /* W9_MainView.swift */; };
 		3E546D1A2ABB47A0002AFD85 /* W9_PinnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */; };
@@ -94,6 +96,7 @@
 		3E19AB612ABBBFD5004D667D /* PinnedUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedUtils.swift; sourceTree = "<group>"; };
 		3E19AB652ABBE70A004D667D /* W10_RegisterComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_RegisterComplication.swift; sourceTree = "<group>"; };
 		3E19AB672ABC7F45004D667D /* W10_DeletePinnedDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_DeletePinnedDayView.swift; sourceTree = "<group>"; };
+		3E19AB692ABC9839004D667D /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		3E2EE3F72A8C0FE600587F6C /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = info.plist; path = DatePlus/info.plist; sourceTree = SOURCE_ROOT; };
 		3E546D172ABB475A002AFD85 /* W9_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_MainView.swift; sourceTree = "<group>"; };
 		3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_PinnedView.swift; sourceTree = "<group>"; };
@@ -283,6 +286,7 @@
 				3E9A06B22A80108A00618D65 /* Models */,
 				3EAA9F102AB030A300382447 /* DateUtils.swift */,
 				3E19AB612ABBBFD5004D667D /* PinnedUtils.swift */,
+				3E19AB692ABC9839004D667D /* AppGroup.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -457,6 +461,7 @@
 				3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */,
 				3E19AB682ABC7F45004D667D /* W10_DeletePinnedDayView.swift in Sources */,
 				3E546D262ABB57F5002AFD85 /* W10_PinnedView.swift in Sources */,
+				3E19AB6A2ABC9839004D667D /* AppGroup.swift in Sources */,
 				3EAA9F072AB0195700382447 /* LocalizationManager.swift in Sources */,
 				3EAA9F0A2AB01AAC00382447 /* Localization_en.swift in Sources */,
 				3E546D182ABB475A002AFD85 /* W9_MainView.swift in Sources */,
@@ -479,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E19AB6B2ABC9839004D667D /* AppGroup.swift in Sources */,
 				3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */,
 				3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */,
 				3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */,
