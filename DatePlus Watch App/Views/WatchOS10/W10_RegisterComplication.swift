@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 @available(watchOS 10, *)
 struct WatchOS10_RegisterComplication: View {
@@ -36,6 +37,8 @@ struct WatchOS10_RegisterComplication: View {
             }.toolbar {
                 ToolbarItemGroup(placement: .bottomBar){
                     Button {
+                        registerComplication(number: 1, dayInfo: dayInfo)
+                        WidgetCenter.shared.reloadTimelines(ofKind: "[1]")
                         sheetItem = nil
                     } label: {
                         Text("1")
@@ -43,6 +46,8 @@ struct WatchOS10_RegisterComplication: View {
                         .background(.orange, in: Capsule())
                     
                     Button {
+                        registerComplication(number: 2, dayInfo: dayInfo)
+                        WidgetCenter.shared.reloadTimelines(ofKind: "[2]")
                         sheetItem = nil
                     } label: {
                         Text("2")
@@ -51,6 +56,8 @@ struct WatchOS10_RegisterComplication: View {
                     .background(.orange, in: Capsule())
                     
                     Button {
+                        registerComplication(number: 3, dayInfo: dayInfo)
+                        WidgetCenter.shared.reloadTimelines(ofKind: "[3]")
                         sheetItem = nil
                     } label: {
                         Text("3")

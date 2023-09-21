@@ -12,25 +12,25 @@ func getRegisterdValue(widgetKind: String) -> DayInfo {
     var dayInfo: DayInfo? = nil
     
     switch widgetKind {
-    case "widget_one":
+    case "[1]":
         dayInfo = dayInfos.indices.contains(0) ? dayInfos[0] : nil
-    case "widget_two":
+    case "[2]":
         dayInfo = dayInfos.indices.contains(1) ? dayInfos[1] : nil
-    case "widget_three":
+    case "[3]":
         dayInfo = dayInfos.indices.contains(2) ? dayInfos[2] : nil
     default:
         break
     }
     
-    return dayInfo ?? DayInfo(days: 0, includeFirstDay: true)
+    return dayInfo ?? DayInfo(days: 1, includeFirstDay: true)
 }
 
 struct DateCounterProvider: TimelineProvider {
     var widgetKind: String
     
     func placeholder(in context: Context) -> DateCounterEntry {
-        DateCounterEntry(date: Date(), daysToAdd: 0, includeFirstDay: false)
-    }
+        let dayInfo = getRegisterdValue(widgetKind: widgetKind)
+        return DateCounterEntry(date: Date(), daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)    }
     
     // data for preview
     func getSnapshot(in context: Context, completion: @escaping (DateCounterEntry) -> Void) {
@@ -94,13 +94,13 @@ struct DatePlusComplicationView: View {
 
 func getDisplayName(kind: String) -> String {
     let localizationManager = LocalizationManager(String(localized: "Locale Code"))
-    let dayInfo = getRegisterdValue(widgetKind: "widget_one")
-    return getDaysToAddStrings(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay, localizationManager: localizationManager)
+    let dayInfo = getRegisterdValue(widgetKind: kind)
+    return kind + " " + getDaysToAddStrings(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay, localizationManager: localizationManager)
     
 }
 
 struct WidgetOne: Widget {
-    let kind: String = "widget_one"
+    let kind: String = "[1]"
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: DateCounterProvider(widgetKind: kind)) { entry in
@@ -113,7 +113,7 @@ struct WidgetOne: Widget {
 }
 
 struct WidgetTwo: Widget {
-    let kind: String = "widget_two"
+    let kind: String = "[2]"
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: DateCounterProvider(widgetKind: kind)) { entry in
@@ -126,7 +126,7 @@ struct WidgetTwo: Widget {
 }
 
 struct WidgetThree: Widget {
-    let kind: String = "widget_three"
+    let kind: String = "[3]"
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: DateCounterProvider(widgetKind: kind)) { entry in
@@ -140,10 +140,17 @@ struct WidgetThree: Widget {
 
 @main
 struct DatePlusWidgets: WidgetBundle {
+    @WidgetBundleBuilder
     var body: some Widget {
-        WidgetOne()
-        WidgetTwo()
-        WidgetThree()
+        widgets()
+    }
+
+    func widgets() -> some Widget {
+        if #available(watchOS 10, *) {
+            return WidgetBundleBuilder.buildBlock(WidgetOne(), WidgetTwo(), WidgetThree())
+        } else {
+            return WidgetOne()
+        }
     }
 }
 

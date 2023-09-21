@@ -3,6 +3,7 @@ import SwiftUI
 @available(watchOS 10, *)
 struct WatchOS10_DeletePinnedDayView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
+    @Binding var pinnedDays: [DayInfo]
     var dayInfo: DayInfo
     @Binding var sheetItem: W10_SheetItem?
     
@@ -30,6 +31,7 @@ struct WatchOS10_DeletePinnedDayView: View {
             }.toolbar {
                 ToolbarItemGroup(placement: .bottomBar){
                     Button {
+                        pinnedDays = removePinnedDay(dayInfo: dayInfo)
                         sheetItem = nil
                     } label: {
                         HStack {
@@ -49,13 +51,14 @@ struct WatchOS10_DeletePinnedDayView: View {
 
 @available(watchOS 10, *)
 struct WatchOS10_DeletePinnedDayViewPreviews: PreviewProvider {
-    @State static var pinnedDay = DayInfo(days: 5, includeFirstDay: true)
-    @State static var sheetItem: W10_SheetItem? = W10_SheetItem(type: .delete(pinnedDay))
+    @State static var dayInfo = DayInfo(days: 5, includeFirstDay: true)
+    @State static var pinnedDays = [dayInfo, dayInfo]
+    @State static var sheetItem: W10_SheetItem? = W10_SheetItem(type: .delete(dayInfo))
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            WatchOS10_DeletePinnedDayView(localizationManager: LocalizationManager(id), dayInfo: pinnedDay, sheetItem: $sheetItem)
+            WatchOS10_DeletePinnedDayView(localizationManager: LocalizationManager(id), pinnedDays: $pinnedDays, dayInfo: dayInfo, sheetItem: $sheetItem)
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

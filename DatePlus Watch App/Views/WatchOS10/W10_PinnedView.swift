@@ -1,5 +1,4 @@
 import SwiftUI
-import WidgetKit
 
 // A struct to represent an alert item, which has a unique ID and a type
 struct W10_SheetItem: Identifiable {
@@ -88,7 +87,7 @@ struct WatchOS10_PinnedView: View {
                     }.sheet(item: $sheetItem) { sheetItem in
                         switch sheetItem.type {
                         case .delete(let dayInfo):
-                            WatchOS10_DeletePinnedDayView(localizationManager: localizationManager, dayInfo: dayInfo, sheetItem: $sheetItem)
+                            WatchOS10_DeletePinnedDayView(localizationManager: localizationManager, pinnedDays: $pinnedDays, dayInfo: dayInfo, sheetItem: $sheetItem)
                         case .addToComplication(let dayInfo):
                             WatchOS10_RegisterComplication(localizationManager: localizationManager, dayInfo: dayInfo, sheetItem: $sheetItem)
                         }
@@ -102,15 +101,6 @@ struct WatchOS10_PinnedView: View {
             }.navigationTitle(localizationManager.localize(.pinList))
                 .navigationBarTitleDisplayMode(.automatic)
         }
-    }
-    
-    // Function to register a complication.
-    func registerComplication(daysToAdd: Int, includeFirstDay: Bool) {
-        let userDefaults = UserDefaults(suiteName: "group.net.root-lump.date-plus")
-        userDefaults?.set(daysToAdd, forKey: "daysToAdd")
-        userDefaults?.set(includeFirstDay, forKey: "includeFirstDay")
-        userDefaults?.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
