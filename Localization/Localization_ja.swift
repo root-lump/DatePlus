@@ -14,4 +14,7 @@ let japaneseLocalization: [LocalizedKey: String] = [
     .update : "更新",
     .widgetDay : "日目",
     .widgetDaysLater : "日後",
+    .addWatchFace: "文字盤に登録",
+    .selectWidgetNumber: "ウィジェットの番号を選択",
+    .pinList: "ピン留め一覧",
 ]

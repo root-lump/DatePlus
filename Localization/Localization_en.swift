@@ -14,4 +14,7 @@ let englishLocalization: [LocalizedKey: String] = [
     .update : "Update",
     .widgetDay : "D",
     .widgetDaysLater : "D L",
+    .addWatchFace : "Add to watchface.",
+    .selectWidgetNumber : "Select widget nunber.",
+    .pinList : "Pin list",
 ]
