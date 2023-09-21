@@ -1,29 +1,14 @@
 import SwiftUI
 
-// A struct to represent an alert item, which has a unique ID and a type
-struct W10_AlertItem: Identifiable {
-    let id = UUID()
-    let type: W10_AlertType
-}
-
-// An enum to represent the type of alert, which can be either 'delete' or 'addToComplication'
-enum W10_AlertType {
-    case delete(DayInfo)
-    case addToComplication(DayInfo)
-}
-
 // The main view of the app
 @available(watchOS 10, *)
 struct WatchOS10_MainView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     // App storage properties to store user preferences
-    @Environment(\.scenePhase) private var scenePhase
     @AppStorage("daysToAdd") private var daysToAdd = 1
     @State private var futureDate = Date()
     @Binding var pinnedDays: [DayInfo]
     @AppStorage("includeFirstDay") private var includeFirstDay = false
-    @State private var showAlert = false
-    @State private var alertMessage = Text("")
     @State private var refresh: Bool = false
     
     var body: some View {
@@ -131,7 +116,6 @@ struct WatchOS10_MainView: View {
     
     // Function to pin the days
     func pinDays() {
-        showAlert = true
         if existPinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay) {
             pinnedDays = removePinnedDay(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
             refresh.toggle()

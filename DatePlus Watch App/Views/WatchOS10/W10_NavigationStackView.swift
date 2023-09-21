@@ -9,7 +9,7 @@ struct WatchOS10_NavigationStackView: View {
     var body: some View {
         NavigationStack {
             WatchOS10_MainView(localizationManager: localizationManager, pinnedDays: $pinnedDays)
-                .containerBackground(.blue.gradient,
+                .containerBackground(.gray.gradient,
                                      for: .navigation)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {

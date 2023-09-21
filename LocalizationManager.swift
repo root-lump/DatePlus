@@ -16,6 +16,9 @@ enum LocalizedKey: String {
     case update = "Update"
     case widgetDay = "D"
     case widgetDaysLater = "D L"
+    case addWatchFace = "Add to watchface"
+    case selectWidgetNumber = "Select widget nunber."
+    case pinList = "Pin list"
 }
 
 class LocalizationManager: ObservableObject {

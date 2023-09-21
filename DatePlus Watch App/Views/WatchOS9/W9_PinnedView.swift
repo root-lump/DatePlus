@@ -103,7 +103,8 @@ struct WatchOS9_PinnedView: View {
                         resetAlertItem()
                     }),
                     secondaryButton: .default(Text(localizationManager.localize(.update)), action: {
-                        registerComplication(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)
+                        registerComplication(number: 1, dayInfo: dayInfo)
+                        WidgetCenter.shared.reloadTimelines(ofKind: "[1]")
                         resetAlertItem()
                     })
                 )
@@ -138,15 +139,6 @@ struct WatchOS9_PinnedView: View {
         if let encodedData = try? JSONEncoder().encode(pinnedDays) {
             pinnedDaysData = encodedData
         }
-    }
-    
-    // Function to register a complication.
-    func registerComplication(daysToAdd: Int, includeFirstDay: Bool) {
-        let userDefaults = UserDefaults(suiteName: "group.net.root-lump.date-plus")
-        userDefaults?.set(daysToAdd, forKey: "daysToAdd")
-        userDefaults?.set(includeFirstDay, forKey: "includeFirstDay")
-        userDefaults?.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

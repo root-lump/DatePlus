@@ -41,7 +41,6 @@ func removePinnedDay(dayInfo: DayInfo) -> [DayInfo] {
 
 func removePinnedDay(daysToAdd: Int, includeFirstDay: Bool) -> [DayInfo] {
     var pinnedDays = getAllPinnedDays()
-    print(String(daysToAdd) + "," + String(includeFirstDay))
     pinnedDays.removeAll(where: {$0.days == daysToAdd && $0.includeFirstDay == includeFirstDay})
     setAllPinnedDays(pinnedDays: pinnedDays)
     return pinnedDays
