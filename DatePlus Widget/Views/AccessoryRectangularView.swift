@@ -8,7 +8,7 @@ struct AccessoryRectangularView: View {
     var includeFirstDay: Bool
     
     var body: some View {
-        if #available(watchOSApplicationExtension 10.0, *) {
+        if #available(watchOSApplicationExtension 10, *) {
             VStack {
                 Text(getDaysToAddStrings(daysToAdd: daysToAdd, includeFirstDay: includeFirstDay, localizationManager: localizationManager))
                     .font(.body)
@@ -24,7 +24,7 @@ struct AccessoryRectangularView: View {
             }
             .padding()
             .containerBackground(for: .widget, alignment: .bottom){
-                Image("AppIconCircle")
+                Image("DatePlusBackground")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .brightness(-0.5)

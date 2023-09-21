@@ -1,7 +1,7 @@
 <br>
 <p align="center">
 <a href="https://date-plus.root-lump.net" target="_blank">
-<img src="resources/images/icons/DatePlus_cropped.png" alt="DatePlus" width="40%"/>
+<img src="resources/images/icons/CircleAppIcon.svg" alt="DatePlus" width="40%"/>
 </a>
 </p>
 
@@ -32,13 +32,14 @@ You can add any number of days from a specific date and view the resulting date.
 - 📌 [**Pin Feature**](https://date-plus.root-lump.net) - Save specific calculations for quick reference later.
 - ⌚ [**Complication Display**](https://date-plus.root-lump.net) - View your calculations directly on your watch face.
 - 🎨 [**Intuitive UI**](https://date-plus.root-lump.net) - Easy-to-use interface on Apple Watch.
+- 📁 [**Smart Stack Support**](https://date-plus.root-lump.net) - Smart Stack is a feature that displays appropriate information in a timely manner based on the user's situation.
 - 📅 [**Calculate from Today**](https://date-plus.root-lump.net) - Automatically use today's date as the starting point for calculations. This feature can be turned on or off.
 
 ## Screenshots
 <p align="center">
 <img src="resources/images/screenshots/main_screen.png" alt="Main Screen" width="30%">
 <img src="resources/images/screenshots/pinned_screen.png" alt="Main Screen" width="30%">
-<img src="resources/images/screenshots/widget.png" alt="Main Screen" width="30%">
+<img src="resources/images/screenshots/complication.png" alt="Main Screen" width="30%">
 </p>
 
 ## Getting Started
@@ -55,7 +56,7 @@ You can add any number of days from a specific date and view the resulting date.
 check [Release](https://github.com/root-lump/DatePlus/releases)
 
 #### Environment
-- Xcode - Xcode 15 RC (15A240d)
+- Xcode - Xcode 15 (15A240d)
 - macOS - macOS Sonoma 14 RC (23A339)
 
 ## Contributing

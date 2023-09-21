@@ -2,7 +2,7 @@ import SwiftUI
 import WidgetKit
 
 // This is a SwiftUI View that displays a list of "pinned" days.
-struct PinnedDaysView: View {
+struct WatchOS9_PinnedView: View {
     var localizationManager = LocalizationManager(String(localized: "Locale Code"))
     @Environment(\.scenePhase) private var scenePhase
     
@@ -11,7 +11,7 @@ struct PinnedDaysView: View {
     @State private var nowDate: Date = Date()   // current date
     @State private var pinnedDays: [DayInfo] = []   // pinnedDay store
     // This is a state property wrapper that will store the alert item.
-    @State private var alertItem: AlertItem?
+    @State private var alertItem: W9_AlertItem?
     
     // The body of the SwiftUI view.
     var body: some View {
@@ -34,54 +34,40 @@ struct PinnedDaysView: View {
             }
             // For each pinned day...
             ForEach(pinnedDays, id: \.self) { dayInfo in
-                HStack {
-                    // With a vertical stack view on the left...
-                    VStack(alignment: .leading) {
-                        // Change the display by includeFirstDay.
-                        if (dayInfo.includeFirstDay) {
-                            Text("\(getLocalizedDay(days: dayInfo.days, localizationManager: localizationManager)) \(Text(localizationManager.localize(.day)))")
-                                .foregroundColor(.secondary)
-                        } else {
-                            if (localizationManager.localize(.localeCode) == "en" && dayInfo.days == 1) {
-                                Text("\(dayInfo.days) day later")
-                                    .foregroundColor(.secondary)
-                            } else {
-                                Text("\(dayInfo.days) \(localizationManager.localize(.daysLater))")
-                                    .foregroundColor(.secondary)
-                            }
+                // With a vertical stack view on the left...
+                VStack(alignment: .leading) {
+                    getDaysToAddText(localizationManager: localizationManager, dayInfo: dayInfo)
+                        .foregroundColor(.secondary)
+                    
+                    Spacer()
+                    // Display the formatted date.
+                    Text(formatDate(date: calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay), localizationManager: localizationManager))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                    // When the view appears, load the pinned days.
+                        .onAppear {
+                            nowDate = Date()
                         }
-                        
-                        Spacer()
-                        // Display the formatted date.
-                        Text(formatDate(date: calculateDate(date: nowDate, daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay), localizationManager: localizationManager))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.5)
-                        // When the view appears, load the pinned days.
-                            .onAppear {
+                    // When App goes foreground
+                        .onChange(of: scenePhase) { phase in
+                            if phase == .active {
                                 nowDate = Date()
                             }
-                        // When App goes foreground
-                            .onChange(of: scenePhase) { phase in
-                                if phase == .active {
-                                    nowDate = Date()
-                                }
-                            }
-                    }
-                    .padding(8)
-                    Spacer()
+                        }
                 }
+                .padding(8)
                 // Add swipe actions to the horizontal stack view.
                 .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                     // The delete button.
                     Button(action: {
-                        alertItem = AlertItem(type: .delete(dayInfo))
+                        alertItem = W9_AlertItem(type: .delete(dayInfo))
                     }) {
                         Label("Delete", systemImage: "trash.fill")
                     }
                     .tint(.red)
                     // The add to complication button.
                     Button(action: {
-                        alertItem = AlertItem(type: .addToComplication(dayInfo))
+                        alertItem = W9_AlertItem(type: .addToComplication(dayInfo))
                     }) {
                         Label("Add to Complications", systemImage: "watchface.applewatch.case")
                     }
@@ -117,7 +103,8 @@ struct PinnedDaysView: View {
                         resetAlertItem()
                     }),
                     secondaryButton: .default(Text(localizationManager.localize(.update)), action: {
-                        registerComplication(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)
+                        registerComplication(number: 1, dayInfo: dayInfo)
+                        WidgetCenter.shared.reloadTimelines(ofKind: "[1]")
                         resetAlertItem()
                     })
                 )
@@ -153,23 +140,14 @@ struct PinnedDaysView: View {
             pinnedDaysData = encodedData
         }
     }
-    
-    // Function to register a complication.
-    func registerComplication(daysToAdd: Int, includeFirstDay: Bool) {
-        let userDefaults = UserDefaults(suiteName: "group.net.root-lump.date-plus")
-        userDefaults?.set(daysToAdd, forKey: "daysToAdd")
-        userDefaults?.set(includeFirstDay, forKey: "includeFirstDay")
-        userDefaults?.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
 }
 
-struct PinnedDaysPreview: PreviewProvider {
+struct WatchOS9_PinnedViewPreview: PreviewProvider {
     static var previews: some View {
         let localizationIds = ["en", "ja"]
         
         ForEach(localizationIds, id: \.self) { id in
-            PinnedDaysView(localizationManager: LocalizationManager(id))
+            WatchOS9_PinnedView(localizationManager: LocalizationManager(id))
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }
