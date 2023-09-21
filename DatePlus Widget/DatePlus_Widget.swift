@@ -7,41 +7,52 @@ struct DateCounterEntry: TimelineEntry {
     let includeFirstDay: Bool
 }
 
-struct DateCounterProvider: TimelineProvider {
-    func placeholder(in context: Context) -> DateCounterEntry {
-        DateCounterEntry(date: Date(), daysToAdd: 0, includeFirstDay: false)
+func getRegisterdValue(widgetKind: String) -> DayInfo {
+    let dayInfos = loadComplicationDayInfo()
+    var dayInfo: DayInfo? = nil
+    
+    switch widgetKind {
+    case "[1]":
+        dayInfo = dayInfos.indices.contains(0) ? dayInfos[0] : nil
+    case "[2]":
+        dayInfo = dayInfos.indices.contains(1) ? dayInfos[1] : nil
+    case "[3]":
+        dayInfo = dayInfos.indices.contains(2) ? dayInfos[2] : nil
+    default:
+        break
     }
     
-    func getRegisterdValue() -> (Int, Bool) {
-        let userDefaults: UserDefaults? = UserDefaults(suiteName: "group.net.root-lump.date-plus")
-        
-        let daysToAdd = userDefaults?.integer(forKey: "daysToAdd") ?? 0
-        let includeFirstDay = userDefaults?.bool(forKey: "includeFirstDay") ?? false
-        
-        return (daysToAdd, includeFirstDay)
-    }
+    return dayInfo ?? DayInfo(days: 1, includeFirstDay: true)
+}
+
+struct DateCounterProvider: TimelineProvider {
+    var widgetKind: String
+    
+    func placeholder(in context: Context) -> DateCounterEntry {
+        let dayInfo = getRegisterdValue(widgetKind: widgetKind)
+        return DateCounterEntry(date: Date(), daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)    }
     
     // data for preview
     func getSnapshot(in context: Context, completion: @escaping (DateCounterEntry) -> Void) {
-        let (daysToAdd, includeFirstDay) = getRegisterdValue()
-        let entry = DateCounterEntry(date: Date(), daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
+        let dayInfo = getRegisterdValue(widgetKind: widgetKind)
+        let entry = DateCounterEntry(date: Date(), daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay)
         completion(entry)
     }
     
     // adjustment of update timing and data acquisition
     func getTimeline(in context: Context, completion: @escaping (Timeline<DateCounterEntry>) -> Void) {
-        let (daysToAdd, includeFirstDay) = getRegisterdValue()
+        let dayInfo = getRegisterdValue(widgetKind: widgetKind)
         // Create a timeline entry for "now."
         let now = Date()
         let entry = DateCounterEntry(
             date: now,
-            daysToAdd: daysToAdd,
-            includeFirstDay: includeFirstDay
+            daysToAdd: dayInfo.days,
+            includeFirstDay: dayInfo.includeFirstDay
         )
         
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year, .month, .day], from: now)
-        components.day! += 1
+        components.day? += 1
         let nextMidnight = calendar.date(from: components)
         
         // Create the timeline with the entry and a reload policy with the date
@@ -69,36 +80,79 @@ struct DatePlusComplicationView: View {
         let includeFirstDay = entry.includeFirstDay
         
         switch family {
-            //        case .accessoryCircular:
+        case .accessoryCircular:
+            AccessoryCircularView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         case .accessoryCorner:
             AccessoryCornerView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         case .accessoryRectangular:
             AccessoryRectangularView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
-            //        case .accessoryInline:
+        case .accessoryInline:
+            AccessoryInlineView(localizationManager: localizationManager, futureDate: futureDate, daysToAdd: daysToAdd, includeFirstDay: includeFirstDay)
         default:
             Image("AppIcon")
         }
     }
 }
 
-@main
-struct DatePlusComplication: Widget {
-    let kind: String = "date_plus.accesory_corner"
+func getDisplayName(kind: String) -> String {
+    let localizationManager = LocalizationManager(String(localized: "Locale Code"))
+    let dayInfo = getRegisterdValue(widgetKind: kind)
+    return kind + " " + getDaysToAddStrings(daysToAdd: dayInfo.days, includeFirstDay: dayInfo.includeFirstDay, localizationManager: localizationManager)
+    
+}
+
+struct WidgetOne: Widget {
+    let kind: String = "[1]"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: DateCounterProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: DateCounterProvider(widgetKind: kind)) { entry in
             DatePlusComplicationView(entry: entry)
                 .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
-            
         }
-        .configurationDisplayName("DatePlus Widget")
-        .supportedFamilies([.accessoryCorner, .accessoryRectangular])
+        .configurationDisplayName(getDisplayName(kind: kind))
+        .supportedFamilies([.accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline])
     }
 }
 
+struct WidgetTwo: Widget {
+    let kind: String = "[2]"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: DateCounterProvider(widgetKind: kind)) { entry in
+            DatePlusComplicationView(entry: entry)
+                .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
+        }
+        .configurationDisplayName(getDisplayName(kind: kind))
+        .supportedFamilies([.accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline])
+    }
+}
+
+struct WidgetThree: Widget {
+    let kind: String = "[3]"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: DateCounterProvider(widgetKind: kind)) { entry in
+            DatePlusComplicationView(entry: entry)
+                .widgetURL(URL(string: "dateplus://deeplink?from=widget"))
+        }
+        .configurationDisplayName(getDisplayName(kind: kind))
+        .supportedFamilies([.accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline])
+    }
+}
+
+@main
 struct DatePlusWidgets: WidgetBundle {
+    @WidgetBundleBuilder
     var body: some Widget {
-        DatePlusComplication()
+        widgets()
+    }
+    
+    func widgets() -> some Widget {
+        if #available(watchOS 10, *) {
+            return WidgetBundleBuilder.buildBlock(WidgetOne(), WidgetTwo(), WidgetThree())
+        } else {
+            return WidgetOne()
+        }
     }
 }
 
