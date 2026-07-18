@@ -6,6 +6,7 @@
 ## Xcode build files
 build/
 DerivedData/
+.build/
 ## Xcode settings
 *.pbxuser
 *.mode1v3

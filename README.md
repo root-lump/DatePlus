@@ -51,13 +51,46 @@ You can add any number of days from a specific date and view the resulting date.
   </a>
 </p>
 
-### Init Project Locally 💻
+### Run the project locally 💻
 
-check [Release](https://github.com/root-lump/DatePlus/releases)
+1. Clone this repository.
+2. Open `DatePlus.xcodeproj` in Xcode 16.2 or later.
+3. Select the `DatePlus Watch App` scheme and a watchOS simulator.
+4. Run the app.
 
-#### Environment
-- Xcode - Xcode 15 (15A240d)
-- macOS - macOS Sonoma 14 RC (23A339)
+The app keeps watchOS 9 as its minimum deployment target and builds against the
+watchOS SDK bundled with the selected Xcode. Shared domain, persistence, and
+localization code uses a local Swift Package:
+
+```text
+DatePlusWatchApp/
+├── App/                 # App entry point and shared state
+├── Features/            # Calculator, pinned days, complications
+├── Navigation/          # watchOS 9 and watchOS 10 navigation shells
+├── Resources/
+└── SupportingFiles/
+DatePlusWidgetExtension/
+├── App/
+├── Timeline/
+├── Views/
+├── Resources/
+└── SupportingFiles/
+Packages/DatePlusCore/
+├── Sources/             # Domain, persistence, String Catalog localization
+└── Tests/
+Configurations/          # Shared Xcode build settings
+```
+
+Run the package tests independently with:
+
+```sh
+swift test --package-path Packages/DatePlusCore
+```
+
+English and Japanese strings live in
+`Packages/DatePlusCore/Sources/DatePlusCore/Resources/Localizable.xcstrings`.
+Views inject SwiftUI's current `Locale`, so previews and simulator language
+changes use the same standard localization path as production.
 
 ## Contributing
 Pull requests and feedback are welcome. Feel free to report bugs or request features through Issues.<br>
