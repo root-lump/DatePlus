@@ -73,14 +73,16 @@ struct CalculatorView: View {
             }
         }
         .toolbar {
-            if !showsInlinePinButton {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: togglePinned) {
-                        Image(systemName: "pin.fill")
-                            .foregroundStyle(isPinned ? Color.red : Color.white)
+            if #available(watchOS 10, *) {
+                if !showsInlinePinButton {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: togglePinned) {
+                            Image(systemName: "pin.fill")
+                                .foregroundStyle(isPinned ? Color.red : Color.white)
+                        }
+                        .background(isPinned ? Color.white : Color.clear, in: Capsule())
+                        .accessibilityLabel(localizer.text(.pinnedItem))
                     }
-                    .background(isPinned ? Color.white : Color.clear, in: Capsule())
-                    .accessibilityLabel(localizer.text(.pinnedItem))
                 }
             }
         }
