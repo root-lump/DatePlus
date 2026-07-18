@@ -8,6 +8,8 @@ struct CalculatorView: View {
     @AppStorage(StorageConfiguration.daysToAddKey) private var daysToAdd = 1
     @AppStorage(StorageConfiguration.includeFirstDayKey) private var includeFirstDay = false
     @State private var futureDate = Date()
+    @State private var pinResultKey = AppStringKey.pinned
+    @State private var showsPinResult = false
 
     let showsInlinePinButton: Bool
 
@@ -97,7 +99,7 @@ struct CalculatorView: View {
 
     private var dayUnit: String {
         if !includeFirstDay && locale.language.languageCode?.identifier == "en" && daysToAdd == 1 {
-            return "day\nlater"
+            return localizer.text(.dayLaterMultiline)
         }
         return localizer.text(includeFirstDay ? .day : .daysLater)
     }
@@ -130,7 +132,7 @@ struct CalculatorView: View {
     }
 
     private func pinButton(screen: CGRect) -> some View {
-        Button(action: togglePinned) {
+        Button(action: pinForLegacyInterface) {
             Image(systemName: "pin.fill")
                 .font(.headline)
                 .foregroundStyle(isPinned ? Color.red : Color.white)
@@ -149,10 +151,18 @@ struct CalculatorView: View {
             maxHeight: screen.height * 0.2
         )
         .accessibilityLabel(localizer.text(.pinnedItem))
+        .alert(localizer.text(pinResultKey), isPresented: $showsPinResult) {}
     }
 
     private func togglePinned() {
         model.togglePinned(days: daysToAdd, includeFirstDay: includeFirstDay)
+    }
+
+    private func pinForLegacyInterface() {
+        pinResultKey = model.pin(days: daysToAdd, includeFirstDay: includeFirstDay)
+            ? .pinned
+            : .alreadyRegistered
+        showsPinResult = true
     }
 
     private func updateFutureDate() {

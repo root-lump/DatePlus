@@ -1,6 +1,7 @@
 import DatePlusCore
 import SwiftUI
 
+@available(watchOS 10, *)
 struct ComplicationPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.locale) private var locale
@@ -37,17 +38,10 @@ struct ComplicationPickerView: View {
 
                 Spacer()
 
-                if #unavailable(watchOS 10) {
-                    HStack {
-                        slotButtons
-                    }
-                }
             }
             .toolbar {
-                if #available(watchOS 10, *) {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        slotButtons
-                    }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    slotButtons
                 }
             }
             .datePlusComplicationBackground()
@@ -67,12 +61,9 @@ struct ComplicationPickerView: View {
 }
 
 private extension View {
+    @available(watchOS 10, *)
     @ViewBuilder
     func datePlusComplicationBackground() -> some View {
-        if #available(watchOS 10, *) {
-            containerBackground(.orange.gradient, for: .navigation)
-        } else {
-            background(.orange.gradient)
-        }
+        containerBackground(.orange.gradient, for: .navigation)
     }
 }

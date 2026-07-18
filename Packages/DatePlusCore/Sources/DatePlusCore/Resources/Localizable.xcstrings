@@ -55,6 +55,12 @@
         "ja" : { "stringUnit" : { "state" : "translated", "value" : "日後" } }
       }
     },
+    "day_later_multiline" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "day\nlater" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "日後" } }
+      }
+    },
     "days_later" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "days later" } },

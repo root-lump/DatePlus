@@ -18,5 +18,6 @@ public final class UserDefaultsStore: KeyValueStore, @unchecked Sendable {
 
     public func write(_ data: Data, forKey key: String) {
         defaults.set(data, forKey: key)
+        defaults.synchronize()
     }
 }

@@ -63,7 +63,6 @@
 		A00000000000000000000011 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		A00000000000000000000012 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		A00000000000000000000013 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		A00000000000000000000014 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -159,7 +158,6 @@
 				A00000000000000000000011 /* Base.xcconfig */,
 				A00000000000000000000012 /* Debug.xcconfig */,
 				A00000000000000000000013 /* Release.xcconfig */,
-				A00000000000000000000014 /* ci_post_xcodebuild.sh */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";

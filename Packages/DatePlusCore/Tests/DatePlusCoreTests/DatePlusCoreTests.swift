@@ -104,6 +104,17 @@ struct DatePlusCoreTests {
 
             #expect(catalogValue(in: localizations, language: "en") == "Delete")
             #expect(catalogValue(in: localizations, language: "ja") == "削除")
+
+            let multiline = try #require(
+                strings["day_later_multiline"] as? [String: Any]
+            )
+            let multilineLocalizations = try #require(
+                multiline["localizations"] as? [String: Any]
+            )
+            #expect(
+                catalogValue(in: multilineLocalizations, language: "en") == "day\nlater"
+            )
+            #expect(catalogValue(in: multilineLocalizations, language: "ja") == "日後")
             return
         }
 
@@ -112,6 +123,8 @@ struct DatePlusCoreTests {
 
         #expect(english.text(.delete) == "Delete")
         #expect(japanese.text(.delete) == "削除")
+        #expect(english.text(.dayLaterMultiline) == "day\nlater")
+        #expect(japanese.text(.dayLaterMultiline) == "日後")
         #expect(english.daysDescription(days: 21, includeFirstDay: true) == "21st day")
         #expect(english.daysDescription(days: 1, includeFirstDay: false) == "1 day later")
         #expect(english.daysDescription(days: 21, includeFirstDay: false) == "21 days later")

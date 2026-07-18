@@ -33,6 +33,16 @@ final class AppModel: ObservableObject {
             : pinnedStore.add(value)
     }
 
+    @discardableResult
+    func pin(days: Int, includeFirstDay: Bool) -> Bool {
+        guard !isPinned(days: days, includeFirstDay: includeFirstDay) else {
+            return false
+        }
+
+        pinnedDays = pinnedStore.add(DayInfo(days: days, includeFirstDay: includeFirstDay))
+        return true
+    }
+
     func removePinned(_ dayInfo: DayInfo) {
         pinnedDays = pinnedStore.remove(dayInfo)
     }
