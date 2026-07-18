@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches: [develop]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core-tests:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run DatePlusCore tests
+        run: swift test --package-path Packages/DatePlusCore
+
+  watch-app:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Watch app
+        run: >-
+          xcodebuild
+          -project DatePlus.xcodeproj
+          -scheme "DatePlus Watch App"
+          -configuration Debug
+          -destination "generic/platform=watchOS"
+          CODE_SIGNING_ALLOWED=NO
+          build

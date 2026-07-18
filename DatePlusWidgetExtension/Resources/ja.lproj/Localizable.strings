@@ -1,0 +1,2 @@
+/* Declares Japanese as a widget localization. UI strings live in DatePlusCore. */
+"localization_marker" = "ja";

@@ -3,53 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E19AB622ABBBFD5004D667D /* PinnedUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB612ABBBFD5004D667D /* PinnedUtils.swift */; };
-		3E19AB632ABBBFD5004D667D /* PinnedUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB612ABBBFD5004D667D /* PinnedUtils.swift */; };
-		3E19AB642ABBC735004D667D /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B32A8010D000618D65 /* DayInfo.swift */; };
-		3E19AB662ABBE70A004D667D /* W10_RegisterComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB652ABBE70A004D667D /* W10_RegisterComplication.swift */; };
-		3E19AB682ABC7F45004D667D /* W10_DeletePinnedDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB672ABC7F45004D667D /* W10_DeletePinnedDayView.swift */; };
-		3E19AB6A2ABC9839004D667D /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB692ABC9839004D667D /* AppGroup.swift */; };
-		3E19AB6B2ABC9839004D667D /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E19AB692ABC9839004D667D /* AppGroup.swift */; };
-		3E535D352ABCC8F200D3F4F3 /* AccessoryCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E535D342ABCC8F200D3F4F3 /* AccessoryCircular.swift */; };
-		3E535D372ABCC92200D3F4F3 /* AccessoryInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E535D362ABCC92200D3F4F3 /* AccessoryInline.swift */; };
-		3E546D102ABB3822002AFD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A42A80102300618D65 /* Assets.xcassets */; };
-		3E546D182ABB475A002AFD85 /* W9_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D172ABB475A002AFD85 /* W9_MainView.swift */; };
-		3E546D1A2ABB47A0002AFD85 /* W9_PinnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */; };
-		3E546D1D2ABB4B89002AFD85 /* W9_TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D1C2ABB4B89002AFD85 /* W9_TabView.swift */; };
-		3E546D1F2ABB4C0B002AFD85 /* SwitchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D1E2ABB4C0B002AFD85 /* SwitchOS.swift */; };
-		3E546D222ABB515D002AFD85 /* W10_MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D212ABB515D002AFD85 /* W10_MainView.swift */; };
-		3E546D242ABB53BC002AFD85 /* W10_NavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D232ABB53BC002AFD85 /* W10_NavigationStackView.swift */; };
-		3E546D262ABB57F5002AFD85 /* W10_PinnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D252ABB57F5002AFD85 /* W10_PinnedView.swift */; };
-		3E546D292ABB72ED002AFD85 /* PinnedViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E546D282ABB72ED002AFD85 /* PinnedViewCommon.swift */; };
 		3E9A069C2A80102200618D65 /* DatePlus Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3E9A069B2A80102200618D65 /* DatePlus Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3E9A06A12A80102200618D65 /* DatePlusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06A02A80102200618D65 /* DatePlusApp.swift */; };
-		3E9A06A32A80102200618D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06A22A80102200618D65 /* ContentView.swift */; };
-		3E9A06A52A80102300618D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A42A80102300618D65 /* Assets.xcassets */; };
-		3E9A06A82A80102300618D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06A72A80102300618D65 /* Preview Assets.xcassets */; };
-		3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06B32A8010D000618D65 /* DayInfo.swift */; };
-		3E9A06C42A80122D00618D65 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9A06C32A80122D00618D65 /* WidgetKit.framework */; };
-		3E9A06C62A80122D00618D65 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9A06C52A80122D00618D65 /* SwiftUI.framework */; };
-		3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */; };
-		3E9A06CB2A80122D00618D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A06CA2A80122D00618D65 /* Assets.xcassets */; };
 		3E9A06CF2A80122D00618D65 /* DatePlus WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E9A06C12A80122D00618D65 /* DatePlus WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3E9A367E2A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
-		3E9A367F2A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
-		3E9A36802A94DC0100F2B630 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E9A36822A94DC0100F2B630 /* Localizable.strings */; };
-		3EAA9F072AB0195700382447 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F062AB0195700382447 /* LocalizationManager.swift */; };
-		3EAA9F082AB0195700382447 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F062AB0195700382447 /* LocalizationManager.swift */; };
-		3EAA9F0A2AB01AAC00382447 /* Localization_en.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F092AB01AAC00382447 /* Localization_en.swift */; };
-		3EAA9F0B2AB01AAC00382447 /* Localization_en.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F092AB01AAC00382447 /* Localization_en.swift */; };
-		3EAA9F0D2AB01AD900382447 /* Localization_ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */; };
-		3EAA9F0E2AB01AD900382447 /* Localization_ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */; };
-		3EAA9F112AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
-		3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F102AB030A300382447 /* DateUtils.swift */; };
-		3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */; };
-		3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */; };
-		3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */; };
+		A00000000000000000000001 /* DatePlusCore in Frameworks */ = {isa = PBXBuildFile; productRef = A00000000000000000000003 /* DatePlusCore */; };
+		A00000000000000000000002 /* DatePlusCore in Frameworks */ = {isa = PBXBuildFile; productRef = A00000000000000000000003 /* DatePlusCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,53 +56,59 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3E19AB612ABBBFD5004D667D /* PinnedUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedUtils.swift; sourceTree = "<group>"; };
-		3E19AB652ABBE70A004D667D /* W10_RegisterComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_RegisterComplication.swift; sourceTree = "<group>"; };
-		3E19AB672ABC7F45004D667D /* W10_DeletePinnedDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_DeletePinnedDayView.swift; sourceTree = "<group>"; };
-		3E19AB692ABC9839004D667D /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
-		3E2EE3F72A8C0FE600587F6C /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = info.plist; path = DatePlus/info.plist; sourceTree = SOURCE_ROOT; };
-		3E535D342ABCC8F200D3F4F3 /* AccessoryCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircular.swift; sourceTree = "<group>"; };
-		3E535D362ABCC92200D3F4F3 /* AccessoryInline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInline.swift; sourceTree = "<group>"; };
-		3E546D172ABB475A002AFD85 /* W9_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_MainView.swift; sourceTree = "<group>"; };
-		3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_PinnedView.swift; sourceTree = "<group>"; };
-		3E546D1C2ABB4B89002AFD85 /* W9_TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W9_TabView.swift; sourceTree = "<group>"; };
-		3E546D1E2ABB4C0B002AFD85 /* SwitchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchOS.swift; sourceTree = "<group>"; };
-		3E546D212ABB515D002AFD85 /* W10_MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_MainView.swift; sourceTree = "<group>"; };
-		3E546D232ABB53BC002AFD85 /* W10_NavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_NavigationStackView.swift; sourceTree = "<group>"; };
-		3E546D252ABB57F5002AFD85 /* W10_PinnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W10_PinnedView.swift; sourceTree = "<group>"; };
-		3E546D282ABB72ED002AFD85 /* PinnedViewCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedViewCommon.swift; sourceTree = "<group>"; };
-		3E7E1FAD2A95143700CD9AB1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E9A06952A80102200618D65 /* DatePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9A069B2A80102200618D65 /* DatePlus Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DatePlus Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E9A06A02A80102200618D65 /* DatePlusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePlusApp.swift; sourceTree = "<group>"; };
-		3E9A06A22A80102200618D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3E9A06A42A80102300618D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3E9A06A72A80102300618D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3E9A06B32A8010D000618D65 /* DayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInfo.swift; sourceTree = "<group>"; };
 		3E9A06C12A80122D00618D65 /* DatePlus WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DatePlus WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E9A06C32A80122D00618D65 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		3E9A06C52A80122D00618D65 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePlus_Widget.swift; sourceTree = "<group>"; };
-		3E9A06CA2A80122D00618D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3E9A06CC2A80122D00618D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus Watch App.entitlements"; sourceTree = "<group>"; };
-		3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DatePlus WidgetExtension.entitlements"; sourceTree = "<group>"; };
-		3E9A36812A94DC0100F2B630 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3EAA9F062AB0195700382447 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
-		3EAA9F092AB01AAC00382447 /* Localization_en.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization_en.swift; sourceTree = "<group>"; };
-		3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization_ja.swift; sourceTree = "<group>"; };
-		3EAA9F102AB030A300382447 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
-		3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCornerView.swift; sourceTree = "<group>"; };
-		3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDateUtils.swift; sourceTree = "<group>"; };
-		3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularView.swift; sourceTree = "<group>"; };
-		3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
+		A00000000000000000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A00000000000000000000011 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		A00000000000000000000012 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		A00000000000000000000013 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A00000000000000000000020 /* Exceptions for DatePlusWatchApp */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SupportingFiles/DatePlusWatchApp.entitlements,
+				SupportingFiles/Info.plist,
+			);
+			target = 3E9A069A2A80102200618D65 /* DatePlus Watch App */;
+		};
+		A00000000000000000000021 /* Exceptions for DatePlusWidgetExtension */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SupportingFiles/DatePlusWidgetExtension.entitlements,
+				SupportingFiles/Info.plist,
+			);
+			target = 3E9A06C02A80122D00618D65 /* DatePlus WidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A00000000000000000000022 /* DatePlusWatchApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A00000000000000000000020 /* Exceptions for DatePlusWatchApp */,
+			);
+			path = DatePlusWatchApp;
+			sourceTree = "<group>";
+		};
+		A00000000000000000000023 /* DatePlusWidgetExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A00000000000000000000021 /* Exceptions for DatePlusWidgetExtension */,
+			);
+			path = DatePlusWidgetExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3E9A06982A80102200618D65 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A00000000000000000000001 /* DatePlusCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,56 +116,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E9A06C62A80122D00618D65 /* SwiftUI.framework in Frameworks */,
-				3E9A06C42A80122D00618D65 /* WidgetKit.framework in Frameworks */,
+				A00000000000000000000002 /* DatePlusCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E546D162ABB472A002AFD85 /* WatchOS9 */ = {
-			isa = PBXGroup;
-			children = (
-				3E546D172ABB475A002AFD85 /* W9_MainView.swift */,
-				3E546D192ABB47A0002AFD85 /* W9_PinnedView.swift */,
-				3E546D1C2ABB4B89002AFD85 /* W9_TabView.swift */,
-			);
-			path = WatchOS9;
-			sourceTree = "<group>";
-		};
-		3E546D202ABB50F3002AFD85 /* WatchOS10 */ = {
-			isa = PBXGroup;
-			children = (
-				3E546D212ABB515D002AFD85 /* W10_MainView.swift */,
-				3E546D232ABB53BC002AFD85 /* W10_NavigationStackView.swift */,
-				3E546D252ABB57F5002AFD85 /* W10_PinnedView.swift */,
-				3E19AB652ABBE70A004D667D /* W10_RegisterComplication.swift */,
-				3E19AB672ABC7F45004D667D /* W10_DeletePinnedDayView.swift */,
-			);
-			path = WatchOS10;
-			sourceTree = "<group>";
-		};
-		3E546D272ABB72B4002AFD85 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				3E546D282ABB72ED002AFD85 /* PinnedViewCommon.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		3E9A068E2A80102100618D65 = {
 			isa = PBXGroup;
 			children = (
-				3EAA9F0F2AB0308700382447 /* Common */,
-				3EAA9F062AB0195700382447 /* LocalizationManager.swift */,
-				3EAA9F012AB0170C00382447 /* Localization */,
-				3E9A36822A94DC0100F2B630 /* Localizable.strings */,
-				3EC80CA32A8C9EE200FA09A0 /* ci_scripts */,
-				3EC80CA22A8C200D00FA09A0 /* DatePlus */,
-				3E9A069F2A80102200618D65 /* DatePlus Watch App */,
-				3E9A06C72A80122D00618D65 /* DatePlus Widget */,
-				3E9A06C22A80122D00618D65 /* Frameworks */,
+				A00000000000000000000022 /* DatePlusWatchApp */,
+				A00000000000000000000023 /* DatePlusWidgetExtension */,
+				A00000000000000000000030 /* DatePlus */,
+				A00000000000000000000031 /* Configurations */,
 				3E9A06962A80102200618D65 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -213,121 +144,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3E9A069F2A80102200618D65 /* DatePlus Watch App */ = {
+		A00000000000000000000030 /* DatePlus */ = {
 			isa = PBXGroup;
 			children = (
-				3E9A06D42A80134C00618D65 /* DatePlus Watch App.entitlements */,
-				3E9A06B82A80113500618D65 /* Views */,
-				3E9A06A02A80102200618D65 /* DatePlusApp.swift */,
-				3E9A06A22A80102200618D65 /* ContentView.swift */,
-				3E9A06A42A80102300618D65 /* Assets.xcassets */,
-				3E9A06A62A80102300618D65 /* Preview Content */,
-			);
-			path = "DatePlus Watch App";
-			sourceTree = "<group>";
-		};
-		3E9A06A62A80102300618D65 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				3E9A06A72A80102300618D65 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		3E9A06B22A80108A00618D65 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3E9A06B32A8010D000618D65 /* DayInfo.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3E9A06B82A80113500618D65 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3E546D272ABB72B4002AFD85 /* Common */,
-				3E546D202ABB50F3002AFD85 /* WatchOS10 */,
-				3E546D162ABB472A002AFD85 /* WatchOS9 */,
-				3E546D1E2ABB4C0B002AFD85 /* SwitchOS.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3E9A06C22A80122D00618D65 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3E9A06C32A80122D00618D65 /* WidgetKit.framework */,
-				3E9A06C52A80122D00618D65 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3E9A06C72A80122D00618D65 /* DatePlus Widget */ = {
-			isa = PBXGroup;
-			children = (
-				3EAA9F172AB086F900382447 /* Utils */,
-				3EAA9F132AB0841E00382447 /* Views */,
-				3E9A06D52A80135900618D65 /* DatePlus WidgetExtension.entitlements */,
-				3E9A06C82A80122D00618D65 /* DatePlus_Widget.swift */,
-				3E9A06CA2A80122D00618D65 /* Assets.xcassets */,
-				3E9A06CC2A80122D00618D65 /* Info.plist */,
-			);
-			path = "DatePlus Widget";
-			sourceTree = "<group>";
-		};
-		3EAA9F012AB0170C00382447 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				3EAA9F092AB01AAC00382447 /* Localization_en.swift */,
-				3EAA9F0C2AB01AD900382447 /* Localization_ja.swift */,
-			);
-			path = Localization;
-			sourceTree = "<group>";
-		};
-		3EAA9F0F2AB0308700382447 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				3E9A06B22A80108A00618D65 /* Models */,
-				3EAA9F102AB030A300382447 /* DateUtils.swift */,
-				3E19AB612ABBBFD5004D667D /* PinnedUtils.swift */,
-				3E19AB692ABC9839004D667D /* AppGroup.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		3EAA9F132AB0841E00382447 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3EAA9F142AB0845D00382447 /* AccessoryCornerView.swift */,
-				3EAA9F1A2AB0882800382447 /* AccessoryRectangularView.swift */,
-				3E535D342ABCC8F200D3F4F3 /* AccessoryCircular.swift */,
-				3E535D362ABCC92200D3F4F3 /* AccessoryInline.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3EAA9F172AB086F900382447 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3EAA9F182AB0871000382447 /* WidgetDateUtils.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		3EC80CA22A8C200D00FA09A0 /* DatePlus */ = {
-			isa = PBXGroup;
-			children = (
-				3E2EE3F72A8C0FE600587F6C /* info.plist */,
+				A00000000000000000000010 /* Info.plist */,
 			);
 			path = DatePlus;
 			sourceTree = "<group>";
 		};
-		3EC80CA32A8C9EE200FA09A0 /* ci_scripts */ = {
+		A00000000000000000000031 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				3EC80CA42A8C9F4700FA09A0 /* ci_post_xcodebuild.sh */,
+				A00000000000000000000011 /* Base.xcconfig */,
+				A00000000000000000000012 /* Debug.xcconfig */,
+				A00000000000000000000013 /* Release.xcconfig */,
 			);
-			path = ci_scripts;
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,7 +196,13 @@
 			dependencies = (
 				3E9A06CE2A80122D00618D65 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				A00000000000000000000022 /* DatePlusWatchApp */,
+			);
 			name = "DatePlus Watch App";
+			packageProductDependencies = (
+				A00000000000000000000003 /* DatePlusCore */,
+			);
 			productName = "DatePlus Watch App";
 			productReference = 3E9A069B2A80102200618D65 /* DatePlus Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -381,7 +219,13 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				A00000000000000000000023 /* DatePlusWidgetExtension */,
+			);
 			name = "DatePlus WidgetExtension";
+			packageProductDependencies = (
+				A00000000000000000000003 /* DatePlusCore */,
+			);
 			productName = "DatePlus WidgetExtension";
 			productReference = 3E9A06C12A80122D00618D65 /* DatePlus WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -393,22 +237,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					3E9A06942A80102200618D65 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
-					3E9A069A2A80102200618D65 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
-					3E9A06C02A80122D00618D65 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
+					3E9A06942A80102200618D65 = { CreatedOnToolsVersion = 16.2; };
+					3E9A069A2A80102200618D65 = { CreatedOnToolsVersion = 16.2; };
+					3E9A06C02A80122D00618D65 = { CreatedOnToolsVersion = 16.2; };
 				};
 			};
 			buildConfigurationList = 3E9A06922A80102100618D65 /* Build configuration list for PBXProject "DatePlus" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 16.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -417,6 +255,10 @@
 				ja,
 			);
 			mainGroup = 3E9A068E2A80102100618D65;
+			packageReferences = (
+				A00000000000000000000004 /* XCLocalSwiftPackageReference "Packages/DatePlusCore" */,
+			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 3E9A06962A80102200618D65 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -429,230 +271,34 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3E9A06932A80102200618D65 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3E9A367E2A94DC0100F2B630 /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3E9A06992A80102200618D65 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3E9A06A82A80102300618D65 /* Preview Assets.xcassets in Resources */,
-				3E9A367F2A94DC0100F2B630 /* Localizable.strings in Resources */,
-				3E9A06A52A80102300618D65 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3E9A06BF2A80122D00618D65 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3E9A06CB2A80122D00618D65 /* Assets.xcassets in Resources */,
-				3E546D102ABB3822002AFD85 /* Assets.xcassets in Resources */,
-				3E9A36802A94DC0100F2B630 /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+		3E9A06932A80102200618D65 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		3E9A06992A80102200618D65 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		3E9A06BF2A80122D00618D65 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3E9A06972A80102200618D65 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3E9A06B42A8010D000618D65 /* DayInfo.swift in Sources */,
-				3E19AB682ABC7F45004D667D /* W10_DeletePinnedDayView.swift in Sources */,
-				3E546D262ABB57F5002AFD85 /* W10_PinnedView.swift in Sources */,
-				3E19AB6A2ABC9839004D667D /* AppGroup.swift in Sources */,
-				3EAA9F072AB0195700382447 /* LocalizationManager.swift in Sources */,
-				3EAA9F0A2AB01AAC00382447 /* Localization_en.swift in Sources */,
-				3E546D182ABB475A002AFD85 /* W9_MainView.swift in Sources */,
-				3E546D222ABB515D002AFD85 /* W10_MainView.swift in Sources */,
-				3E19AB662ABBE70A004D667D /* W10_RegisterComplication.swift in Sources */,
-				3E9A06A32A80102200618D65 /* ContentView.swift in Sources */,
-				3EAA9F112AB030A300382447 /* DateUtils.swift in Sources */,
-				3E546D1A2ABB47A0002AFD85 /* W9_PinnedView.swift in Sources */,
-				3E546D1D2ABB4B89002AFD85 /* W9_TabView.swift in Sources */,
-				3EAA9F0D2AB01AD900382447 /* Localization_ja.swift in Sources */,
-				3E19AB622ABBBFD5004D667D /* PinnedUtils.swift in Sources */,
-				3E546D1F2ABB4C0B002AFD85 /* SwitchOS.swift in Sources */,
-				3E9A06A12A80102200618D65 /* DatePlusApp.swift in Sources */,
-				3E546D292ABB72ED002AFD85 /* PinnedViewCommon.swift in Sources */,
-				3E546D242ABB53BC002AFD85 /* W10_NavigationStackView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3E9A06BD2A80122D00618D65 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3E19AB6B2ABC9839004D667D /* AppGroup.swift in Sources */,
-				3EAA9F162AB0846500382447 /* AccessoryCornerView.swift in Sources */,
-				3EAA9F1B2AB0882800382447 /* AccessoryRectangularView.swift in Sources */,
-				3E535D352ABCC8F200D3F4F3 /* AccessoryCircular.swift in Sources */,
-				3EAA9F192AB0871000382447 /* WidgetDateUtils.swift in Sources */,
-				3EAA9F122AB030A300382447 /* DateUtils.swift in Sources */,
-				3E535D372ABCC92200D3F4F3 /* AccessoryInline.swift in Sources */,
-				3E9A06C92A80122D00618D65 /* DatePlus_Widget.swift in Sources */,
-				3EAA9F0B2AB01AAC00382447 /* Localization_en.swift in Sources */,
-				3EAA9F082AB0195700382447 /* LocalizationManager.swift in Sources */,
-				3E19AB632ABBBFD5004D667D /* PinnedUtils.swift in Sources */,
-				3E19AB642ABBC735004D667D /* DayInfo.swift in Sources */,
-				3EAA9F0E2AB01AD900382447 /* Localization_ja.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+		3E9A06972A80102200618D65 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		3E9A06BD2A80122D00618D65 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3E9A069E2A80102200618D65 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3E9A069A2A80102200618D65 /* DatePlus Watch App */;
-			targetProxy = 3E9A069D2A80102200618D65 /* PBXContainerItemProxy */;
-		};
-		3E9A06CE2A80122D00618D65 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3E9A06C02A80122D00618D65 /* DatePlus WidgetExtension */;
-			targetProxy = 3E9A06CD2A80122D00618D65 /* PBXContainerItemProxy */;
-		};
+		3E9A069E2A80102200618D65 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = 3E9A069A2A80102200618D65 /* DatePlus Watch App */; targetProxy = 3E9A069D2A80102200618D65 /* PBXContainerItemProxy */; };
+		3E9A06CE2A80122D00618D65 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = 3E9A06C02A80122D00618D65 /* DatePlus WidgetExtension */; targetProxy = 3E9A06CD2A80122D00618D65 /* PBXContainerItemProxy */; };
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		3E9A36822A94DC0100F2B630 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E9A36812A94DC0100F2B630 /* en */,
-				3E7E1FAD2A95143700CD9AB1 /* ja */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3E9A06A92A80102300618D65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A00000000000000000000012 /* Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_DISPLAY_NAME_PREFIX = "[DEB] ";
-				BUNDLE_ID_SUFFIX = .debug;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
 		3E9A06AA2A80102300618D65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A00000000000000000000013 /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_DISPLAY_NAME_PREFIX = "";
-				BUNDLE_ID_SUFFIX = "";
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
@@ -663,31 +309,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "DatePlus Watch App/DatePlus Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = DatePlusWatchApp/SupportingFiles/DatePlusWatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DatePlus Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = GP3SLB5MP7;
+				DEVELOPMENT_ASSET_PATHS = DatePlusWatchApp/Resources/PreviewContent;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0.0;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DatePlusWatchApp/SupportingFiles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos10.0;
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -697,32 +331,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "DatePlus Watch App/DatePlus Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = DatePlusWatchApp/SupportingFiles/DatePlusWatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DatePlus Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = GP3SLB5MP7;
+				DEVELOPMENT_ASSET_PATHS = DatePlusWatchApp/Resources/PreviewContent;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0.0;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DatePlusWatchApp/SupportingFiles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos10.0;
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -731,15 +352,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GP3SLB5MP7;
-				INFOPLIST_FILE = DatePlus/info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
-				MARKETING_VERSION = 2.0.0;
+				INFOPLIST_FILE = DatePlus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -748,16 +365,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GP3SLB5MP7;
-				INFOPLIST_FILE = DatePlus/info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
-				MARKETING_VERSION = 2.0.0;
+				INFOPLIST_FILE = DatePlus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -766,30 +378,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = DatePlusWidgetExtension/SupportingFiles/DatePlusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0.0;
+				INFOPLIST_FILE = DatePlusWidgetExtension/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(WIDGET_DISPLAY_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos10.0;
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -798,74 +398,44 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "DatePlus Widget/DatePlus WidgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = DatePlusWidgetExtension/SupportingFiles/DatePlusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = GP3SLB5MP7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "DatePlus Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0.0;
+				INFOPLIST_FILE = DatePlusWidgetExtension/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(WIDGET_DISPLAY_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos10.0;
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E9A06922A80102100618D65 /* Build configuration list for PBXProject "DatePlus" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3E9A06A92A80102300618D65 /* Debug */,
-				3E9A06AA2A80102300618D65 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3E9A06AB2A80102300618D65 /* Build configuration list for PBXNativeTarget "DatePlus Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3E9A06AC2A80102300618D65 /* Debug */,
-				3E9A06AD2A80102300618D65 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3E9A06AF2A80102300618D65 /* Build configuration list for PBXNativeTarget "DatePlus" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3E9A06B02A80102300618D65 /* Debug */,
-				3E9A06B12A80102300618D65 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3E9A06D02A80122D00618D65 /* Build configuration list for PBXNativeTarget "DatePlus WidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3E9A06D12A80122D00618D65 /* Debug */,
-				3E9A06D22A80122D00618D65 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
+		3E9A06922A80102100618D65 /* Build configuration list for PBXProject "DatePlus" */ = {isa = XCConfigurationList; buildConfigurations = (3E9A06A92A80102300618D65 /* Debug */, 3E9A06AA2A80102300618D65 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		3E9A06AB2A80102300618D65 /* Build configuration list for PBXNativeTarget "DatePlus Watch App" */ = {isa = XCConfigurationList; buildConfigurations = (3E9A06AC2A80102300618D65 /* Debug */, 3E9A06AD2A80102300618D65 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		3E9A06AF2A80102300618D65 /* Build configuration list for PBXNativeTarget "DatePlus" */ = {isa = XCConfigurationList; buildConfigurations = (3E9A06B02A80102300618D65 /* Debug */, 3E9A06B12A80102300618D65 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		3E9A06D02A80122D00618D65 /* Build configuration list for PBXNativeTarget "DatePlus WidgetExtension" */ = {isa = XCConfigurationList; buildConfigurations = (3E9A06D12A80122D00618D65 /* Debug */, 3E9A06D22A80122D00618D65 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A00000000000000000000004 /* XCLocalSwiftPackageReference "Packages/DatePlusCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DatePlusCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A00000000000000000000003 /* DatePlusCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A00000000000000000000004 /* XCLocalSwiftPackageReference "Packages/DatePlusCore" */;
+			productName = DatePlusCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E9A068F2A80102100618D65 /* Project object */;
 }
