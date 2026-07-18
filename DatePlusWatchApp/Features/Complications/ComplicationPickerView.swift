@@ -36,20 +36,32 @@ struct ComplicationPickerView: View {
                     .padding()
 
                 Spacer()
+
+                if #unavailable(watchOS 10) {
+                    HStack {
+                        slotButtons
+                    }
+                }
             }
             .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    ForEach(ComplicationSlot.allCases, id: \.rawValue) { slot in
-                        Button(String(slot.rawValue)) {
-                            model.register(dayInfo, in: slot)
-                            dismiss()
-                        }
-                        .controlSize(.large)
-                        .background(.orange, in: Capsule())
+                if #available(watchOS 10, *) {
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        slotButtons
                     }
                 }
             }
             .datePlusComplicationBackground()
+        }
+    }
+
+    private var slotButtons: some View {
+        ForEach(ComplicationSlot.allCases, id: \.rawValue) { slot in
+            Button(String(slot.rawValue)) {
+                model.register(dayInfo, in: slot)
+                dismiss()
+            }
+            .controlSize(.large)
+            .background(.orange, in: Capsule())
         }
     }
 }
