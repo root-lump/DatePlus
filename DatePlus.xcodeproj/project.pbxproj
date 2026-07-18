@@ -353,7 +353,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DatePlus/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -366,7 +366,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DatePlus/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -382,7 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DatePlusWidgetExtension/SupportingFiles/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(WIDGET_DISPLAY_NAME)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -402,7 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DatePlusWidgetExtension/SupportingFiles/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME_PREFIX)DatePlus Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(WIDGET_DISPLAY_NAME)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus.watchkitapp$(BUNDLE_ID_SUFFIX).DatePlus-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
