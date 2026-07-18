@@ -4,6 +4,7 @@ import WatchKit
 
 struct CalculatorView: View {
     @Environment(\.locale) private var locale
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var model: AppModel
     @State private var pinResultKey = AppStringKey.pinned
     @State private var showsPinResult = false
@@ -83,6 +84,12 @@ struct CalculatorView: View {
                         .accessibilityLabel(localizer.text(.pinnedItem))
                     }
                 }
+            }
+        }
+        .onAppear(perform: model.refreshFutureDate)
+        .onChange(of: scenePhase) { phase in
+            if phase == .active {
+                model.refreshFutureDate()
             }
         }
     }

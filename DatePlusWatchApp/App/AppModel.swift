@@ -85,6 +85,10 @@ final class AppModel: ObservableObject {
         includeFirstDay.toggle()
     }
 
+    func refreshFutureDate() {
+        updateFutureDate()
+    }
+
     private func updateFutureDate() {
         futureDate = DateCalculator.calculate(
             daysToAdd: daysToAdd,
