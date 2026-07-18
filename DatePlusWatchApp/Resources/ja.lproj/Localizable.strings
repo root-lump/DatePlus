@@ -1,0 +1,2 @@
+/* Declares Japanese as an app localization. UI strings live in DatePlusCore. */
+"localization_marker" = "ja";

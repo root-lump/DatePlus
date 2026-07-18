@@ -16,11 +16,15 @@ struct DatePlusWidgetView: View {
         )
     }
 
+    private var appLocale: Locale {
+        Bundle.main.preferredLocalizations.first.map { Locale(identifier: $0) } ?? locale
+    }
+
     var body: some View {
         let content = WidgetContent(
             date: futureDate,
             dayInfo: entry.dayInfo,
-            locale: locale
+            locale: appLocale
         )
 
         switch family {

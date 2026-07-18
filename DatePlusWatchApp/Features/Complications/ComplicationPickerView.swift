@@ -11,22 +11,56 @@ struct ComplicationPickerView: View {
     private var localizer: AppLocalizer { AppLocalizer(locale: locale) }
 
     var body: some View {
-        List(ComplicationSlot.allCases, id: \.rawValue) { slot in
-            Button {
-                model.register(dayInfo, in: slot)
-                dismiss()
-            } label: {
-                VStack(alignment: .leading) {
-                    Text("Widget \(slot.rawValue)")
-                    Text(localizer.daysDescription(
-                        days: model.complication(for: slot).days,
-                        includeFirstDay: model.complication(for: slot).includeFirstDay
-                    ))
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+        NavigationStack {
+            VStack {
+                Text(localizer.text(.addWatchFace))
+                    .font(.title3)
+                    .fontWeight(.black)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .padding()
+
+                Text(localizer.daysDescription(
+                    days: dayInfo.days,
+                    includeFirstDay: dayInfo.includeFirstDay
+                ))
+                .font(.title2)
+                .fontWeight(.black)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+
+                Text(localizer.text(.selectWidgetNumber))
+                    .font(.caption)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .padding()
+
+                Spacer()
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    ForEach(ComplicationSlot.allCases, id: \.rawValue) { slot in
+                        Button(String(slot.rawValue)) {
+                            model.register(dayInfo, in: slot)
+                            dismiss()
+                        }
+                        .controlSize(.large)
+                        .background(.orange, in: Capsule())
+                    }
                 }
             }
+            .datePlusComplicationBackground()
         }
-        .navigationTitle(localizer.text(.selectWidgetNumber))
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func datePlusComplicationBackground() -> some View {
+        if #available(watchOS 10, *) {
+            containerBackground(.orange.gradient, for: .navigation)
+        } else {
+            background(.orange.gradient)
+        }
     }
 }

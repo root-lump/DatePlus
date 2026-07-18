@@ -2,6 +2,12 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject private var model = AppModel()
+    private let locale: Locale
+
+    init(locale: Locale? = nil) {
+        let language = Bundle.main.preferredLocalizations.first
+        self.locale = locale ?? language.map { Locale(identifier: $0) } ?? .current
+    }
 
     var body: some View {
         Group {
@@ -12,15 +18,14 @@ struct RootView: View {
             }
         }
         .environmentObject(model)
+        .environment(\.locale, locale)
     }
 }
 
 #Preview("English") {
-    RootView()
-        .environment(\.locale, Locale(identifier: "en"))
+    RootView(locale: Locale(identifier: "en"))
 }
 
 #Preview("Japanese") {
-    RootView()
-        .environment(\.locale, Locale(identifier: "ja"))
+    RootView(locale: Locale(identifier: "ja"))
 }
