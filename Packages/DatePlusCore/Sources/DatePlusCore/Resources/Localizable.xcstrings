@@ -1,0 +1,126 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "add_to_complications" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to Complications" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "コンプリケーションに追加" } }
+      }
+    },
+    "add_watch_face" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to watch face" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "文字盤に登録" } }
+      }
+    },
+    "already_registered" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Already registered." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "既に登録されています。" } }
+      }
+    },
+    "calculate" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "計算" } }
+      }
+    },
+    "cancel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "キャンセル" } }
+      }
+    },
+    "confirm_complication" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Do you want to update the complication?" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "コンプリケーションを更新しますか？" } }
+      }
+    },
+    "confirm_delete" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Are you sure you want to delete?" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "削除してもよろしいですか？" } }
+      }
+    },
+    "day" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "day" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "日目" } }
+      }
+    },
+    "days_later" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "days later" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "日後" } }
+      }
+    },
+    "delete" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "削除" } }
+      }
+    },
+    "from_today" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "From Today" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "本日起算" } }
+      }
+    },
+    "pin_list" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pin list" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ピン留め一覧" } }
+      }
+    },
+    "pinned" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pinned." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ピン留めしました。" } }
+      }
+    },
+    "pinned_item" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pinned item" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ピン留め項目" } }
+      }
+    },
+    "pinned_nothing" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "There are no days pinned." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ピン留めされた日数がありません。" } }
+      }
+    },
+    "pinned_tip" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "💡Tip\nPress the pin button on the main screen to display multiple dates together here." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "💡ヒント\nメイン画面でピン留めボタンを押すと、この画面で複数の日付をまとめて表示できます。" } }
+      }
+    },
+    "select_widget_number" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Select widget number." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ウィジェットの番号を選択" } }
+      }
+    },
+    "update" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Update" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "更新" } }
+      }
+    },
+    "widget_day" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "D" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "日目" } }
+      }
+    },
+    "widget_days_later" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "D L" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "日後" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
