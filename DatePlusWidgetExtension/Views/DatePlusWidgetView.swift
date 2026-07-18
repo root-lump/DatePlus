@@ -59,11 +59,14 @@ struct WidgetContent {
     }
 }
 
-#Preview(as: .accessoryCorner) {
-    DatePlusWidget(slot: .one)
-} timeline: {
-    DateCounterEntry(
-        date: Date(),
-        dayInfo: DayInfo(days: 3, includeFirstDay: false)
-    )
+struct DatePlusWidgetPreview: PreviewProvider {
+    static var previews: some View {
+        DatePlusWidgetView(
+            entry: DateCounterEntry(
+                date: Date(),
+                dayInfo: DayInfo(days: 3, includeFirstDay: false)
+            )
+        )
+        .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+    }
 }

@@ -87,7 +87,26 @@ struct DatePlusCoreTests {
     }
 
     @Test("String Catalog localization follows an explicitly injected locale")
-    func localization() {
+    func localization() throws {
+        if let catalogURL = Bundle.module.url(
+            forResource: "Localizable",
+            withExtension: "xcstrings"
+        ) {
+            let data = try Data(contentsOf: catalogURL)
+            let catalog = try #require(
+                JSONSerialization.jsonObject(with: data) as? [String: Any]
+            )
+            let strings = try #require(catalog["strings"] as? [String: Any])
+            let delete = try #require(strings["delete"] as? [String: Any])
+            let localizations = try #require(
+                delete["localizations"] as? [String: Any]
+            )
+
+            #expect(catalogValue(in: localizations, language: "en") == "Delete")
+            #expect(catalogValue(in: localizations, language: "ja") == "削除")
+            return
+        }
+
         let english = AppLocalizer(locale: Locale(identifier: "en"))
         let japanese = AppLocalizer(locale: Locale(identifier: "ja"))
 
@@ -96,6 +115,15 @@ struct DatePlusCoreTests {
         #expect(english.daysDescription(days: 21, includeFirstDay: true) == "21st day")
         #expect(japanese.daysDescription(days: 21, includeFirstDay: false) == "21日後")
     }
+}
+
+private func catalogValue(
+    in localizations: [String: Any],
+    language: String
+) -> String? {
+    let localization = localizations[language] as? [String: Any]
+    let stringUnit = localization?["stringUnit"] as? [String: Any]
+    return stringUnit?["value"] as? String
 }
 
 private final class MemoryKeyValueStore: KeyValueStore, @unchecked Sendable {
