@@ -49,42 +49,25 @@ struct PinnedDaysView: View {
             }
         } else {
             List(model.pinnedDays) { dayInfo in
-                VStack(alignment: .leading) {
-                    Text(localizer.daysDescription(
-                        days: dayInfo.days,
-                        includeFirstDay: dayInfo.includeFirstDay
-                    ))
-                    .foregroundStyle(.secondary)
+                pinnedRow(for: dayInfo)
+            }
+        }
+    }
 
-                    Spacer()
-
-                    Text(formatter.fullDate(DateCalculator.calculate(
-                        from: nowDate,
-                        daysToAdd: dayInfo.days,
-                        includeFirstDay: dayInfo.includeFirstDay
-                    )))
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                }
-                .padding(8)
+    @ViewBuilder
+    private func pinnedRow(for dayInfo: DayInfo) -> some View {
+        if #available(watchOS 10, *) {
+            pinnedRowContent(for: dayInfo)
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button(role: .destructive) {
-                        if #available(watchOS 10, *) {
-                            deletingDay = dayInfo
-                        } else {
-                            legacyAction = LegacyPinnedAction(kind: .delete(dayInfo))
-                        }
+                        deletingDay = dayInfo
                     } label: {
                         Label(localizer.text(.delete), systemImage: "trash")
                     }
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                     Button {
-                        if #available(watchOS 10, *) {
-                            complicationDay = dayInfo
-                        } else {
-                            legacyAction = LegacyPinnedAction(kind: .complication(dayInfo))
-                        }
+                        complicationDay = dayInfo
                     } label: {
                         Label(
                             localizer.text(.addToComplications),
@@ -93,10 +76,48 @@ struct PinnedDaysView: View {
                     }
                     .tint(.orange)
                 }
-            }
+        } else {
+            pinnedRowContent(for: dayInfo)
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(role: .destructive) {
+                        legacyAction = LegacyPinnedAction(kind: .delete(dayInfo))
+                    } label: {
+                        Label(localizer.text(.delete), systemImage: "trash")
+                    }
+
+                    Button {
+                        legacyAction = LegacyPinnedAction(kind: .complication(dayInfo))
+                    } label: {
+                        Label(
+                            localizer.text(.addToComplications),
+                            systemImage: "watchface.applewatch.case"
+                        )
+                    }
+                    .tint(.orange)
+                }
         }
     }
 
+    private func pinnedRowContent(for dayInfo: DayInfo) -> some View {
+        VStack(alignment: .leading) {
+            Text(localizer.daysDescription(
+                days: dayInfo.days,
+                includeFirstDay: dayInfo.includeFirstDay
+            ))
+            .foregroundStyle(.secondary)
+
+            Spacer()
+
+            Text(formatter.fullDate(DateCalculator.calculate(
+                from: nowDate,
+                daysToAdd: dayInfo.days,
+                includeFirstDay: dayInfo.includeFirstDay
+            )))
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
+        }
+        .padding(8)
+    }
     private func legacyAlert(for action: LegacyPinnedAction) -> Alert {
         switch action.kind {
         case let .delete(dayInfo):

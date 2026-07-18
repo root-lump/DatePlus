@@ -4,8 +4,22 @@ import WidgetKit
 
 @MainActor
 final class AppModel: ObservableObject {
+    @Published var daysToAdd: Int {
+        didSet {
+            settingsStore.saveDaysToAdd(daysToAdd)
+            updateFutureDate()
+        }
+    }
+    @Published var includeFirstDay: Bool {
+        didSet {
+            settingsStore.saveIncludeFirstDay(includeFirstDay)
+            updateFutureDate()
+        }
+    }
+    @Published private(set) var futureDate: Date
     @Published private(set) var pinnedDays: [DayInfo]
 
+    private let settingsStore: CalculatorSettingsStore
     private let pinnedStore: PinnedDayStore
     private let complicationStore: ComplicationStore
 
@@ -15,7 +29,18 @@ final class AppModel: ObservableObject {
             suiteName: StorageConfiguration.appGroupIdentifier
         ) ?? .standard
     ) {
-        pinnedStore = PinnedDayStore(store: UserDefaultsStore(defaults))
+        let standardStore = UserDefaultsStore(defaults)
+        let settingsStore = CalculatorSettingsStore(store: standardStore)
+        let settings = settingsStore.load()
+
+        self.settingsStore = settingsStore
+        daysToAdd = settings.daysToAdd
+        includeFirstDay = settings.includeFirstDay
+        futureDate = DateCalculator.calculate(
+            daysToAdd: settings.daysToAdd,
+            includeFirstDay: settings.includeFirstDay
+        )
+        pinnedStore = PinnedDayStore(store: standardStore)
         complicationStore = ComplicationStore(
             store: UserDefaultsStore(appGroupDefaults)
         )
@@ -54,5 +79,16 @@ final class AppModel: ObservableObject {
 
     func complication(for slot: ComplicationSlot) -> DayInfo {
         complicationStore.dayInfo(for: slot)
+    }
+
+    func toggleIncludeFirstDay() {
+        includeFirstDay.toggle()
+    }
+
+    private func updateFutureDate() {
+        futureDate = DateCalculator.calculate(
+            daysToAdd: daysToAdd,
+            includeFirstDay: includeFirstDay
+        )
     }
 }

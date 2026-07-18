@@ -72,6 +72,20 @@ struct DatePlusCoreTests {
         #expect(store.remove(value).isEmpty)
     }
 
+    @Test("Calculator settings preserve the existing defaults keys")
+    func calculatorSettingsPersistence() {
+        let memory = MemoryKeyValueStore()
+        let store = CalculatorSettingsStore(store: memory)
+
+        #expect(store.load() == CalculatorSettings())
+        store.saveDaysToAdd(42)
+        store.saveIncludeFirstDay(true)
+
+        #expect(store.load() == CalculatorSettings(daysToAdd: 42, includeFirstDay: true))
+        #expect(memory.integer(forKey: StorageConfiguration.daysToAddKey) == 42)
+        #expect(memory.boolean(forKey: StorageConfiguration.includeFirstDayKey) == true)
+    }
+
     @Test("Complication storage always exposes three stable widget slots")
     func complicationPersistence() {
         let memory = MemoryKeyValueStore()
@@ -143,13 +157,31 @@ private func catalogValue(
 
 private final class MemoryKeyValueStore: KeyValueStore, @unchecked Sendable {
     private let lock = NSLock()
-    private var values: [String: Data] = [:]
+    private var dataValues: [String: Data] = [:]
+    private var integerValues: [String: Int] = [:]
+    private var booleanValues: [String: Bool] = [:]
 
     func data(forKey key: String) -> Data? {
-        lock.withLock { values[key] }
+        lock.withLock { dataValues[key] }
+    }
+
+    func integer(forKey key: String) -> Int? {
+        lock.withLock { integerValues[key] }
+    }
+
+    func boolean(forKey key: String) -> Bool? {
+        lock.withLock { booleanValues[key] }
     }
 
     func write(_ data: Data, forKey key: String) {
-        lock.withLock { values[key] = data }
+        lock.withLock { dataValues[key] = data }
+    }
+
+    func write(_ value: Int, forKey key: String) {
+        lock.withLock { integerValues[key] = value }
+    }
+
+    func write(_ value: Bool, forKey key: String) {
+        lock.withLock { booleanValues[key] = value }
     }
 }

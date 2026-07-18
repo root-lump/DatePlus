@@ -5,9 +5,6 @@ import WatchKit
 struct CalculatorView: View {
     @Environment(\.locale) private var locale
     @EnvironmentObject private var model: AppModel
-    @AppStorage(StorageConfiguration.daysToAddKey) private var daysToAdd = 1
-    @AppStorage(StorageConfiguration.includeFirstDayKey) private var includeFirstDay = false
-    @State private var futureDate = Date()
     @State private var pinResultKey = AppStringKey.pinned
     @State private var showsPinResult = false
 
@@ -29,9 +26,9 @@ struct CalculatorView: View {
             HStack {
                 Spacer()
 
-                Picker("", selection: $daysToAdd) {
+                Picker("", selection: $model.daysToAdd) {
                     ForEach(1..<151, id: \.self) { value in
-                        Text(includeFirstDay ? dateFormatter.ordinal(value) : String(value))
+                        Text(model.includeFirstDay ? dateFormatter.ordinal(value) : String(value))
                             .font(.largeTitle)
                             .minimumScaleFactor(0.8)
                             .lineLimit(1)
@@ -54,7 +51,7 @@ struct CalculatorView: View {
             .frame(height: screen.height * 0.225)
             .padding(.vertical, 5)
 
-            Text(dateFormatter.fullDate(futureDate))
+            Text(dateFormatter.fullDate(model.futureDate))
                 .frame(height: screen.height * 0.175)
                 .font(.title3)
                 .minimumScaleFactor(0.6)
@@ -88,26 +85,24 @@ struct CalculatorView: View {
                 }
             }
         }
-        .onAppear(perform: updateFutureDate)
-        .onChange(of: daysToAdd) { _ in updateFutureDate() }
-        .onChange(of: includeFirstDay) { _ in updateFutureDate() }
     }
 
     private var isPinned: Bool {
-        model.isPinned(days: daysToAdd, includeFirstDay: includeFirstDay)
+        model.isPinned(days: model.daysToAdd, includeFirstDay: model.includeFirstDay)
     }
 
     private var dayUnit: String {
-        if !includeFirstDay && locale.language.languageCode?.identifier == "en" && daysToAdd == 1 {
+        if !model.includeFirstDay
+            && locale.language.languageCode?.identifier == "en"
+            && model.daysToAdd == 1 {
             return localizer.text(.dayLaterMultiline)
         }
-        return localizer.text(includeFirstDay ? .day : .daysLater)
+        return localizer.text(model.includeFirstDay ? .day : .daysLater)
     }
 
     private func fromTodayButton(screen: CGRect) -> some View {
         Button {
-            includeFirstDay.toggle()
-            updateFutureDate()
+            model.toggleIncludeFirstDay()
         } label: {
             Text(localizer.text(.fromToday))
                 .font(.headline)
@@ -119,9 +114,9 @@ struct CalculatorView: View {
                     minHeight: screen.height * 0.2,
                     maxHeight: screen.height * 0.2
                 )
-                .foregroundStyle(includeFirstDay ? Color.black : Color.white)
+                .foregroundStyle(model.includeFirstDay ? Color.black : Color.white)
         }
-        .background(includeFirstDay ? Color.white : Color.clear)
+        .background(model.includeFirstDay ? Color.white : Color.clear)
         .clipShape(Capsule())
         .frame(
             minWidth: screen.width * 0.4,
@@ -155,20 +150,16 @@ struct CalculatorView: View {
     }
 
     private func togglePinned() {
-        model.togglePinned(days: daysToAdd, includeFirstDay: includeFirstDay)
+        model.togglePinned(days: model.daysToAdd, includeFirstDay: model.includeFirstDay)
     }
 
     private func pinForLegacyInterface() {
-        pinResultKey = model.pin(days: daysToAdd, includeFirstDay: includeFirstDay)
+        pinResultKey = model.pin(
+            days: model.daysToAdd,
+            includeFirstDay: model.includeFirstDay
+        )
             ? .pinned
             : .alreadyRegistered
         showsPinResult = true
-    }
-
-    private func updateFutureDate() {
-        futureDate = DateCalculator.calculate(
-            daysToAdd: daysToAdd,
-            includeFirstDay: includeFirstDay
-        )
     }
 }
