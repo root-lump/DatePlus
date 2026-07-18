@@ -14,8 +14,10 @@ final class AppModel: ObservableObject {
             suiteName: StorageConfiguration.appGroupIdentifier
         ) ?? .standard
     ) {
-        pinnedStore = PinnedDayStore(store: defaults)
-        complicationStore = ComplicationStore(store: appGroupDefaults)
+        pinnedStore = PinnedDayStore(store: UserDefaultsStore(defaults))
+        complicationStore = ComplicationStore(
+            store: UserDefaultsStore(appGroupDefaults)
+        )
         pinnedDays = pinnedStore.load()
     }
 

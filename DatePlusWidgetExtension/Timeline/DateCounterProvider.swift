@@ -31,6 +31,8 @@ struct DateCounterProvider: TimelineProvider {
         let defaults = UserDefaults(
             suiteName: StorageConfiguration.appGroupIdentifier
         ) ?? .standard
-        return ComplicationStore(store: defaults).dayInfo(for: slot)
+        return ComplicationStore(
+            store: UserDefaultsStore(defaults)
+        ).dayInfo(for: slot)
     }
 }

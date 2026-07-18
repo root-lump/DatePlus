@@ -5,8 +5,18 @@ public protocol KeyValueStore: AnyObject, Sendable {
     func write(_ data: Data, forKey key: String)
 }
 
-extension UserDefaults: KeyValueStore {
+public final class UserDefaultsStore: KeyValueStore, @unchecked Sendable {
+    private let defaults: UserDefaults
+
+    public init(_ defaults: UserDefaults) {
+        self.defaults = defaults
+    }
+
+    public func data(forKey key: String) -> Data? {
+        defaults.data(forKey: key)
+    }
+
     public func write(_ data: Data, forKey key: String) {
-        set(data, forKey: key)
+        defaults.set(data, forKey: key)
     }
 }
