@@ -1,5 +1,6 @@
 public enum AppStringKey: String, CaseIterable, Sendable {
     case day = "day"
+    case dayLater = "day_later"
     case daysLater = "days_later"
     case fromToday = "from_today"
     case pinned = "pinned"

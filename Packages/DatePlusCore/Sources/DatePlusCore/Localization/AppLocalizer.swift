@@ -18,8 +18,15 @@ public struct AppLocalizer: Sendable {
     }
 
     public func daysDescription(days: Int, includeFirstDay: Bool) -> String {
-        let value = DateTextFormatter(locale: locale).ordinal(days)
-        let unit = text(includeFirstDay ? .day : .daysLater)
+        let value = includeFirstDay
+            ? DateTextFormatter(locale: locale).ordinal(days)
+            : String(days)
+        let unit: String
+        if includeFirstDay {
+            unit = text(.day)
+        } else {
+            unit = text(days == 1 ? .dayLater : .daysLater)
+        }
         return isJapanese ? "\(value)\(unit)" : "\(value) \(unit)"
     }
 

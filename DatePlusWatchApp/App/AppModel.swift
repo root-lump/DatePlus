@@ -1,5 +1,6 @@
 import DatePlusCore
 import Foundation
+import WidgetKit
 
 @MainActor
 final class AppModel: ObservableObject {
@@ -38,6 +39,7 @@ final class AppModel: ObservableObject {
 
     func register(_ dayInfo: DayInfo, in slot: ComplicationSlot) {
         complicationStore.register(dayInfo, in: slot)
+        WidgetCenter.shared.reloadTimelines(ofKind: slot.widgetKind)
     }
 
     func complication(for slot: ComplicationSlot) -> DayInfo {

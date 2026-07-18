@@ -113,6 +113,8 @@ struct DatePlusCoreTests {
         #expect(english.text(.delete) == "Delete")
         #expect(japanese.text(.delete) == "削除")
         #expect(english.daysDescription(days: 21, includeFirstDay: true) == "21st day")
+        #expect(english.daysDescription(days: 1, includeFirstDay: false) == "1 day later")
+        #expect(english.daysDescription(days: 21, includeFirstDay: false) == "21 days later")
         #expect(japanese.daysDescription(days: 21, includeFirstDay: false) == "21日後")
     }
 }
