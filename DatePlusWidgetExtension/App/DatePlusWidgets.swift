@@ -49,7 +49,9 @@ private func configuration(for slot: ComplicationSlot) -> some WidgetConfigurati
         DatePlusWidgetView(entry: entry)
             .widgetURL(pinnedDaysURL)
     }
-    .configurationDisplayName("\(slot.widgetKind) \(description)")
+    .configurationDisplayName(
+        Text(verbatim: "\(slot.widgetKind) \(description)")
+    )
     .supportedFamilies([
         .accessoryCorner,
         .accessoryCircular,
