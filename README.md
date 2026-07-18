@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-<a href="https://date-plus.root-lump.net" target="_blank">
+<a href="https://date-plus.root-lump.net?lang=en" target="_blank">
 <img src="resources/images/icons/CircleAppIcon.svg" alt="DatePlus" width="40%"/>
 </a>
 </p>
@@ -23,17 +23,17 @@ You can add any number of days from a specific date and view the resulting date.
   <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download DatePlus from AppStore" height="50">
   <br>
   <br>
-  <a href="https://date-plus.root-lump.net/update-history/">Update history [Simplified version]</a> | <a href="https://github.com/root-lump/DatePlus/releases">Change log</a> | <a href="https://date-plus.root-lump.net/privacy-policy/">Privacy policy</a>
+  <a href="https://date-plus.root-lump.net?lang=en#updates">Update history [Simplified version]</a> | <a href="https://github.com/root-lump/DatePlus/releases">Change log</a> | <a href="https://date-plus.root-lump.net/privacy-policy?lang=en">Privacy policy</a>
 </p>
 
 ## Features
 
-- ➕ [**Add Days**](https://date-plus.root-lump.net) - Add a specified number of days to any date.
-- 📌 [**Pin Feature**](https://date-plus.root-lump.net) - Save specific calculations for quick reference later.
-- ⌚ [**Complication Display**](https://date-plus.root-lump.net) - View your calculations directly on your watch face.
-- 🎨 [**Intuitive UI**](https://date-plus.root-lump.net) - Easy-to-use interface on Apple Watch.
-- 📁 [**Smart Stack Support**](https://date-plus.root-lump.net) - Smart Stack is a feature that displays appropriate information in a timely manner based on the user's situation.
-- 📅 [**Calculate from Today**](https://date-plus.root-lump.net) - Automatically use today's date as the starting point for calculations. This feature can be turned on or off.
+- ➕ [**Add Days**](https://date-plus.root-lump.net?lang=en#screens) - Add a specified number of days to any date.
+- 📌 [**Pin Feature**](https://date-plus.root-lump.net?lang=en#screens) - Save specific calculations for quick reference later.
+- ⌚ [**Complication Display**](https://date-plus.root-lump.net?lang=en#screens) - View your calculations directly on your watch face.
+- 🎨 [**Intuitive UI**](https://date-plus.root-lump.net?lang=en#screens) - Easy-to-use interface on Apple Watch.
+- 📁 [**Smart Stack Support**](https://date-plus.root-lump.net?lang=en#screens) - Smart Stack is a feature that displays appropriate information in a timely manner based on the user's situation.
+- 📅 [**Calculate from Today**](https://date-plus.root-lump.net?lang=en#screens) - Automatically use today's date as the starting point for calculations. This feature can be turned on or off.
 
 ## Screenshots
 <p align="center">
@@ -61,7 +61,7 @@ check [Release](https://github.com/root-lump/DatePlus/releases)
 
 ## Contributing
 Pull requests and feedback are welcome. Feel free to report bugs or request features through Issues.<br>
-We also have a [support page](https://date-plus.root-lump.net/contact/).
+We also have a [support page](https://date-plus.root-lump.net/contact?lang=en).
 
 
 ## License
