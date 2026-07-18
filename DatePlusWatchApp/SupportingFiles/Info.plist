@@ -33,5 +33,7 @@
 	<string>public.app-category.utilities</string>
 	<key>WKWatchOnly</key>
 	<true/>
+	<key>WKApplication</key>
+	<true/>
 </dict>
 </plist>
