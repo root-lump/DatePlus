@@ -59,10 +59,19 @@ private func configuration(for slot: ComplicationSlot) -> some WidgetConfigurati
         displayName
     )
     .description(localizer.text(.widgetDescription))
-    .supportedFamilies([
+    .supportedFamilies(supportedFamilies(for: slot))
+}
+
+private func supportedFamilies(for slot: ComplicationSlot) -> [WidgetFamily] {
+    // The circular family is a slot-independent app launcher (icon only), so
+    // offering it from a single kind avoids three identical gallery entries.
+    var families: [WidgetFamily] = [
         .accessoryCorner,
-        .accessoryCircular,
         .accessoryRectangular,
         .accessoryInline,
-    ])
+    ]
+    if slot == .one {
+        families.insert(.accessoryCircular, at: 1)
+    }
+    return families
 }
