@@ -15,6 +15,7 @@ public enum AppStringKey: String, CaseIterable, Sendable {
     case update = "update"
     case widgetDay = "widget_day"
     case widgetDaysLater = "widget_days_later"
+    case widgetDescription = "widget_description"
     case addWatchFace = "add_watch_face"
     case selectWidgetNumber = "select_widget_number"
     case pinList = "pin_list"

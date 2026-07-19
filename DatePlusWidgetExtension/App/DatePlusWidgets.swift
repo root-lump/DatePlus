@@ -4,6 +4,8 @@ import WidgetKit
 
 private let pinnedDaysURL = URL(string: "dateplus://deeplink?from=widget")
 
+// Keep concrete Widget types here. Replacing these wrappers with parameterized
+// instances broke WidgetBundle compilation for the watchOS extension.
 struct WidgetOne: Widget {
     var body: some WidgetConfiguration {
         configuration(for: .one)
@@ -27,6 +29,7 @@ struct DatePlusWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         WidgetOne()
+        // The extra slots use APIs unavailable to the watchOS 9 extension path.
         if #available(watchOSApplicationExtension 10, *) {
             WidgetTwo()
             WidgetThree()
@@ -35,12 +38,15 @@ struct DatePlusWidgets: WidgetBundle {
 }
 
 private func configuration(for slot: ComplicationSlot) -> some WidgetConfiguration {
-    let localizer = AppLocalizer(locale: .current)
-    let value = DateCounterProvider.loadDayInfo(for: slot)
-    let description = localizer.daysDescription(
-        days: value.days,
-        includeFirstDay: value.includeFirstDay
-    )
+    let language = Bundle.main.preferredLocalizations.first
+    let locale = language.map { Locale(identifier: $0) } ?? .current
+    let localizer = AppLocalizer(locale: locale)
+    // Widget descriptors are archived before providers run, so their metadata
+    // must not read App Group data. The name must also stay an explicit String:
+    // the Text/LocalizedStringKey overloads of configurationDisplayName trap at
+    // descriptor time ("Formatted text ... is not supported") and take every
+    // complication down with them.
+    let displayName: String = "\(slot.widgetKind) DatePlus"
 
     return StaticConfiguration(
         kind: slot.widgetKind,
@@ -50,8 +56,9 @@ private func configuration(for slot: ComplicationSlot) -> some WidgetConfigurati
             .widgetURL(pinnedDaysURL)
     }
     .configurationDisplayName(
-        Text(verbatim: "\(slot.widgetKind) \(description)")
+        displayName
     )
+    .description(localizer.text(.widgetDescription))
     .supportedFamilies([
         .accessoryCorner,
         .accessoryCircular,
