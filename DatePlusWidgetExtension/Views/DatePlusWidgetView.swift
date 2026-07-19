@@ -7,6 +7,12 @@ struct DatePlusWidgetView: View {
     @Environment(\.widgetFamily) private var family
 
     let entry: DateCounterEntry
+    private let localeOverride: Locale?
+
+    init(entry: DateCounterEntry, localeOverride: Locale? = nil) {
+        self.entry = entry
+        self.localeOverride = localeOverride
+    }
 
     private var futureDate: Date {
         DateCalculator.calculate(
@@ -17,7 +23,12 @@ struct DatePlusWidgetView: View {
     }
 
     private var appLocale: Locale {
-        Bundle.main.preferredLocalizations.first.map { Locale(identifier: $0) } ?? locale
+        if let localeOverride {
+            return localeOverride
+        }
+        // WidgetKit's environment locale can differ from the app localization.
+        // Prefer the extension bundle to keep every label in one language.
+        return Bundle.main.preferredLocalizations.first.map { Locale(identifier: $0) } ?? locale
     }
 
     var body: some View {
@@ -65,12 +76,58 @@ struct WidgetContent {
 
 struct DatePlusWidgetPreview: PreviewProvider {
     static var previews: some View {
+        Group {
+            previews(localeIdentifier: "en", displayLanguage: "English")
+            previews(localeIdentifier: "ja", displayLanguage: "Japanese")
+        }
+    }
+
+    private static func previews(
+        localeIdentifier: String,
+        displayLanguage: String
+    ) -> some View {
+        Group {
+            preview(
+                family: .accessoryCorner,
+                familyName: "Corner",
+                localeIdentifier: localeIdentifier,
+                displayLanguage: displayLanguage
+            )
+            preview(
+                family: .accessoryCircular,
+                familyName: "Circular",
+                localeIdentifier: localeIdentifier,
+                displayLanguage: displayLanguage
+            )
+            preview(
+                family: .accessoryRectangular,
+                familyName: "Rectangular",
+                localeIdentifier: localeIdentifier,
+                displayLanguage: displayLanguage
+            )
+            preview(
+                family: .accessoryInline,
+                familyName: "Inline",
+                localeIdentifier: localeIdentifier,
+                displayLanguage: displayLanguage
+            )
+        }
+    }
+
+    private static func preview(
+        family: WidgetFamily,
+        familyName: String,
+        localeIdentifier: String,
+        displayLanguage: String
+    ) -> some View {
         DatePlusWidgetView(
             entry: DateCounterEntry(
                 date: Date(),
                 dayInfo: DayInfo(days: 3, includeFirstDay: false)
-            )
+            ),
+            localeOverride: Locale(identifier: localeIdentifier)
         )
-        .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+        .previewContext(WidgetPreviewContext(family: family))
+        .previewDisplayName("\(displayLanguage) – \(familyName)")
     }
 }

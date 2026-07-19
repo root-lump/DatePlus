@@ -45,6 +45,8 @@ public struct ComplicationStore: Sendable {
     }
 
     private func normalized(_ values: [DayInfo]) -> [DayInfo] {
+        // Released versions store complications as a positional three-item
+        // array. Padding or trimming preserves the legacy slot indices.
         var result = Array(values.prefix(Self.slotCount))
         while result.count < Self.slotCount {
             result.append(DayInfo(days: 1, includeFirstDay: true))

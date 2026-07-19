@@ -15,7 +15,7 @@ DerivedData/
 !default.pbxuser
 !default.mode1v3
 !default.mode2v3
-!default.perspectivev3*.xcodeproj/*
+!default.perspectivev3
 
 ## App packaging
 *.ipa

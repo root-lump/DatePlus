@@ -36,6 +36,18 @@ struct ComplicationPickerView: View {
                     .lineLimit(1)
                     .padding()
 
+                ForEach(ComplicationSlot.allCases, id: \.rawValue) { slot in
+                    let registered = model.complication(for: slot)
+                    let description = localizer.daysDescription(
+                        days: registered.days,
+                        includeFirstDay: registered.includeFirstDay
+                    )
+                    Text("\(slot.widgetKind) \(description)")
+                        .font(.caption2)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                }
+
                 Spacer()
 
             }

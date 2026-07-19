@@ -8,6 +8,8 @@ public struct AppLocalizer: Sendable {
     }
 
     public func text(_ key: AppStringKey) -> String {
+        // Localizable.xcstrings belongs to DatePlusCore's resource bundle, not
+        // the app or Widget extension bundle.
         let resource = LocalizedStringResource(
             String.LocalizationValue(key.rawValue),
             table: "Localizable",

@@ -132,6 +132,12 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "D L" } },
         "ja" : { "stringUnit" : { "state" : "translated", "value" : "日後" } }
       }
+    },
+    "widget_description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shows the date calculated for this complication slot." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "このコンプリケーション枠に設定した計算日を表示します。" } }
+      }
     }
   },
   "version" : "1.0"

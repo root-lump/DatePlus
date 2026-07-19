@@ -6,7 +6,9 @@ struct DateCounterProvider: TimelineProvider {
     let slot: ComplicationSlot
 
     func placeholder(in context: Context) -> DateCounterEntry {
-        DateCounterEntry(date: Date(), dayInfo: Self.loadDayInfo(for: slot))
+        // Gallery discovery must not depend on App Group availability. WidgetKit
+        // can always archive this deterministic entry.
+        DateCounterEntry(date: Date(), dayInfo: DayInfo(days: 1, includeFirstDay: true))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (DateCounterEntry) -> Void) {
@@ -19,6 +21,8 @@ struct DateCounterProvider: TimelineProvider {
     ) {
         let now = Date()
         let entry = DateCounterEntry(date: now, dayInfo: Self.loadDayInfo(for: slot))
+        // Date-based output changes at local midnight. Retry in an hour only when
+        // the calendar cannot resolve the next boundary.
         let nextMidnight = Calendar.current.nextDate(
             after: now,
             matching: DateComponents(hour: 0),

@@ -22,14 +22,29 @@ final class AppModel: ObservableObject {
     private let settingsStore: CalculatorSettingsStore
     private let pinnedStore: PinnedDayStore
     private let complicationStore: ComplicationStore
+    private let reloadTimelines: (String) -> Void
 
-    init(
-        defaults: UserDefaults = .standard,
-        appGroupDefaults: UserDefaults = UserDefaults(
+    convenience init(defaults: UserDefaults = .standard) {
+        let appGroupDefaults = UserDefaults(
             suiteName: StorageConfiguration.appGroupIdentifier
         ) ?? .standard
+
+        self.init(
+            standardStore: UserDefaultsStore(defaults),
+            complicationStore: ComplicationStore(
+                store: UserDefaultsStore(appGroupDefaults)
+            ),
+            reloadTimelines: { WidgetCenter.shared.reloadTimelines(ofKind: $0) },
+            reloadAllTimelines: { WidgetCenter.shared.reloadAllTimelines() }
+        )
+    }
+
+    init(
+        standardStore: any KeyValueStore,
+        complicationStore: ComplicationStore,
+        reloadTimelines: @escaping (String) -> Void,
+        reloadAllTimelines: @escaping () -> Void
     ) {
-        let standardStore = UserDefaultsStore(defaults)
         let settingsStore = CalculatorSettingsStore(store: standardStore)
         let settings = settingsStore.load()
 
@@ -41,10 +56,13 @@ final class AppModel: ObservableObject {
             includeFirstDay: settings.includeFirstDay
         )
         pinnedStore = PinnedDayStore(store: standardStore)
-        complicationStore = ComplicationStore(
-            store: UserDefaultsStore(appGroupDefaults)
-        )
+        self.complicationStore = complicationStore
+        self.reloadTimelines = reloadTimelines
         pinnedDays = pinnedStore.load()
+        // Watch faces and the Smart Stack keep archived timelines across app
+        // updates. Rebuild them once per launch so stale content cannot outlive
+        // a binary or data change.
+        reloadAllTimelines()
     }
 
     func isPinned(days: Int, includeFirstDay: Bool) -> Bool {
@@ -74,7 +92,7 @@ final class AppModel: ObservableObject {
 
     func register(_ dayInfo: DayInfo, in slot: ComplicationSlot) {
         complicationStore.register(dayInfo, in: slot)
-        WidgetCenter.shared.reloadTimelines(ofKind: slot.widgetKind)
+        reloadTimelines(slot.widgetKind)
     }
 
     func complication(for slot: ComplicationSlot) -> DayInfo {
