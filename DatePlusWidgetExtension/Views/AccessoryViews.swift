@@ -22,6 +22,7 @@ struct AccessoryCornerView: View {
     var body: some View {
         if #available(watchOSApplicationExtension 10, *) {
             Text(content.dateText)
+                .widgetAccentable()
                 .widgetCurvesContent()
                 .widgetLabel(content.daysText)
                 .containerBackground(for: .widget) { Color.clear }
@@ -52,20 +53,40 @@ struct AccessoryRectangularView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(content.daysText)
-                .font(.body)
+                .font(.caption)
+                .opacity(0.85)
             Spacer()
             Text(content.fullDateText)
                 .font(.headline)
+                .bold()
+                .widgetAccentable()
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
         }
         .padding()
         .widgetBackground {
-            Image("DatePlusBackground")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .brightness(-0.5)
-                .contrast(0.5)
+            GlassBackdrop()
+        }
+    }
+}
+
+// Translucent white gradients read as glass in the Smart Stack's full-color
+// rendering and degrade to plain luminance steps under the watch face's
+// vibrant (desaturated) rendering.
+private struct GlassBackdrop: View {
+    var body: some View {
+        ZStack(alignment: .top) {
+            LinearGradient(
+                colors: [Color.white.opacity(0.16), Color.white.opacity(0.03)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            LinearGradient(
+                colors: [Color.white.opacity(0.5), Color.white.opacity(0)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .frame(height: 1.5)
         }
     }
 }
