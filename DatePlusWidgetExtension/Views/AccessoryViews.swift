@@ -53,7 +53,7 @@ struct AccessoryRectangularView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(content.daysText)
-                .font(.caption)
+                .font(.footnote)
                 .opacity(0.85)
             Spacer()
             Text(content.fullDateText)
