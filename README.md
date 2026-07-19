@@ -63,6 +63,7 @@ watchOS SDK bundled with the selected Xcode. Shared domain, persistence, and
 localization code uses a local Swift Package:
 
 ```text
+DatePlusContainer/          # iOS container metadata
 DatePlusWatchApp/
 ├── App/                 # App entry point and shared state
 ├── Features/            # Calculator, pinned days, complications
@@ -79,6 +80,7 @@ Packages/DatePlusCore/
 ├── Sources/             # Domain, persistence, String Catalog localization
 └── Tests/
 Configurations/          # Shared Xcode build settings
+ci_scripts/              # Xcode Cloud lifecycle scripts (required location)
 ```
 
 Run the package tests independently with:

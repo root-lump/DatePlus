@@ -71,6 +71,8 @@ struct AccessoryRectangularView: View {
 }
 
 private extension View {
+    // WidgetKit requires containerBackground on watchOS 10, while watchOS 9
+    // still needs the legacy background modifier.
     @ViewBuilder
     func widgetBackground<Background: View>(
         @ViewBuilder _ background: () -> Background

@@ -128,7 +128,7 @@
 			children = (
 				A00000000000000000000022 /* DatePlusWatchApp */,
 				A00000000000000000000023 /* DatePlusWidgetExtension */,
-				A00000000000000000000030 /* DatePlus */,
+				A00000000000000000000030 /* DatePlusContainer */,
 				A00000000000000000000031 /* Configurations */,
 				3E9A06962A80102200618D65 /* Products */,
 			);
@@ -144,12 +144,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A00000000000000000000030 /* DatePlus */ = {
+		A00000000000000000000030 /* DatePlusContainer */ = {
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000010 /* Info.plist */,
 			);
-			path = DatePlus;
+			path = DatePlusContainer;
 			sourceTree = "<group>";
 		};
 		A00000000000000000000031 /* Configurations */ = {
@@ -352,7 +352,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DatePlus/Info.plist;
+				INFOPLIST_FILE = DatePlusContainer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -365,7 +365,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DatePlus/Info.plist;
+				INFOPLIST_FILE = DatePlusContainer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.root-lump.DatePlus$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
