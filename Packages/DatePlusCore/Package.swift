@@ -19,7 +19,10 @@ let package = Package(
         ),
         .testTarget(
             name: "DatePlusCoreTests",
-            dependencies: ["DatePlusCore"]
+            dependencies: ["DatePlusCore"],
+            // Compatibility fixtures are read from their source path so tests
+            // exercise the exact JSON shape committed for released builds.
+            exclude: ["Fixtures"]
         ),
     ]
 )

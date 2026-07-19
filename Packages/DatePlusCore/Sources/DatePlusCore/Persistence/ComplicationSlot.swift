@@ -4,6 +4,8 @@ public enum ComplicationSlot: Int, CaseIterable, Sendable {
     case three = 3
 
     public var widgetKind: String {
+        // WidgetKit persists this kind in installed watch-face configurations,
+        // so the legacy identifiers must remain stable.
         "[\(rawValue)]"
     }
 

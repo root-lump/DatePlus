@@ -72,6 +72,39 @@ struct DatePlusCoreTests {
         #expect(store.remove(value).isEmpty)
     }
 
+    @Test("Pinned days decode the JSON shape written by released builds")
+    func legacyPinnedDayFixture() throws {
+        let memory = MemoryKeyValueStore()
+        memory.write(try legacyFixtureData(), forKey: StorageConfiguration.pinnedDaysKey)
+
+        let values = PinnedDayStore(store: memory).load()
+
+        #expect(values.count == 3)
+        #expect(values.map(\.id.uuidString) == [
+            "00000000-0000-0000-0000-000000000101",
+            "00000000-0000-0000-0000-000000000102",
+            "00000000-0000-0000-0000-000000000103",
+        ])
+        #expect(values.map(\.days) == [7, 30, 100])
+        #expect(values.map(\.includeFirstDay) == [false, true, false])
+    }
+
+    @Test("Pinned days fall back without rewriting malformed persisted data")
+    func malformedPinnedDayPersistence() {
+        let memory = MemoryKeyValueStore()
+        let malformed = Data("not-json".utf8)
+        memory.write(malformed, forKey: StorageConfiguration.pinnedDaysKey)
+
+        #expect(PinnedDayStore(store: memory).load().isEmpty)
+        #expect(memory.data(forKey: StorageConfiguration.pinnedDaysKey) == malformed)
+
+        let missingRequiredField = Data(
+            #"[{"days":7,"includeFirstDay":false}]"#.utf8
+        )
+        memory.write(missingRequiredField, forKey: StorageConfiguration.pinnedDaysKey)
+        #expect(PinnedDayStore(store: memory).load().isEmpty)
+    }
+
     @Test("Calculator settings preserve the existing defaults keys")
     func calculatorSettingsPersistence() {
         let memory = MemoryKeyValueStore()
@@ -98,6 +131,66 @@ struct DatePlusCoreTests {
         store.register(value, in: .two)
         #expect(store.dayInfo(for: .two) == value)
         #expect(memory.data(forKey: StorageConfiguration.complicationDaysKey) != nil)
+    }
+
+    @Test("Complication slots decode the positional array from released builds")
+    func legacyComplicationFixture() throws {
+        let memory = MemoryKeyValueStore()
+        memory.write(
+            try legacyFixtureData(),
+            forKey: StorageConfiguration.complicationDaysKey
+        )
+        let store = ComplicationStore(store: memory)
+
+        #expect(store.dayInfo(for: .one).id.uuidString == "00000000-0000-0000-0000-000000000101")
+        #expect(store.dayInfo(for: .two).id.uuidString == "00000000-0000-0000-0000-000000000102")
+        #expect(store.dayInfo(for: .three).id.uuidString == "00000000-0000-0000-0000-000000000103")
+    }
+
+    @Test("Complication storage normalizes missing, malformed, short, and long arrays")
+    func complicationNormalization() throws {
+        let memory = MemoryKeyValueStore()
+        let store = ComplicationStore(store: memory)
+        let fallback = DayInfo(days: 1, includeFirstDay: true)
+
+        #expect(store.load() == [fallback, fallback, fallback])
+
+        let malformed = Data("not-json".utf8)
+        memory.write(malformed, forKey: StorageConfiguration.complicationDaysKey)
+        #expect(store.load() == [fallback, fallback, fallback])
+        #expect(memory.data(forKey: StorageConfiguration.complicationDaysKey) == malformed)
+
+        let missingRequiredField = Data(
+            #"[{"days":7,"includeFirstDay":false}]"#.utf8
+        )
+        memory.write(
+            missingRequiredField,
+            forKey: StorageConfiguration.complicationDaysKey
+        )
+        #expect(store.load() == [fallback, fallback, fallback])
+        #expect(
+            memory.data(forKey: StorageConfiguration.complicationDaysKey)
+                == missingRequiredField
+        )
+
+        let first = DayInfo(days: 10, includeFirstDay: false)
+        memory.write(
+            try JSONEncoder().encode([first]),
+            forKey: StorageConfiguration.complicationDaysKey
+        )
+        #expect(store.load() == [first, fallback, fallback])
+
+        let values = [
+            DayInfo(days: 10, includeFirstDay: false),
+            DayInfo(days: 20, includeFirstDay: true),
+            DayInfo(days: 30, includeFirstDay: false),
+            DayInfo(days: 40, includeFirstDay: true),
+        ]
+        memory.write(
+            try JSONEncoder().encode(values),
+            forKey: StorageConfiguration.complicationDaysKey
+        )
+        #expect(store.load() == Array(values.prefix(3)))
     }
 
     @Test("String Catalog localization follows an explicitly injected locale")
@@ -129,6 +222,21 @@ struct DatePlusCoreTests {
                 catalogValue(in: multilineLocalizations, language: "en") == "day\nlater"
             )
             #expect(catalogValue(in: multilineLocalizations, language: "ja") == "日後")
+
+            let widgetDescription = try #require(
+                strings["widget_description"] as? [String: Any]
+            )
+            let widgetDescriptionLocalizations = try #require(
+                widgetDescription["localizations"] as? [String: Any]
+            )
+            #expect(
+                catalogValue(in: widgetDescriptionLocalizations, language: "en")
+                    == "Shows the date calculated for this complication slot."
+            )
+            #expect(
+                catalogValue(in: widgetDescriptionLocalizations, language: "ja")
+                    == "このコンプリケーション枠に設定した計算日を表示します。"
+            )
             return
         }
 
@@ -143,7 +251,24 @@ struct DatePlusCoreTests {
         #expect(english.daysDescription(days: 1, includeFirstDay: false) == "1 day later")
         #expect(english.daysDescription(days: 21, includeFirstDay: false) == "21 days later")
         #expect(japanese.daysDescription(days: 21, includeFirstDay: false) == "21日後")
+        #expect(
+            english.text(.widgetDescription)
+                == "Shows the date calculated for this complication slot."
+        )
+        #expect(
+            japanese.text(.widgetDescription)
+                == "このコンプリケーション枠に設定した計算日を表示します。"
+        )
     }
+}
+
+private func legacyFixtureData() throws -> Data {
+    let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+    return try Data(
+        contentsOf: testsDirectory
+            .appendingPathComponent("Fixtures", isDirectory: true)
+            .appendingPathComponent("LegacyDayInfos.json")
+    )
 }
 
 private func catalogValue(
