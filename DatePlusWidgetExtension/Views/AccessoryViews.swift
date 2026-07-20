@@ -1,45 +1,6 @@
 import SwiftUI
 import WidgetKit
 
-struct AccessoryCircularView: View {
-    var body: some View {
-        if #available(watchOSApplicationExtension 10, *) {
-            icon.containerBackground(for: .widget) { Color.clear }
-        } else {
-            icon
-        }
-    }
-
-    // The dark app icon disappears against dark faces, so float it on a
-    // translucent glass disc that survives vibrant (desaturated) rendering.
-    private var icon: some View {
-        ZStack {
-            Circle()
-                .fill(
-                    LinearGradient(
-                        colors: [Color.white.opacity(0.35), Color.white.opacity(0.12)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-            Circle()
-                .strokeBorder(
-                    LinearGradient(
-                        colors: [Color.white.opacity(0.6), Color.white.opacity(0.1)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    ),
-                    lineWidth: 1
-                )
-            Image("CircleAppIcon")
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .padding(7)
-        }
-    }
-}
-
 struct AccessoryCornerView: View {
     let content: WidgetContent
 

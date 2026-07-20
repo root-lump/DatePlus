@@ -39,8 +39,6 @@ struct DatePlusWidgetView: View {
         )
 
         switch family {
-        case .accessoryCircular:
-            AccessoryCircularView()
         case .accessoryCorner:
             AccessoryCornerView(content: content)
         case .accessoryRectangular:
@@ -90,12 +88,6 @@ struct DatePlusWidgetPreview: PreviewProvider {
             preview(
                 family: .accessoryCorner,
                 familyName: "Corner",
-                localeIdentifier: localeIdentifier,
-                displayLanguage: displayLanguage
-            )
-            preview(
-                family: .accessoryCircular,
-                familyName: "Circular",
                 localeIdentifier: localeIdentifier,
                 displayLanguage: displayLanguage
             )
