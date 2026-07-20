@@ -61,7 +61,6 @@ private func configuration(for slot: ComplicationSlot) -> some WidgetConfigurati
     .description(localizer.text(.widgetDescription))
     .supportedFamilies([
         .accessoryCorner,
-        .accessoryCircular,
         .accessoryRectangular,
         .accessoryInline,
     ])
