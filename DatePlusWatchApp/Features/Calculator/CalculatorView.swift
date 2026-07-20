@@ -73,7 +73,9 @@ struct CalculatorView: View {
             }
         }
         .toolbar {
-            if #available(watchOS 10, *) {
+            // Availability conditions in toolbar builders require 10.5+;
+            // older checks hit the deprecated buildLimitedAvailability path.
+            if #available(watchOS 10.5, *) {
                 if !showsInlinePinButton {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: togglePinned) {
